@@ -99,8 +99,6 @@ else
 
 # Prebuild/postbuild section
 
-export MAIN=1
-
 ifneq ($(MAKECMDGOALS),clean)
 
 .PHONY: all
@@ -118,9 +116,9 @@ all: .fix-multy1
 .INTERMEDIATE: .fix-multy1
 .fix-multy1: 
 	-mkdir .cake3
-	$(MAKE) -C ./../Uru -f Makefile
-	$(MAKE) -C ./../JQuery -f Makefile
-	$(MAKE) -f ./Makefile $(MAKECMDGOALS)
+	$(MAKE) -C ./../Uru -f Makefile 
+	$(MAKE) -C ./../JQuery -f Makefile 
+	MAIN=1 $(MAKE) -f ./Makefile $(MAKECMDGOALS)
 .PHONY: autogen/Bootstrap_css_c.o
 autogen/Bootstrap_css_c.o: .fix-multy1
 .PHONY: autogen/Glyphicons_halflings_regular_eot_c.o

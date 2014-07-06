@@ -44,8 +44,6 @@ else
 
 # Prebuild/postbuild section
 
-export MAIN=1
-
 ifneq ($(MAKECMDGOALS),clean)
 
 .PHONY: all
@@ -57,9 +55,9 @@ all: .fix-multy1
 .INTERMEDIATE: .fix-multy1
 .fix-multy1: 
 	-mkdir .cake3
-	$(MAKE) -C ./../../urscript -f Makefile
-	$(MAKE) -C ./../Uru -f Makefile
-	$(MAKE) -f ./Makefile $(MAKECMDGOALS)
+	$(MAKE) -C ./../../urscript -f Makefile 
+	$(MAKE) -C ./../Uru -f Makefile 
+	MAIN=1 $(MAKE) -f ./Makefile $(MAKECMDGOALS)
 .PHONY: autogen/Jquery_1_9_1_js_c.o
 autogen/Jquery_1_9_1_js_c.o: .fix-multy1
 
