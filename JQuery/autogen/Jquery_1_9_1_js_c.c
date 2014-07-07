@@ -20,7 +20,7 @@ uw_Basis_string uw_Jquery_1_9_1_js_c_text (uw_context ctx, uw_unit unit) {
   for (i = 0; i < size; i++) {
     *write =  data[i];
     if (*write == '\0')
-    *write = '\n';
+      *write = '\n';
     *write++;
   }
   *write=0;

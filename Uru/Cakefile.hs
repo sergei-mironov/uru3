@@ -12,6 +12,11 @@ main = do
       phony "all"
       depend $ do
         uwlib "lib.urp" $ do
+
+          ffi "Script.urs"
+          include "Script.h"
+          csrc "Script.c"
+
           ur (sys "list")
           ur (pair "CSS.ur")
           ur (pair "Uru.ur")

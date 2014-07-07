@@ -11,7 +11,6 @@ main = do
   writeMake (file "Makefile") $ do
     
     u <- uwlib "lib.urp" $ do
-      library' (externalMake "../../urscript/lib.urp")
       library' (externalMake "../Uru/lib.urp")
       bin ("jquery-1.9.1.js") [NoScan]
       ur (pair "JQuery.ur")
