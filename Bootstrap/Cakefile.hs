@@ -7,10 +7,18 @@ import Cakefile_P
 
 instance IsString File where fromString = file
 
+data Mode = User | Devel
+
+mfiles f = do
+  writeMake (file "Makefile.devel") (f [UseUrembed,NoScan])
+  writeMake (file "Makefile") (f [NoScan])
+
 main = do
-  writeMake (file "Makefile") $ do
+  mfiles $ \useUrembed -> do
     
     u <- uwlib "lib.urp" $ do
+      rewrite style "Bootstrap/* [-]"
+      rewrite style "Bootstrap/table_ table"
       library' (externalMake "../Uru/lib.urp")
       library' (externalMake "../JQuery/lib.urp")
       bin ("dist/fonts/glyphicons-halflings-regular.eot") []
@@ -18,15 +26,29 @@ main = do
       bin ("dist/fonts/glyphicons-halflings-regular.ttf") []
       bin ("dist/fonts/glyphicons-halflings-regular.woff") []
       bin ("dist/css/bootstrap.css") []
+      bin ("dist/css/bootstrap-theme.css") []
+      bin ("dist/js/bootstrap.min.js") [NoScan]
       ur (pair "Bootstrap.ur")
 
-    t <- uwapp "-dbms sqlite" "test/B1.urp" $ do
+    b1 <- uwapp "-dbms sqlite" "test/B1.urp" $ do
+      rewrite style "B1/* [-]"
       library u
       debug
       ur (sys "list")
-      ur (single ("test/B1.ur"))
+      bin ("test/B1.css") useUrembed
+      ur (pair ("test/B1.ur"))
+
+    b2 <- uwapp "-dbms sqlite" "test/B2.urp" $ do
+      rewrite style "B2/* [-]"
+      library u
+      debug
+      ur (sys "list")
+      bin ("test/B2.css") useUrembed
+      bin ("test/holder.js") useUrembed
+      ur (pair ("test/B2.ur"))
 
     rule $ do
       phony "all"
-      depend t
+      depend b1
+      depend b2
 

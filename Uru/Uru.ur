@@ -23,6 +23,14 @@ fun withBody [t] f r =
       </body>
     </xml>
 
+(*
+fun withHeader [t] h f r =
+  (* FIXME: Doesn't compile: too deep unification
+  f (addHeader t h r)
+  *)
+  f (r -- #Hdr ++ {Hdr = <xml>{r.Hdr}{h}</xml>})
+*)
+
 fun run f : transaction page =
   f {
     Tags = {} ,

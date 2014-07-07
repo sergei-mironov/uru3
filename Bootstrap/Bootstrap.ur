@@ -10,12 +10,21 @@ fun add [t] [t~out] f r =
         {x}
       </xml>) <xml/> Bootstrap_css.propagated_urls
     val h = <xml>
-              <link rel="stylesheet" href={Bootstrap_css.geturl}/>
               {css_urls}
+              <link rel="stylesheet" href={Bootstrap_css.geturl}/>
+              <link rel="stylesheet" href={Bootstrap_theme_css.geturl}/>
+              {Script.insert Uru.javascript Bootstrap_min_js.geturl}
             </xml> 
   in
     f (Uru.addHeader h (Uru.addTag [#BOOTSTRAP] {} r))
   end
+
+style active
+style divider
+style item
+style left
+style right
+style slide
 
 (* Styles from http://hg.impredicative.com/bootstrap/raw-file/e2ddf4cb96cc/bootstrap.ur
  * Thanks, folks!
