@@ -1,0 +1,73 @@
+Hi, I've ported a basic Bootstrap-3 example to Ur/Web and would like to share
+the experience. First of all, the example is running on my server here:
+
+    http://46.38.250.132:8081/B2/main
+
+It copies some (but not all) sections of the original 'theme' example [1]. The
+Ur/Web sources are located at the Github [2].
+
+Here is my feedback:
+
+1) The Bootstrap as well as other JQuery libraries heavily uses modern HTML5
+tags and CSS3-syntax. Some of them are not well supported by the Ur/Web. As a
+result, one may need to patch bootstrap files before including them in the
+Ur/Web application. For example, bootstrap.css contains the following
+declaration
+
+    @font-face {
+      font-family: 'Glyphicons Halflings';
+      src: url('../fonts/glyphicons-halflings-regular.eot');
+    }
+
+The url declared here expects application to be able to serve static files which
+normally is not the case in the Ur/Web world. I found it rather difficult to use
+thirdparty *css or *js files because of issues like this.
+
+<ad>
+For now, I solve this problem by writing a 'project manager' -like tool which compiles
+CSS, JavaScript and images into Ur/Web modules (You can see the results by
+examinig the top-level project files like [3]).
+</ad>
+
+2) Ur/Web doesn't support aria-* data attributes which is used by bootstrap
+internals. I thinkk we should think about adding this support. Probably, the API
+should be similar to that of data-* attributes.
+Aria is described here http://www.w3.org/TR/wai-aria/
+
+For now, I modified my local copy of the urweb to make it understand the 'role'
+attribute of type String.
+
+3) I've tired of rewriting things like  class="btn btn-lg btn-default" into 
+class={css (B.btn :: B.btn_lg :: B.btn_default :: [])}. Could we think about
+adding a syntaxic sugar to reduce the amount of code? The new sugar may allow
+writing classes as usual
+
+    class="class-1 class-2 class-3"
+
+but check them against the declarations
+
+    style class_1
+    style class_2
+    style class_3
+
+
+The same thing with data-* attributes: most of the time they are staticly
+included in the code, so I would be happy to have pre-processor which may expand
+my <p data-target="bla"/> into <p data={data_attr "target" "bla"}/>
+
+
+4) Lack of aria-* attributes support prevents me from porting some sections of the [1].
+
+5) Using hand-made preprocessing tools like cake3 [4], I've managed to write a self-contained
+Ur/Web application which may be built by only 'git clone ... && cd ... && make'.
+Don't know why, but this makes me happy :)
+
+Regards,
+Sergey
+
+[1] - http://getbootstrap.com/examples/theme/
+[2] - https://github.com/grwlf/uru3/blob/master/Bootstrap/test/B2.ur
+[3] - https://github.com/grwlf/uru3/blob/master/Bootstrap/Cakefile.hs
+[4] - https://github.com/grwlf/cake3
+
+
