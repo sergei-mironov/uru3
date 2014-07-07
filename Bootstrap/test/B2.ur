@@ -60,7 +60,7 @@ fun main {} : transaction page =
         <div class={cls (B.container :: theme_showcase :: [])} role="main">
 
           <div class={B.jumbotron}>
-            <h1>Hello, world!</h1>
+            <h1>Hello, UrWeb!</h1>
             <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three 
                supporting pieces of content. Use it as a starting point to create something more unique.</p>
             <p><a link={main {}} class={cls (B.btn :: B.btn_primary :: B.btn_lg :: [])} role="button">
