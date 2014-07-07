@@ -1,0 +1,81 @@
+Example of using Persona in Ur/Web
+==================================
+
+This is a simple example of using Persona in Ur/Web. It is based on the
+Persona Quick Setup [1] and portions of the Ur/Web OpenId library [2].
+
+I created this to get a minimal working example of using Persona from
+Ur/Web and a 'real' application would want to add more session and
+user management.
+
+[1] https://developer.mozilla.org/en-US/Persona/Quick_Setup
+[2] http://hg.impredicative.com/openid
+
+Usage
+=====
+
+Run 'make' to build. It requires a recent Ur/Web [3] version, 
+libjansson [4] and libcurl [5]. The Makefile creates a binary
+that uses SQLite [6] for the session database. The steps to
+build, create the database and run are:
+
+$ make
+$ sqlite3 persona <persona.sql
+$ ./persona.exe
+
+The example requires a file 'urweb_persona.js' to be served
+by an external web server. I use 'nginx' and set it up to
+reverse proxy to the 'persona' example. The 'nginx' config
+looks like:
+
+server {
+  listen 80;
+  server_name 127.0.0.1;
+
+  location /urweb_persona.js {
+    root /home/chris/src/ur/persona/;
+  }
+  
+  location / {
+    proxy_pass http://127.0.0.1:8080/;
+  }
+}
+
+Accessing 'http://127.0.0.1/main' will run the example.
+
+[3] http://www.impredicative.com/ur/
+[4] http://www.digip.org/jansson/
+[5] http://curl.haxx.se/libcurl/
+[6] http://www.sqlite.org/
+
+Code Overview
+=============
+
+Ur/Web doesn't contain any API for doing HTTP requests and Persona needs
+to contact a validation server to validate authentication. To work around
+this I use the FFI to wrap libcurl to make the request and libjansson to
+parse the JSON response. The FFI code for this is in:
+
+  ffi.c
+  ffi.h
+  ffi.urs
+
+The Ur/Web FFI allows wrapping and calling JavaScript functions from within
+client code written in Ur/Web. The JS code for this lives in:
+
+  urweb_persona.js
+
+This needs to be served by an external web server as Ur/Web doesn't provide
+out of the box functionality to serve files. The Ur definitions for these
+JS functions are in:
+
+  personaFfi.urs
+
+The core of the application is in:
+
+  persona.ur
+  persona.urs
+
+With the glue that ties the project together in:
+
+  persona.urp
