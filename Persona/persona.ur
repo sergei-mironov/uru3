@@ -101,7 +101,7 @@ fun authedUser () =
        | _ => return None
 
 (* Return something to be displayed to indicate the users login status *)
-fun status user = 
+fun status (user : option string) : xbody = 
   case user of
   | None => <xml>No user is signed in</xml>
   | Some user => <xml>{[user]} is signed in</xml>
@@ -118,10 +118,12 @@ fun onload s user = PersonaFfi.watch user
                                      (fn () => rpc (signout ());
                                                set s None)
 
-con need = []
-con out = need ++ [Persona={Signal:source (option string), User:option string}]
+type persdata = {Signal:source (option string), User:option string}
 
-fun add [t] [t~out] (f:record (dpage (t++out))->transaction page) (r:record (dpage (t ++ need))) = 
+con need = []
+con out = need
+
+fun add [t] [t~out] (f:persdata -> record (dpage (t++out)) -> transaction page) (r:record (dpage (t ++ need))) = 
   let
     val h = <xml>
         {Script.insert Uru.javascript Urweb_persona_js.geturl}
@@ -130,10 +132,7 @@ fun add [t] [t~out] (f:record (dpage (t++out))->transaction page) (r:record (dpa
     noCompatibilityMode();
     user <- authedUser ();
     s <- source user; 
-    f (Uru.addHeader h
-      (Uru.addTag [#Persona] {Signal=s,User=user}
-      (Uru.addOnLoad (onload s user)
-      (r))))
+    f {Signal=s,User=user} (Uru.addHeader h (Uru.addOnLoad (onload s user) (r)))
   end
 
 (*

@@ -10,7 +10,7 @@ project = do
 
   prebuild [cmd|urweb -print-cinclude >/dev/null|]
 
-  a <- uwapp "-dbms sqlite" "persona.urp" $ do
+  p <- uwlib "lib.urp" $ do
     allow mime "text/javascript"
     database "dbname=persona"
     sql "persona.sql"
@@ -30,13 +30,27 @@ project = do
     bin "urweb_persona.js" [NoScan]
     safeGet "Persona.ur" "main"
     safeGet "Persona.ur" "persjs"
+    safeGet "Persona.ur" "add"
     library' (externalMake "../Uru/lib.urp")
     debug
+    safeGet "PersonaFfi.ur" "request"
+    safeGet "PersonaFfi.ur" "logout"
     ur (pair "persona.ur")
+
+  p1 <- uwapp "-dbms sqlite" "test/P1.urp" $ do
+    library p
+    debug
+    safeGet "test/P1.ur" "main"
+    ur (single "test/P1.ur")
+
+  rule $ do
+    phony "lib"
+    depend p
 
   rule $ do
     phony "all"
-    depend a
+    depend p
+    depend p1
 
   return ()
 

@@ -1,8 +1,12 @@
 con dpage = Uru.dpage
+
+type persdata = {Signal:source (option string), User:option string}
+
 con need = []
-con out = need ++ [Persona={Signal:source (option string), User:option string}]
+con out = need
 
 val add : t ::: {Type} -> [t ~ out]
-  => (record (dpage (t ++ out)) -> transaction page)
+  => (persdata -> record (dpage (t ++ out)) -> transaction page)
   -> record (dpage (t ++ need)) -> transaction page
 
+val status : option string -> xbody
