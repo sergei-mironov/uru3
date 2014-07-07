@@ -39,6 +39,8 @@ main = do
       ur (pair ("test/B1.ur"))
 
     b2 <- uwapp "-dbms sqlite" "test/B2.urp" $ do
+      allow url "https://github.com/grwlf/*"
+      allow url "https://camo.githubusercontent.com/*"
       rewrite style "B2/* [-]"
       library u
       debug

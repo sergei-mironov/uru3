@@ -19,6 +19,8 @@ all: ./Makefile ./test/B1.exe ./test/B2.exe
 	cat .cake3/tmpB2.in2 > ./test/B2.urp
 .cake3/tmpB2.in2: ./Makefile
 	-rm -rf .cake3/tmpB2.in2
+	echo 'allow url https://github.com/grwlf/*' >> .cake3/tmpB2.in2
+	echo 'allow url https://camo.githubusercontent.com/*' >> .cake3/tmpB2.in2
 	echo 'rewrite style B2/* [-]' >> .cake3/tmpB2.in2
 	echo 'library ../.' >> .cake3/tmpB2.in2
 	echo 'debug' >> .cake3/tmpB2.in2
