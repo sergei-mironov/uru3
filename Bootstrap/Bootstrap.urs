@@ -14,6 +14,7 @@ style item
 style left
 style right
 style slide
+style bg_success
 
 style bs3_active
 style affix
@@ -211,6 +212,7 @@ style col_xs_9
 style collapse
 style collapsing
 style container
+style container_fluid
 style control_label
 style css
 style disabled

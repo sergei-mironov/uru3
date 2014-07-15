@@ -17,8 +17,8 @@ main = do
   mfiles $ \useUrembed -> do
     
     u <- uwlib "lib.urp" $ do
+      rewrite style "Bootstrap/bs3_table table"
       rewrite style "Bootstrap/* [-]"
-      rewrite style "Bootstrap/table_ table"
       library' (externalMake "../Uru/lib.urp")
       library' (externalMake "../JQuery/lib.urp")
       bin ("dist/fonts/glyphicons-halflings-regular.eot") []

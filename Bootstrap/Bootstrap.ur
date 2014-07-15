@@ -25,6 +25,7 @@ style item
 style left
 style right
 style slide
+style bg_success
 
 (* Styles from http://hg.impredicative.com/bootstrap/raw-file/e2ddf4cb96cc/bootstrap.ur
  * Thanks, folks!
@@ -226,6 +227,7 @@ style col_xs_9
 style collapse
 style collapsing
 style container
+style container_fluid
 style control_label
 style css
 style disabled

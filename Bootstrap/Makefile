@@ -67,8 +67,8 @@ all: ./Makefile ./test/B1.exe ./test/B2.exe
 	cat .cake3/tmplib.in0 > ./lib.urp
 .cake3/tmplib.in0: ./Makefile
 	-rm -rf .cake3/tmplib.in0
+	echo 'rewrite style Bootstrap/bs3_table table' >> .cake3/tmplib.in0
 	echo 'rewrite style Bootstrap/* [-]' >> .cake3/tmplib.in0
-	echo 'rewrite style Bootstrap/table_ table' >> .cake3/tmplib.in0
 	echo 'library ./../Uru' >> .cake3/tmplib.in0
 	echo 'library ./../JQuery' >> .cake3/tmplib.in0
 	echo 'include autogen/Glyphicons_halflings_regular_eot_c.h' >> .cake3/tmplib.in0
