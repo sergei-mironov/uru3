@@ -33,7 +33,6 @@ main = do
     b1 <- uwapp "-dbms sqlite" "test/B1.urp" $ do
       rewrite style "B1/* [-]"
       library u
-      debug
       ur (sys "list")
       bin ("test/B1.css") useUrembed
       ur (pair ("test/B1.ur"))
@@ -43,7 +42,6 @@ main = do
       allow url "https://camo.githubusercontent.com/*"
       rewrite style "B2/* [-]"
       library u
-      debug
       ur (sys "list")
       bin ("test/B2.css") useUrembed
       bin ("test/holder.js") useUrembed

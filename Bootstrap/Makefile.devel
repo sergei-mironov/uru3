@@ -23,7 +23,6 @@ all: ./Makefile.devel ./test/B1.exe ./test/B2.exe
 	echo 'allow url https://camo.githubusercontent.com/*' >> .cake3/tmpB2.in2
 	echo 'rewrite style B2/* [-]' >> .cake3/tmpB2.in2
 	echo 'library ../.' >> .cake3/tmpB2.in2
-	echo 'debug' >> .cake3/tmpB2.in2
 	echo 'library ../autogen/B2' >> .cake3/tmpB2.in2
 	echo 'library ../autogen/holder' >> .cake3/tmpB2.in2
 	echo '' >> .cake3/tmpB2.in2
@@ -41,7 +40,6 @@ autogen/B2.urp: ./Makefile.devel ./test/B2.css
 	-rm -rf .cake3/tmpB1.in1
 	echo 'rewrite style B1/* [-]' >> .cake3/tmpB1.in1
 	echo 'library ../.' >> .cake3/tmpB1.in1
-	echo 'debug' >> .cake3/tmpB1.in1
 	echo 'library ../autogen/B1' >> .cake3/tmpB1.in1
 	echo '' >> .cake3/tmpB1.in1
 	echo '$$/list' >> .cake3/tmpB1.in1
