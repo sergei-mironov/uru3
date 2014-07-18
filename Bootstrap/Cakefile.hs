@@ -48,6 +48,10 @@ main = do
       ur (pair ("test/B2.ur"))
 
     rule $ do
+      phony "lib"
+      depend u
+
+    rule $ do
       phony "all"
       depend b1
       depend b2

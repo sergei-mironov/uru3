@@ -13,6 +13,8 @@ URINCL = -I$(shell urweb -print-cinclude)
 URVERSION = $(shell urweb -version)
 .PHONY: all
 all: ./Makefile ./test/B1.exe ./test/B2.exe
+.PHONY: lib
+lib: ./Makefile ./lib.urp
 ./test/B2.exe: ./Makefile ./test/B2.urp $(call GUARD,URVERSION)
 	urweb -dbms sqlite ./test/B2
 ./test/B2.urp: ./Makefile ./lib.urp ./test/B2.ur ./test/B2.urs .cake3/tmpB2.in2 autogen/B2_css.ur autogen/B2_css.urs autogen/B2_css_c.h autogen/B2_css_c.o autogen/Holder_js.ur autogen/Holder_js.urs autogen/Holder_js_c.h autogen/Holder_js_c.o
@@ -168,6 +170,8 @@ ifneq ($(MAKECMDGOALS),clean)
 
 .PHONY: all
 all: .fix-multy1
+.PHONY: lib
+lib: .fix-multy1
 .PHONY: ./test/B2.exe
 ./test/B2.exe: .fix-multy1
 .PHONY: ./test/B2.urp
