@@ -26,6 +26,7 @@ style left
 style right
 style slide
 style bg_success
+style footer
 
 (* Styles from http://hg.impredicative.com/bootstrap/raw-file/e2ddf4cb96cc/bootstrap.ur
  * Thanks, folks!

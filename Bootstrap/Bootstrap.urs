@@ -15,6 +15,7 @@ style left
 style right
 style slide
 style bg_success
+style footer
 
 style bs3_active
 style affix
