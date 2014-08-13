@@ -8,6 +8,8 @@ fun swap a b c = a c b
 
 val cls = CSS.list
 
+val data = data_attr data_kind
+
 fun myHeaders f r = 
   f (swap Uru.addHeader r
     <xml>
@@ -39,7 +41,7 @@ fun main {} : transaction page =
                 <li><a link={main {}}>About</a></li>
                 <li><a link={main {}}>Contact</a></li>
                 <li class={B.dropdown}>
-                  <a link={main {}} class={B.dropdown_toggle} data={data_attr "toggle" "dropdown"}>
+                  <a link={main {}} class={B.dropdown_toggle} data={data "toggle" "dropdown"}>
                     Dropdown <span class={B.caret}></span>
                   </a>
                   <ul class={B.dropdown_menu} role="menu">
@@ -55,7 +57,7 @@ fun main {} : transaction page =
               </ul>
             </div>
             <a href={bless "https://github.com/grwlf/uru3"}>
-              <img style="position:absolute; top:0; right:0; border:0;" src={bless "https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67"} alt="Fork me on GitHub" data={data_attr "canonical-src" "https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"}/>
+              <img style="position:absolute; top:0; right:0; border:0;" src={bless "https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67"} alt="Fork me on GitHub" data={data "canonical-src" "https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"}/>
             </a>
           </div>
         </div>
@@ -116,7 +118,7 @@ fun main {} : transaction page =
           <div class={B.page_header}>
             <h1>Thumbnails</h1>
           </div>
-          <img data={data_attr "src" "holder.js/200x200"} class={B.img_thumbnail} alt="A generic square placeholder image with a white border around it, making it resemble a photograph taken with an old instant camera"/>
+          <img data={data "src" "holder.js/200x200"} class={B.img_thumbnail} alt="A generic square placeholder image with a white border around it, making it resemble a photograph taken with an old instant camera"/>
 
           <div class={B.page_header}>
             <h1>Wells</h1>
@@ -129,27 +131,27 @@ fun main {} : transaction page =
             <h1>Carousel</h1>
           </div>
 
-          <div id={x} class={cls (B.carousel :: B.slide :: [])} data={data_attr "ride" "carousel"}>
+          <div id={x} class={cls (B.carousel :: B.slide :: [])} data={data "ride" "carousel"}>
             <ol class={B.carousel_indicators}>
-              <li data={data_attrs (data_attr "target" ("#" ^ (show x))) (data_attr "slide-to" "0")} class={B.active}></li>
-              <li data={data_attrs (data_attr "target" ("#" ^ (show x))) (data_attr "slide-to" "1")}></li>
-              <li data={data_attrs (data_attr "target" ("#" ^ (show x))) (data_attr "slide-to" "2")}></li>
+              <li data={data_attrs (data "target" ("#" ^ (show x))) (data "slide-to" "0")} class={B.active}></li>
+              <li data={data_attrs (data "target" ("#" ^ (show x))) (data "slide-to" "1")}></li>
+              <li data={data_attrs (data "target" ("#" ^ (show x))) (data "slide-to" "2")}></li>
             </ol>
             <div class={B.carousel_inner}>
               <div class={cls (B.item :: B.active :: [])}>
-                <img data={data_attr "src" "holder.js/1140x500/auto/#777:#555/text:First slide"} alt="First slide"/>
+                <img data={data "src" "holder.js/1140x500/auto/#777:#555/text:First slide"} alt="First slide"/>
               </div>
               <div class={B.item}>
-                <img data={data_attr "src" "holder.js/1140x500/auto/#666:#444/text:Second slide"} alt="Second slide"/>
+                <img data={data "src" "holder.js/1140x500/auto/#666:#444/text:Second slide"} alt="Second slide"/>
               </div>
               <div class={B.item}>
-                <img data={data_attr "src" "holder.js/1140x500/auto/#555:#333/text:Third slide"} alt="Third slide"/>
+                <img data={data "src" "holder.js/1140x500/auto/#555:#333/text:Third slide"} alt="Third slide"/>
               </div>
             </div>
-            <a style={CSS.css (("cursor",CSS.Str "pointer") :: [])} class={cls (B.left :: B.carousel_control :: [])} role="button" data={data_attrs (data_attr "target" ("#" ^ (show x))) (data_attr "slide" "prev")}>
+            <a style={CSS.css (("cursor",CSS.Str "pointer") :: [])} class={cls (B.left :: B.carousel_control :: [])} role="button" data={data_attrs (data "target" ("#" ^ (show x))) (data "slide" "prev")}>
               <span class={cls (B.glyphicon :: B.glyphicon_chevron_left ::[])}></span>
             </a>
-            <a style={CSS.css (("cursor",CSS.Str "pointer") :: [])} class={cls (B.right :: B.carousel_control :: [])} role="button" data={data_attrs (data_attr "target" ("#" ^ (show x))) (data_attr "slide" "next")}>
+            <a style={CSS.css (("cursor",CSS.Str "pointer") :: [])} class={cls (B.right :: B.carousel_control :: [])} role="button" data={data_attrs (data "target" ("#" ^ (show x))) (data "slide" "next")}>
               <span class={cls (B.glyphicon :: B.glyphicon_chevron_right ::[])}></span>
             </a>
           </div>
