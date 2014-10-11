@@ -17,118 +17,118 @@ all: ./Makefile ./test/B1.exe ./test/B2.exe
 lib: ./Makefile ./lib.urp
 ./test/B2.exe: ./Makefile ./test/B2.urp $(call GUARD,URVERSION)
 	urweb -dbms sqlite ./test/B2
-./test/B2.urp: ./Makefile ./lib.urp ./test/B2.ur ./test/B2.urs .cake3/tmpB2.in2 autogen/B2_css.ur autogen/B2_css.urs autogen/B2_css_c.h autogen/B2_css_c.o autogen/Holder_js.ur autogen/Holder_js.urs autogen/Holder_js_c.h autogen/Holder_js_c.o
-	cat .cake3/tmpB2.in2 > ./test/B2.urp
-.cake3/tmpB2.in2: ./Makefile
-	-rm -rf .cake3/tmpB2.in2
-	echo 'allow url https://github.com/grwlf/*' >> .cake3/tmpB2.in2
-	echo 'allow url https://camo.githubusercontent.com/*' >> .cake3/tmpB2.in2
-	echo 'rewrite style B2/* [-]' >> .cake3/tmpB2.in2
-	echo 'library ../.' >> .cake3/tmpB2.in2
-	echo 'include ../autogen/B2_css_c.h' >> .cake3/tmpB2.in2
-	echo 'link ../autogen/B2_css_c.o' >> .cake3/tmpB2.in2
-	echo 'ffi ../autogen/B2_css_c' >> .cake3/tmpB2.in2
-	echo 'ffi ../autogen/B2_css_js' >> .cake3/tmpB2.in2
-	echo 'allow mime text/css' >> .cake3/tmpB2.in2
-	echo 'safeGet B2_css/blobpage' >> .cake3/tmpB2.in2
-	echo 'safeGet B2_css/blob' >> .cake3/tmpB2.in2
-	echo 'include ../autogen/Holder_js_c.h' >> .cake3/tmpB2.in2
-	echo 'link ../autogen/Holder_js_c.o' >> .cake3/tmpB2.in2
-	echo 'ffi ../autogen/Holder_js_c' >> .cake3/tmpB2.in2
-	echo 'ffi ../autogen/Holder_js_js' >> .cake3/tmpB2.in2
-	echo 'allow mime text/javascript' >> .cake3/tmpB2.in2
-	echo 'safeGet Holder_js/blobpage' >> .cake3/tmpB2.in2
-	echo 'safeGet Holder_js/blob' >> .cake3/tmpB2.in2
-	echo '' >> .cake3/tmpB2.in2
-	echo '$$/list' >> .cake3/tmpB2.in2
-	echo '../autogen/B2_css' >> .cake3/tmpB2.in2
-	echo '../autogen/Holder_js' >> .cake3/tmpB2.in2
-	echo '.././test/B2' >> .cake3/tmpB2.in2
+./test/B2.urp: ./Makefile ./lib.urp ./test/B2.ur ./test/B2.urs .cake3/tmp_B2.in autogen/B2_css.ur autogen/B2_css.urs autogen/B2_css_c.h autogen/B2_css_c.o autogen/Holder_js.ur autogen/Holder_js.urs autogen/Holder_js_c.h autogen/Holder_js_c.o
+	cat .cake3/tmp_B2.in > ./test/B2.urp
+.cake3/tmp_B2.in: ./Makefile
+	-rm -rf .cake3/tmp_B2.in
+	echo 'allow url https://github.com/grwlf/*' >> .cake3/tmp_B2.in
+	echo 'allow url https://camo.githubusercontent.com/*' >> .cake3/tmp_B2.in
+	echo 'rewrite style B2/* [-]' >> .cake3/tmp_B2.in
+	echo 'library ../.' >> .cake3/tmp_B2.in
+	echo 'include ../autogen/B2_css_c.h' >> .cake3/tmp_B2.in
+	echo 'link ../autogen/B2_css_c.o' >> .cake3/tmp_B2.in
+	echo 'ffi ../autogen/B2_css_c' >> .cake3/tmp_B2.in
+	echo 'ffi ../autogen/B2_css_js' >> .cake3/tmp_B2.in
+	echo 'allow mime text/css' >> .cake3/tmp_B2.in
+	echo 'safeGet B2_css/blobpage' >> .cake3/tmp_B2.in
+	echo 'safeGet B2_css/blob' >> .cake3/tmp_B2.in
+	echo 'include ../autogen/Holder_js_c.h' >> .cake3/tmp_B2.in
+	echo 'link ../autogen/Holder_js_c.o' >> .cake3/tmp_B2.in
+	echo 'ffi ../autogen/Holder_js_c' >> .cake3/tmp_B2.in
+	echo 'ffi ../autogen/Holder_js_js' >> .cake3/tmp_B2.in
+	echo 'allow mime text/javascript' >> .cake3/tmp_B2.in
+	echo 'safeGet Holder_js/blobpage' >> .cake3/tmp_B2.in
+	echo 'safeGet Holder_js/blob' >> .cake3/tmp_B2.in
+	echo '' >> .cake3/tmp_B2.in
+	echo '$$/list' >> .cake3/tmp_B2.in
+	echo '../autogen/B2_css' >> .cake3/tmp_B2.in
+	echo '../autogen/Holder_js' >> .cake3/tmp_B2.in
+	echo '.././test/B2' >> .cake3/tmp_B2.in
+./lib.urp: ./../JQuery/lib.urp ./../Uru/lib.urp ./Bootstrap.ur ./Bootstrap.urs ./Makefile .cake3/tmp_lib.in autogen/Bootstrap_css.ur autogen/Bootstrap_css.urs autogen/Bootstrap_css_c.h autogen/Bootstrap_css_c.o autogen/Bootstrap_min_js.ur autogen/Bootstrap_min_js.urs autogen/Bootstrap_min_js_c.h autogen/Bootstrap_min_js_c.o autogen/Bootstrap_theme_css.ur autogen/Bootstrap_theme_css.urs autogen/Bootstrap_theme_css_c.h autogen/Bootstrap_theme_css_c.o autogen/Glyphicons_halflings_regular_eot.ur autogen/Glyphicons_halflings_regular_eot.urs autogen/Glyphicons_halflings_regular_eot_c.h autogen/Glyphicons_halflings_regular_eot_c.o autogen/Glyphicons_halflings_regular_svg.ur autogen/Glyphicons_halflings_regular_svg.urs autogen/Glyphicons_halflings_regular_svg_c.h autogen/Glyphicons_halflings_regular_svg_c.o autogen/Glyphicons_halflings_regular_ttf.ur autogen/Glyphicons_halflings_regular_ttf.urs autogen/Glyphicons_halflings_regular_ttf_c.h autogen/Glyphicons_halflings_regular_ttf_c.o autogen/Glyphicons_halflings_regular_woff.ur autogen/Glyphicons_halflings_regular_woff.urs autogen/Glyphicons_halflings_regular_woff_c.h autogen/Glyphicons_halflings_regular_woff_c.o
+	cat .cake3/tmp_lib.in > ./lib.urp
+.cake3/tmp_lib.in: ./Makefile
+	-rm -rf .cake3/tmp_lib.in
+	echo 'rewrite style Bootstrap/bs3_table table' >> .cake3/tmp_lib.in
+	echo 'rewrite style Bootstrap/* [-]' >> .cake3/tmp_lib.in
+	echo 'library ./../Uru' >> .cake3/tmp_lib.in
+	echo 'library ./../JQuery' >> .cake3/tmp_lib.in
+	echo 'include autogen/Glyphicons_halflings_regular_eot_c.h' >> .cake3/tmp_lib.in
+	echo 'link autogen/Glyphicons_halflings_regular_eot_c.o' >> .cake3/tmp_lib.in
+	echo 'ffi autogen/Glyphicons_halflings_regular_eot_c' >> .cake3/tmp_lib.in
+	echo 'ffi autogen/Glyphicons_halflings_regular_eot_js' >> .cake3/tmp_lib.in
+	echo 'allow mime application/vnd.ms-fontobject' >> .cake3/tmp_lib.in
+	echo 'safeGet Glyphicons_halflings_regular_eot/blobpage' >> .cake3/tmp_lib.in
+	echo 'safeGet Glyphicons_halflings_regular_eot/blob' >> .cake3/tmp_lib.in
+	echo 'include autogen/Glyphicons_halflings_regular_svg_c.h' >> .cake3/tmp_lib.in
+	echo 'link autogen/Glyphicons_halflings_regular_svg_c.o' >> .cake3/tmp_lib.in
+	echo 'ffi autogen/Glyphicons_halflings_regular_svg_c' >> .cake3/tmp_lib.in
+	echo 'ffi autogen/Glyphicons_halflings_regular_svg_js' >> .cake3/tmp_lib.in
+	echo 'allow mime image/svg+xml' >> .cake3/tmp_lib.in
+	echo 'safeGet Glyphicons_halflings_regular_svg/blobpage' >> .cake3/tmp_lib.in
+	echo 'safeGet Glyphicons_halflings_regular_svg/blob' >> .cake3/tmp_lib.in
+	echo 'include autogen/Glyphicons_halflings_regular_ttf_c.h' >> .cake3/tmp_lib.in
+	echo 'link autogen/Glyphicons_halflings_regular_ttf_c.o' >> .cake3/tmp_lib.in
+	echo 'ffi autogen/Glyphicons_halflings_regular_ttf_c' >> .cake3/tmp_lib.in
+	echo 'ffi autogen/Glyphicons_halflings_regular_ttf_js' >> .cake3/tmp_lib.in
+	echo 'allow mime application/x-font-ttf' >> .cake3/tmp_lib.in
+	echo 'safeGet Glyphicons_halflings_regular_ttf/blobpage' >> .cake3/tmp_lib.in
+	echo 'safeGet Glyphicons_halflings_regular_ttf/blob' >> .cake3/tmp_lib.in
+	echo 'include autogen/Glyphicons_halflings_regular_woff_c.h' >> .cake3/tmp_lib.in
+	echo 'link autogen/Glyphicons_halflings_regular_woff_c.o' >> .cake3/tmp_lib.in
+	echo 'ffi autogen/Glyphicons_halflings_regular_woff_c' >> .cake3/tmp_lib.in
+	echo 'ffi autogen/Glyphicons_halflings_regular_woff_js' >> .cake3/tmp_lib.in
+	echo 'allow mime application/font-woff' >> .cake3/tmp_lib.in
+	echo 'safeGet Glyphicons_halflings_regular_woff/blobpage' >> .cake3/tmp_lib.in
+	echo 'safeGet Glyphicons_halflings_regular_woff/blob' >> .cake3/tmp_lib.in
+	echo 'include autogen/Bootstrap_css_c.h' >> .cake3/tmp_lib.in
+	echo 'link autogen/Bootstrap_css_c.o' >> .cake3/tmp_lib.in
+	echo 'ffi autogen/Bootstrap_css_c' >> .cake3/tmp_lib.in
+	echo 'ffi autogen/Bootstrap_css_js' >> .cake3/tmp_lib.in
+	echo 'allow mime text/css' >> .cake3/tmp_lib.in
+	echo 'safeGet Bootstrap_css/blobpage' >> .cake3/tmp_lib.in
+	echo 'safeGet Bootstrap_css/blob' >> .cake3/tmp_lib.in
+	echo 'include autogen/Bootstrap_theme_css_c.h' >> .cake3/tmp_lib.in
+	echo 'link autogen/Bootstrap_theme_css_c.o' >> .cake3/tmp_lib.in
+	echo 'ffi autogen/Bootstrap_theme_css_c' >> .cake3/tmp_lib.in
+	echo 'ffi autogen/Bootstrap_theme_css_js' >> .cake3/tmp_lib.in
+	echo 'allow mime text/css' >> .cake3/tmp_lib.in
+	echo 'safeGet Bootstrap_theme_css/blobpage' >> .cake3/tmp_lib.in
+	echo 'safeGet Bootstrap_theme_css/blob' >> .cake3/tmp_lib.in
+	echo 'include autogen/Bootstrap_min_js_c.h' >> .cake3/tmp_lib.in
+	echo 'link autogen/Bootstrap_min_js_c.o' >> .cake3/tmp_lib.in
+	echo 'ffi autogen/Bootstrap_min_js_c' >> .cake3/tmp_lib.in
+	echo 'ffi autogen/Bootstrap_min_js_js' >> .cake3/tmp_lib.in
+	echo 'allow mime text/javascript' >> .cake3/tmp_lib.in
+	echo 'safeGet Bootstrap_min_js/blobpage' >> .cake3/tmp_lib.in
+	echo 'safeGet Bootstrap_min_js/blob' >> .cake3/tmp_lib.in
+	echo '' >> .cake3/tmp_lib.in
+	echo 'autogen/Glyphicons_halflings_regular_eot' >> .cake3/tmp_lib.in
+	echo 'autogen/Glyphicons_halflings_regular_svg' >> .cake3/tmp_lib.in
+	echo 'autogen/Glyphicons_halflings_regular_ttf' >> .cake3/tmp_lib.in
+	echo 'autogen/Glyphicons_halflings_regular_woff' >> .cake3/tmp_lib.in
+	echo 'autogen/Bootstrap_css' >> .cake3/tmp_lib.in
+	echo 'autogen/Bootstrap_theme_css' >> .cake3/tmp_lib.in
+	echo 'autogen/Bootstrap_min_js' >> .cake3/tmp_lib.in
+	echo './Bootstrap' >> .cake3/tmp_lib.in
 ./test/B1.exe: ./Makefile ./test/B1.urp $(call GUARD,URVERSION)
 	urweb -dbms sqlite ./test/B1
-./test/B1.urp: ./Makefile ./lib.urp ./test/B1.ur ./test/B1.urs .cake3/tmpB1.in1 autogen/B1_css.ur autogen/B1_css.urs autogen/B1_css_c.h autogen/B1_css_c.o
-	cat .cake3/tmpB1.in1 > ./test/B1.urp
-.cake3/tmpB1.in1: ./Makefile
-	-rm -rf .cake3/tmpB1.in1
-	echo 'rewrite style B1/* [-]' >> .cake3/tmpB1.in1
-	echo 'library ../.' >> .cake3/tmpB1.in1
-	echo 'include ../autogen/B1_css_c.h' >> .cake3/tmpB1.in1
-	echo 'link ../autogen/B1_css_c.o' >> .cake3/tmpB1.in1
-	echo 'ffi ../autogen/B1_css_c' >> .cake3/tmpB1.in1
-	echo 'ffi ../autogen/B1_css_js' >> .cake3/tmpB1.in1
-	echo 'allow mime text/css' >> .cake3/tmpB1.in1
-	echo 'safeGet B1_css/blobpage' >> .cake3/tmpB1.in1
-	echo 'safeGet B1_css/blob' >> .cake3/tmpB1.in1
-	echo '' >> .cake3/tmpB1.in1
-	echo '$$/list' >> .cake3/tmpB1.in1
-	echo '../autogen/B1_css' >> .cake3/tmpB1.in1
-	echo '.././test/B1' >> .cake3/tmpB1.in1
-./lib.urp: ./../JQuery/lib.urp ./../Uru/lib.urp ./Bootstrap.ur ./Bootstrap.urs ./Makefile .cake3/tmplib.in0 autogen/Bootstrap_css.ur autogen/Bootstrap_css.urs autogen/Bootstrap_css_c.h autogen/Bootstrap_css_c.o autogen/Bootstrap_min_js.ur autogen/Bootstrap_min_js.urs autogen/Bootstrap_min_js_c.h autogen/Bootstrap_min_js_c.o autogen/Bootstrap_theme_css.ur autogen/Bootstrap_theme_css.urs autogen/Bootstrap_theme_css_c.h autogen/Bootstrap_theme_css_c.o autogen/Glyphicons_halflings_regular_eot.ur autogen/Glyphicons_halflings_regular_eot.urs autogen/Glyphicons_halflings_regular_eot_c.h autogen/Glyphicons_halflings_regular_eot_c.o autogen/Glyphicons_halflings_regular_svg.ur autogen/Glyphicons_halflings_regular_svg.urs autogen/Glyphicons_halflings_regular_svg_c.h autogen/Glyphicons_halflings_regular_svg_c.o autogen/Glyphicons_halflings_regular_ttf.ur autogen/Glyphicons_halflings_regular_ttf.urs autogen/Glyphicons_halflings_regular_ttf_c.h autogen/Glyphicons_halflings_regular_ttf_c.o autogen/Glyphicons_halflings_regular_woff.ur autogen/Glyphicons_halflings_regular_woff.urs autogen/Glyphicons_halflings_regular_woff_c.h autogen/Glyphicons_halflings_regular_woff_c.o
-	cat .cake3/tmplib.in0 > ./lib.urp
-.cake3/tmplib.in0: ./Makefile
-	-rm -rf .cake3/tmplib.in0
-	echo 'rewrite style Bootstrap/bs3_table table' >> .cake3/tmplib.in0
-	echo 'rewrite style Bootstrap/* [-]' >> .cake3/tmplib.in0
-	echo 'library ./../Uru' >> .cake3/tmplib.in0
-	echo 'library ./../JQuery' >> .cake3/tmplib.in0
-	echo 'include autogen/Glyphicons_halflings_regular_eot_c.h' >> .cake3/tmplib.in0
-	echo 'link autogen/Glyphicons_halflings_regular_eot_c.o' >> .cake3/tmplib.in0
-	echo 'ffi autogen/Glyphicons_halflings_regular_eot_c' >> .cake3/tmplib.in0
-	echo 'ffi autogen/Glyphicons_halflings_regular_eot_js' >> .cake3/tmplib.in0
-	echo 'allow mime application/vnd.ms-fontobject' >> .cake3/tmplib.in0
-	echo 'safeGet Glyphicons_halflings_regular_eot/blobpage' >> .cake3/tmplib.in0
-	echo 'safeGet Glyphicons_halflings_regular_eot/blob' >> .cake3/tmplib.in0
-	echo 'include autogen/Glyphicons_halflings_regular_svg_c.h' >> .cake3/tmplib.in0
-	echo 'link autogen/Glyphicons_halflings_regular_svg_c.o' >> .cake3/tmplib.in0
-	echo 'ffi autogen/Glyphicons_halflings_regular_svg_c' >> .cake3/tmplib.in0
-	echo 'ffi autogen/Glyphicons_halflings_regular_svg_js' >> .cake3/tmplib.in0
-	echo 'allow mime image/svg+xml' >> .cake3/tmplib.in0
-	echo 'safeGet Glyphicons_halflings_regular_svg/blobpage' >> .cake3/tmplib.in0
-	echo 'safeGet Glyphicons_halflings_regular_svg/blob' >> .cake3/tmplib.in0
-	echo 'include autogen/Glyphicons_halflings_regular_ttf_c.h' >> .cake3/tmplib.in0
-	echo 'link autogen/Glyphicons_halflings_regular_ttf_c.o' >> .cake3/tmplib.in0
-	echo 'ffi autogen/Glyphicons_halflings_regular_ttf_c' >> .cake3/tmplib.in0
-	echo 'ffi autogen/Glyphicons_halflings_regular_ttf_js' >> .cake3/tmplib.in0
-	echo 'allow mime application/x-font-ttf' >> .cake3/tmplib.in0
-	echo 'safeGet Glyphicons_halflings_regular_ttf/blobpage' >> .cake3/tmplib.in0
-	echo 'safeGet Glyphicons_halflings_regular_ttf/blob' >> .cake3/tmplib.in0
-	echo 'include autogen/Glyphicons_halflings_regular_woff_c.h' >> .cake3/tmplib.in0
-	echo 'link autogen/Glyphicons_halflings_regular_woff_c.o' >> .cake3/tmplib.in0
-	echo 'ffi autogen/Glyphicons_halflings_regular_woff_c' >> .cake3/tmplib.in0
-	echo 'ffi autogen/Glyphicons_halflings_regular_woff_js' >> .cake3/tmplib.in0
-	echo 'allow mime application/font-woff' >> .cake3/tmplib.in0
-	echo 'safeGet Glyphicons_halflings_regular_woff/blobpage' >> .cake3/tmplib.in0
-	echo 'safeGet Glyphicons_halflings_regular_woff/blob' >> .cake3/tmplib.in0
-	echo 'include autogen/Bootstrap_css_c.h' >> .cake3/tmplib.in0
-	echo 'link autogen/Bootstrap_css_c.o' >> .cake3/tmplib.in0
-	echo 'ffi autogen/Bootstrap_css_c' >> .cake3/tmplib.in0
-	echo 'ffi autogen/Bootstrap_css_js' >> .cake3/tmplib.in0
-	echo 'allow mime text/css' >> .cake3/tmplib.in0
-	echo 'safeGet Bootstrap_css/blobpage' >> .cake3/tmplib.in0
-	echo 'safeGet Bootstrap_css/blob' >> .cake3/tmplib.in0
-	echo 'include autogen/Bootstrap_theme_css_c.h' >> .cake3/tmplib.in0
-	echo 'link autogen/Bootstrap_theme_css_c.o' >> .cake3/tmplib.in0
-	echo 'ffi autogen/Bootstrap_theme_css_c' >> .cake3/tmplib.in0
-	echo 'ffi autogen/Bootstrap_theme_css_js' >> .cake3/tmplib.in0
-	echo 'allow mime text/css' >> .cake3/tmplib.in0
-	echo 'safeGet Bootstrap_theme_css/blobpage' >> .cake3/tmplib.in0
-	echo 'safeGet Bootstrap_theme_css/blob' >> .cake3/tmplib.in0
-	echo 'include autogen/Bootstrap_min_js_c.h' >> .cake3/tmplib.in0
-	echo 'link autogen/Bootstrap_min_js_c.o' >> .cake3/tmplib.in0
-	echo 'ffi autogen/Bootstrap_min_js_c' >> .cake3/tmplib.in0
-	echo 'ffi autogen/Bootstrap_min_js_js' >> .cake3/tmplib.in0
-	echo 'allow mime text/javascript' >> .cake3/tmplib.in0
-	echo 'safeGet Bootstrap_min_js/blobpage' >> .cake3/tmplib.in0
-	echo 'safeGet Bootstrap_min_js/blob' >> .cake3/tmplib.in0
-	echo '' >> .cake3/tmplib.in0
-	echo 'autogen/Glyphicons_halflings_regular_eot' >> .cake3/tmplib.in0
-	echo 'autogen/Glyphicons_halflings_regular_svg' >> .cake3/tmplib.in0
-	echo 'autogen/Glyphicons_halflings_regular_ttf' >> .cake3/tmplib.in0
-	echo 'autogen/Glyphicons_halflings_regular_woff' >> .cake3/tmplib.in0
-	echo 'autogen/Bootstrap_css' >> .cake3/tmplib.in0
-	echo 'autogen/Bootstrap_theme_css' >> .cake3/tmplib.in0
-	echo 'autogen/Bootstrap_min_js' >> .cake3/tmplib.in0
-	echo './Bootstrap' >> .cake3/tmplib.in0
+./test/B1.urp: ./Makefile ./lib.urp ./test/B1.ur ./test/B1.urs .cake3/tmp_B1.in autogen/B1_css.ur autogen/B1_css.urs autogen/B1_css_c.h autogen/B1_css_c.o
+	cat .cake3/tmp_B1.in > ./test/B1.urp
+.cake3/tmp_B1.in: ./Makefile
+	-rm -rf .cake3/tmp_B1.in
+	echo 'rewrite style B1/* [-]' >> .cake3/tmp_B1.in
+	echo 'library ../.' >> .cake3/tmp_B1.in
+	echo 'include ../autogen/B1_css_c.h' >> .cake3/tmp_B1.in
+	echo 'link ../autogen/B1_css_c.o' >> .cake3/tmp_B1.in
+	echo 'ffi ../autogen/B1_css_c' >> .cake3/tmp_B1.in
+	echo 'ffi ../autogen/B1_css_js' >> .cake3/tmp_B1.in
+	echo 'allow mime text/css' >> .cake3/tmp_B1.in
+	echo 'safeGet B1_css/blobpage' >> .cake3/tmp_B1.in
+	echo 'safeGet B1_css/blob' >> .cake3/tmp_B1.in
+	echo '' >> .cake3/tmp_B1.in
+	echo '$$/list' >> .cake3/tmp_B1.in
+	echo '../autogen/B1_css' >> .cake3/tmp_B1.in
+	echo '.././test/B1' >> .cake3/tmp_B1.in
 autogen/B1_css_c.o: ./Makefile autogen/B1_css_c.c $(call GUARD,URCC) $(call GUARD,URINCL) $(call GUARD,UR_CFLAGS)
 	$(URCC) -c $(URINCL) $(UR_CFLAGS)  -o autogen/B1_css_c.o autogen/B1_css_c.c
 autogen/B2_css_c.o: ./Makefile autogen/B2_css_c.c $(call GUARD,URCC) $(call GUARD,URINCL) $(call GUARD,UR_CFLAGS)
@@ -176,21 +176,25 @@ lib: .fix-multy1
 ./test/B2.exe: .fix-multy1
 .PHONY: ./test/B2.urp
 ./test/B2.urp: .fix-multy1
-.PHONY: .cake3/tmpB2.in2
-.cake3/tmpB2.in2: .fix-multy1
+.PHONY: .cake3/tmp_B2.in
+.cake3/tmp_B2.in: .fix-multy1
+.PHONY: ./lib.urp
+./lib.urp: .fix-multy1
+.PHONY: .cake3/tmp_lib.in
+.cake3/tmp_lib.in: .fix-multy1
 .PHONY: ./test/B1.exe
 ./test/B1.exe: .fix-multy1
 .PHONY: ./test/B1.urp
 ./test/B1.urp: .fix-multy1
-.PHONY: .cake3/tmpB1.in1
-.cake3/tmpB1.in1: .fix-multy1
-.PHONY: ./lib.urp
-./lib.urp: .fix-multy1
-.PHONY: .cake3/tmplib.in0
-.cake3/tmplib.in0: .fix-multy1
+.PHONY: .cake3/tmp_B1.in
+.cake3/tmp_B1.in: .fix-multy1
 .INTERMEDIATE: .fix-multy1
 .fix-multy1: 
 	-mkdir .cake3
+	$(MAKE) -C ./../Uru -f Makefile 
+	$(MAKE) -C ./../JQuery -f Makefile 
+	$(MAKE) -C ./../Uru -f Makefile 
+	$(MAKE) -C ./../JQuery -f Makefile 
 	$(MAKE) -C ./../Uru -f Makefile 
 	$(MAKE) -C ./../JQuery -f Makefile 
 	MAIN=1 $(MAKE) -f ./Makefile $(MAKECMDGOALS)
@@ -218,7 +222,7 @@ autogen/Holder_js_c.o: .fix-multy1
 endif
 .PHONY: clean
 clean: 
-	-rm ./lib.urp ./test/B1.exe ./test/B1.urp ./test/B2.exe ./test/B2.urp .cake3/tmpB1.in1 .cake3/tmpB2.in2 .cake3/tmplib.in0 autogen/B1_css_c.o autogen/B2_css_c.o autogen/Bootstrap_css_c.o autogen/Bootstrap_min_js_c.o autogen/Bootstrap_theme_css_c.o autogen/Glyphicons_halflings_regular_eot_c.o autogen/Glyphicons_halflings_regular_svg_c.o autogen/Glyphicons_halflings_regular_ttf_c.o autogen/Glyphicons_halflings_regular_woff_c.o autogen/Holder_js_c.o
+	-rm ./lib.urp ./test/B1.exe ./test/B1.urp ./test/B2.exe ./test/B2.urp .cake3/tmp_B1.in .cake3/tmp_B2.in .cake3/tmp_lib.in autogen/B1_css_c.o autogen/B2_css_c.o autogen/Bootstrap_css_c.o autogen/Bootstrap_min_js_c.o autogen/Bootstrap_theme_css_c.o autogen/Glyphicons_halflings_regular_eot_c.o autogen/Glyphicons_halflings_regular_svg_c.o autogen/Glyphicons_halflings_regular_ttf_c.o autogen/Glyphicons_halflings_regular_woff_c.o autogen/Holder_js_c.o
 	-rm -rf .cake3
 
 endif
