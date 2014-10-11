@@ -1,5 +1,5 @@
 
-style starter_template
+style b1_starter_template
 
 structure B = Bootstrap
 
@@ -39,7 +39,7 @@ fun main {} : transaction page =
         </div>
 
         <div class={B.container}>
-          <div class={starter_template}>
+          <div class={b1_starter_template}>
             <h1>Bootstrap starter template</h1>
             <p class={B.lead}>Use this document as a way to quickly start any new project.<br/> All you get is this text and a mostly barebones HTML document.</p>
           </div>
