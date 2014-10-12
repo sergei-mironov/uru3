@@ -1,35 +1,23 @@
+structure B = Bootstrap
 
 style starter_template
 style theme_showcase
 
-structure B = Bootstrap
-
-fun swap a b c = a c b
-
-val cls = CSS.list
-
-val data = data_attr data_kind
-
-fun myHeaders f r = 
-  f (swap Uru.addHeader r
+fun main {} : transaction page =
+  Uru.run (
+  JQuery.add (
+  Bootstrap.add (
+  Uru.withHeader (
     <xml>
+      <title>B1 Demo</title>
       <link rel="stylesheet" href={B2_css.geturl}/>
       <meta name="viewport" content="width=device-width, initial-scale=1"/>
       {Script.insert Uru.javascript Holder_js.geturl}
-    </xml>)
-
-fun btn cs txt = <xml><a class={cls (B.btn :: cs)}>{[txt]}</a></xml>
-
-fun main {} : transaction page =
-  Uru.run (
-  myHeaders (
-  JQuery.add (
-  Bootstrap.add (
-  Uru.withBody (fn _ =>
+    </xml>) (
+  Uru.withBody (fn _ => let
     x<-fresh;
     return
       <xml>
-
         <div class={cls (B.navbar :: B.navbar_inverse :: B.navbar_fixed_top :: [])} role="navigation">
           <div class={B.container}>
             <div class={B.navbar_header}>
@@ -158,5 +146,9 @@ fun main {} : transaction page =
 
         </div>
       </xml>
-    )))))
+    where
+      val cls = CSS.list
+      val data = data_attr data_kind
+      fun btn cs txt = <xml><a class={cls (B.btn :: cs)}>{[txt]}</a></xml>
+    end)))))
 

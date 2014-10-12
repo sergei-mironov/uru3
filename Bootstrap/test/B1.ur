@@ -1,25 +1,18 @@
+structure B = Bootstrap
 
 style b1_starter_template
 
-structure B = Bootstrap
-
-fun swap a b c = a c b
-
-val cls = CSS.list
-
-fun myHeaders f r = 
-  f (swap Uru.addHeader r
+fun main {} : transaction page =
+  Uru.run (
+  JQuery.add (
+  Bootstrap.add (
+  Uru.withHeader (
     <xml>
       <link rel="stylesheet" href={B1_css.geturl}/>
       <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    </xml>)
-
-fun main {} : transaction page =
-  Uru.run (
-  myHeaders (
-  JQuery.add (
-  Bootstrap.add (
+    </xml>) (
   Uru.withBody (fn _ =>
+    cls <- return (CSS.list);
     return
       <xml>
 
