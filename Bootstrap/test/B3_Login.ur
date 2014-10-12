@@ -11,7 +11,6 @@ fun main {} : transaction page =
   Uru.withHeader (
     <xml>
       <title>B3 Login demo</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1"/>
       <link rel="stylesheet" href={B3_Login_css.geturl}/>
       <link rel="stylesheet" href={FormSignin_css.geturl}/>
     </xml>) (

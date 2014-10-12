@@ -11,7 +11,6 @@ fun main {} : transaction page =
     <xml>
       <title>B1 Demo</title>
       <link rel="stylesheet" href={B2_css.geturl}/>
-      <meta name="viewport" content="width=device-width, initial-scale=1"/>
       {Script.insert Uru.javascript Holder_js.geturl}
     </xml>) (
   Uru.withBody (fn _ => let

@@ -9,7 +9,6 @@ fun main {} : transaction page =
   Uru.withHeader (
     <xml>
       <link rel="stylesheet" href={B1_css.geturl}/>
-      <meta name="viewport" content="width=device-width, initial-scale=1"/>
     </xml>) (
   Uru.withBody (fn _ =>
     cls <- return (CSS.list);
