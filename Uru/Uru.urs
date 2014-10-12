@@ -10,12 +10,15 @@ val withBody : t ::: {Type}
   -> (record (dpage t) -> transaction xbody)
   -> record (dpage t) -> transaction page
 
-(* FIXME: Doesn't compile
-val withHeader : t ::: {Type}
-  -> xhead
+val withHeadBody : t ::: {Type}
+  -> (record (dpage t) -> transaction xhead)
   -> (record (dpage t) -> transaction xbody)
   -> record (dpage t) -> transaction page
-*)
+
+val withHeader : t ::: {Type}
+  -> xhead
+  -> (record (dpage t) -> transaction page)
+  -> record (dpage t) -> transaction page
 
 val addHeader : t1 ::: {Type}
   -> xhead
