@@ -1,0 +1,69 @@
+# HG changeset patch
+# User Sergey Mironov <grrwlf@gmail.com>
+# Date 1413108216 0
+#      Sun Oct 12 10:03:36 2014 +0000
+# Node ID 41e03aeb714d2519ba8aa0dcdac08d94c5abaf31
+# Parent  a240354c2433a537c97208b2afff2b88799b21e8
+HTML5 input attributes: placeholder, required, autofocus; email input type (without cformTag equivalent)
+
+diff --git a/lib/ur/basis.urs b/lib/ur/basis.urs
+--- a/lib/ur/basis.urs
++++ b/lib/ur/basis.urs
+@@ -954,14 +954,19 @@
+                   -> [[Form] ~ ctx] =>
+                         nm :: Name -> unit
+                         -> tag attrs ([Form] ++ ctx) inner [] [nm = ty]
++
++con inputAttrs = [Required = string, Autofocus = string]
++
++
+ val hidden : formTag string [] [Data = data_attr, Id = string, Value = string]
+ val textbox : formTag string [] ([Value = string, Size = int, Placeholder = string, Source = source string, Onchange = transaction unit,
+-                                  Ontext = transaction unit] ++ boxAttrs)
+-val password : formTag string [] ([Value = string, Size = int, Placeholder = string, Onchange = transaction unit] ++ boxAttrs)
++                                  Ontext = transaction unit] ++ boxAttrs ++ inputAttrs)
++val password : formTag string [] ([Value = string, Size = int, Placeholder = string, Onchange = transaction unit] ++ boxAttrs ++ inputAttrs)
++val email : formTag string [] ([Value = string, Size = int, Placeholder = string, Onchange = transaction unit] ++ boxAttrs ++ inputAttrs)
+ val textarea : formTag string [] ([Rows = int, Cols = int, Onchange = transaction unit,
+-                                   Ontext = transaction unit] ++ boxAttrs)
++                                   Ontext = transaction unit] ++ boxAttrs ++ inputAttrs)
+ 
+-val checkbox : formTag bool [] ([Checked = bool, Onchange = transaction unit] ++ boxAttrs)
++val checkbox : formTag bool [] ([Checked = bool, Onchange = transaction unit, Value = string] ++ boxAttrs)
+ 
+ type file
+ val fileName : file -> option string
+@@ -1018,18 +1023,18 @@
+                         unit -> tag attrs ([Body] ++ ctx) ([Body] ++ inner) [] []
+ 
+ val ctextbox : cformTag ([Value = string, Size = int, Source = source string, Placeholder = string, Onchange = transaction unit,
+-                          Ontext = transaction unit] ++ boxAttrs) []
++                          Ontext = transaction unit] ++ boxAttrs ++ inputAttrs) []
+ val cpassword : cformTag ([Value = string, Size = int, Source = source string, Placeholder = string, Onchange = transaction unit,
+-                          Ontext = transaction unit] ++ boxAttrs) []
++                          Ontext = transaction unit] ++ boxAttrs ++ inputAttrs) []
+ val button : cformTag ([Value = string] ++ boxAttrs) []
+ 
+-val ccheckbox : cformTag ([Value = bool, Size = int, Source = source bool, Onchange = transaction unit] ++ boxAttrs) []
++val ccheckbox : cformTag ([Value = bool, Size = int, Source = source bool, Onchange = transaction unit] ++ boxAttrs ++ inputAttrs) []
+ 
+ val cselect : cformTag ([Source = source string, Onchange = transaction unit] ++ boxAttrs) [Cselect]
+ val coption : unit -> tag [Value = string, Selected = bool] [Cselect, Body] [] [] []
+ 
+ val ctextarea : cformTag ([Value = string, Rows = int, Cols = int, Source = source string, Onchange = transaction unit,
+-                           Ontext = transaction unit] ++ boxAttrs) []
++                           Ontext = transaction unit] ++ boxAttrs ++ inputAttrs) []
+ 
+ (*** Tables *)
+ 
+diff --git a/src/monoize.sml b/src/monoize.sml
+--- a/src/monoize.sml
++++ b/src/monoize.sml
+@@ -3665,6 +3665,7 @@
+                            | _ => (Print.prefaces "Targs" (map (fn t => ("T", CorePrint.p_con env t)) targs);
+                                    raise Fail "No name passed to textbox tag"))
+                       | "password" => input "password"
++                      | "email" => input "email"
+                       | "textarea" =>
+ 			(case targs of
+                              [_, (L.CName name, _)] =>
