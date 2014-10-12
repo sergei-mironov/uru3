@@ -41,6 +41,18 @@ demo2 useUrembed = do
     bin (file "test/holder.js") useUrembed
     ur (pair (file "test/B2.ur"))
 
+demo3 useUrembed = do
+  u <- lib
+  uwapp "-dbms sqlite" (file "test/B3_Login.urp") $ do
+    allow url "https://github.com/grwlf/*"
+    allow url "https://camo.githubusercontent.com/*"
+    rewrite style "B3_Login/* [-]"
+    library u
+    ur (sys "list")
+    bin (file "test/B3_Login.css") useUrembed
+    bin (file "test/FormSignin.css") useUrembed
+    ur (pair (file "test/B3_Login.ur"))
+
 mfiles f = do
   writeMake (file "Makefile.devel") (f [UseUrembed,NoScan])
   writeMake (file "Makefile") (f [NoScan])
@@ -49,9 +61,11 @@ main = do
   mfiles $ \useUrembed -> do
     u <- lib
     
-    b1 <- demo1 useUrembed
+    d1 <- demo1 useUrembed
 
-    b2 <- demo2 useUrembed
+    d2 <- demo2 useUrembed
+
+    d3 <- demo3 useUrembed
 
     rule $ do
       phony "lib"
@@ -59,6 +73,7 @@ main = do
 
     rule $ do
       phony "all"
-      depend b1
-      depend b2
+      depend d1
+      depend d2
+      depend d3
 
