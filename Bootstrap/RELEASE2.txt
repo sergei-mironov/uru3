@@ -1,0 +1,64 @@
+[ANNOUNCE] Uru, new version available
+
+Hi. Recent Ur/Web improvements make it possible to compile even more compact
+Uru code, so I'd like to announce new version of Uru the high-level
+modularisaton library aimed to simplify the writing of user interface
+application.
+
+User interface libraries in the Web programming world contain different types of
+materials. For example, Bootstrap [1] library package contains JavaScripts, CSS
+files, fonts and pictures whith mutual references to each other.
+
+The typical process of including such a library into a web project may include
+a) Setting up the static content directories and placing the library's files
+into it b) For every static CSS file, providing application with correct <link
+rel="stylesheet" ...> tag c) For every JavaScript file, providing the
+application template's <head> with corresponding <script> tag, and not forget to
+track the dependencies! For example, many libraries use JQuery library as a
+basis for their own interface.
+
+Uru tries to authomate steps a) and b) and provide hints for step c) by using a
+continuation-based approach to XML generation. Here is the example application
+
+    (* ./Bootstrap/example/E1.urp *)
+    library ..
+
+    E1
+
+    (* ./Bootstrap/example/E1.ur *)
+    fun main {} : transaction page =
+      Uru.run (
+      JQuery.add (
+      Bootstrap.add (
+      Uru.withHeader (
+        <xml>
+          <title>B3 Login demo</title>
+        </xml>) (
+      Uru.withBody (fn _ =>
+        return
+        <xml>
+          <div class={Bootstrap.container}>
+            <h1>Bootstrap starter template</h1>
+            <p class={Bootstrap.lead}>Use this document as a way to quickly start
+            any new project.<br/> All you get is this text and a mostly
+            barebones HTML document.</p>
+          </div>
+        </xml>
+      )))))
+
+In this example, `Uru.run' function is responcible for building the final page
+of the application. It starts with creation of empty page (see `Uru.dpage'
+type constructor) and pass it to it's argument - a set of transformers. Each
+transformer changes the page in some way and passes it downstream. For example,
+[Bootstrap.add] adds full set of references to the Bootstrap CSS library,
+including javascript, fonts and glyphs.
+
+Note, that `Uru.dpage' type is paramethrized with a type argument `deps'. It is
+used in checking transformer dependecies. For example, Uru/Bootstrap library is
+designed to depend on Uru/JQuery. That means that if you remove call to
+`JQuery.add ( .. )' from E1.ur, the example will fail to compile.
+
+
+
+
+
