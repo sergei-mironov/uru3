@@ -1,18 +1,19 @@
 [ANNOUNCE] Uru, new version available
 
-Hi. Recent Ur/Web improvements have made it possible to compile a part of Uru
-sources, so I'd like to announce new version of the library.
+Hi. Recent Ur/Web improvements have made it possible to make Uru even smaller,
+so I'd like to announce the new version of the library.
 
-Uru is a modularization library aimed to simplify the writing of user interface
+Uru - a modularization library aimed to simplify the writing of user interface
 code in Ur/Web.
 
     https://github.com/grwlf/uru3
 
 In Web programming world, user interface libraries usually contain very
-different types of materials to be included into the master application's
-project. Often they consist of some JavaScript code, CSS files, contain some
-image files and more. For example, Bootstrap [1] library package includes the
-following files: bootstrap.css, bootstrap.js, glyphicons-halflings-regular.eot
+different types of materials to be included into the master project. Most
+JavaScript controls are distributes as packages containing JavaScript code, CSS
+files,  images, fonts and so on.  For example, Bootstrap [1] library package
+includes the following files: bootstrap[.min].css, bootstrap[.min].js,
+glyphicons-halflings-regular.eot and few other glyph collections.
 
 Typical process of including such a library into a web project may include a)
 Setting up the static content directories and placing the library's files into
@@ -26,10 +27,10 @@ Setting up links to thirdparty user-interface objects as well as keeping
 references up to date may become a bothersome task for the unprepared Ur/Web
 programmer.
 
-Uru tries to solve part of the problem by automating steps a) and b) and provide
-hints for step c). It attempts to provide a way of grouping resources into
-modules and allowing to turn them on or off with only a single function call.
-Here is the example application:
+Uru tries to solve parts of the problem by automating steps (a) and (b) and
+provide hints for step (c). It attempts to draft a way of grouping resources
+into modules and allowing to turn them on or off by calling a single function
+only. Here is the example application:
 
     (* ./Bootstrap/example/E1.urp *)
 
@@ -68,7 +69,7 @@ including javascript, fonts and glyphs. Finally, the `Uru.withBody' transformer
 ends the process by specifying the body of a page.
 
 Note, that Uru's page representation tracks transformer dependencies. For
-example, Uru/Bootstrap library is designed to depend on Uru/JQuery. That means
+example, uru3/Bootstrap library is designed to depend on uru3/JQuery. That means
 that if you remove call to `JQuery.add ( .. )' from E1.ur, the example will fail
 to compile.
 
@@ -78,7 +79,6 @@ Some demo application do exist:
   http://hit.msk.ru:8080/B1/main
   http://hit.msk.ru:8080/B2/main
   http://hit.msk.ru:8080/B3_Login/main
-
 
 Regards,
 Sergey
