@@ -19,6 +19,8 @@ lib = do
     bin (file "dist/css/bootstrap-theme.css") []
     bin (file "dist/js/bootstrap.min.js") [NoScan]
     ur (pair (file "Bootstrap.ur"))
+    bin (file "FormSignin.css") []
+    ur (single (file "FormSignin.ur"))
 
 demo1 useUrembed = do
   u <- lib
@@ -50,7 +52,6 @@ demo3 useUrembed = do
     library u
     ur (sys "list")
     bin (file "test/B3_Login.css") useUrembed
-    bin (file "test/FormSignin.css") useUrembed
     ur (pair (file "test/B3_Login.ur"))
 
 mfiles f = do

@@ -17,7 +17,7 @@ all: ./Makefile ./test/B1.exe ./test/B2.exe ./test/B3_Login.exe
 lib: ./Makefile ./lib.urp
 ./test/B3_Login.exe: ./Makefile ./test/B3_Login.urp $(call GUARD,URVERSION)
 	urweb -dbms sqlite ./test/B3_Login
-./test/B3_Login.urp: ./Makefile ./lib.urp ./test/B3_Login.ur ./test/B3_Login.urs .cake3/tmp__testB3_Login_in autogen/B3_Login_css.ur autogen/B3_Login_css.urs autogen/B3_Login_css_c.h autogen/B3_Login_css_c.o autogen/FormSignin_css.ur autogen/FormSignin_css.urs autogen/FormSignin_css_c.h autogen/FormSignin_css_c.o
+./test/B3_Login.urp: ./Makefile ./lib.urp ./test/B3_Login.ur ./test/B3_Login.urs .cake3/tmp__testB3_Login_in autogen/B3_Login_css.ur autogen/B3_Login_css.urs autogen/B3_Login_css_c.h autogen/B3_Login_css_c.o
 	cat .cake3/tmp__testB3_Login_in > ./test/B3_Login.urp
 .cake3/tmp__testB3_Login_in: ./Makefile
 	-rm -rf .cake3/tmp__testB3_Login_in
@@ -32,19 +32,11 @@ lib: ./Makefile ./lib.urp
 	echo 'allow mime text/css' >> .cake3/tmp__testB3_Login_in
 	echo 'safeGet B3_Login_css/blobpage' >> .cake3/tmp__testB3_Login_in
 	echo 'safeGet B3_Login_css/blob' >> .cake3/tmp__testB3_Login_in
-	echo 'include ../autogen/FormSignin_css_c.h' >> .cake3/tmp__testB3_Login_in
-	echo 'link ../autogen/FormSignin_css_c.o' >> .cake3/tmp__testB3_Login_in
-	echo 'ffi ../autogen/FormSignin_css_c' >> .cake3/tmp__testB3_Login_in
-	echo 'ffi ../autogen/FormSignin_css_js' >> .cake3/tmp__testB3_Login_in
-	echo 'allow mime text/css' >> .cake3/tmp__testB3_Login_in
-	echo 'safeGet FormSignin_css/blobpage' >> .cake3/tmp__testB3_Login_in
-	echo 'safeGet FormSignin_css/blob' >> .cake3/tmp__testB3_Login_in
 	echo '' >> .cake3/tmp__testB3_Login_in
 	echo '$$/list' >> .cake3/tmp__testB3_Login_in
 	echo '../autogen/B3_Login_css' >> .cake3/tmp__testB3_Login_in
-	echo '../autogen/FormSignin_css' >> .cake3/tmp__testB3_Login_in
 	echo '.././test/B3_Login' >> .cake3/tmp__testB3_Login_in
-./lib.urp: ./../JQuery/lib.urp ./../Uru/lib.urp ./Bootstrap.ur ./Bootstrap.urs ./Makefile .cake3/tmp__lib_in autogen/Bootstrap_css.ur autogen/Bootstrap_css.urs autogen/Bootstrap_css_c.h autogen/Bootstrap_css_c.o autogen/Bootstrap_min_js.ur autogen/Bootstrap_min_js.urs autogen/Bootstrap_min_js_c.h autogen/Bootstrap_min_js_c.o autogen/Bootstrap_theme_css.ur autogen/Bootstrap_theme_css.urs autogen/Bootstrap_theme_css_c.h autogen/Bootstrap_theme_css_c.o autogen/Glyphicons_halflings_regular_eot.ur autogen/Glyphicons_halflings_regular_eot.urs autogen/Glyphicons_halflings_regular_eot_c.h autogen/Glyphicons_halflings_regular_eot_c.o autogen/Glyphicons_halflings_regular_svg.ur autogen/Glyphicons_halflings_regular_svg.urs autogen/Glyphicons_halflings_regular_svg_c.h autogen/Glyphicons_halflings_regular_svg_c.o autogen/Glyphicons_halflings_regular_ttf.ur autogen/Glyphicons_halflings_regular_ttf.urs autogen/Glyphicons_halflings_regular_ttf_c.h autogen/Glyphicons_halflings_regular_ttf_c.o autogen/Glyphicons_halflings_regular_woff.ur autogen/Glyphicons_halflings_regular_woff.urs autogen/Glyphicons_halflings_regular_woff_c.h autogen/Glyphicons_halflings_regular_woff_c.o
+./lib.urp: ./../JQuery/lib.urp ./../Uru/lib.urp ./Bootstrap.ur ./Bootstrap.urs ./FormSignin.ur ./Makefile .cake3/tmp__lib_in autogen/Bootstrap_css.ur autogen/Bootstrap_css.urs autogen/Bootstrap_css_c.h autogen/Bootstrap_css_c.o autogen/Bootstrap_min_js.ur autogen/Bootstrap_min_js.urs autogen/Bootstrap_min_js_c.h autogen/Bootstrap_min_js_c.o autogen/Bootstrap_theme_css.ur autogen/Bootstrap_theme_css.urs autogen/Bootstrap_theme_css_c.h autogen/Bootstrap_theme_css_c.o autogen/FormSignin_css.ur autogen/FormSignin_css.urs autogen/FormSignin_css_c.h autogen/FormSignin_css_c.o autogen/Glyphicons_halflings_regular_eot.ur autogen/Glyphicons_halflings_regular_eot.urs autogen/Glyphicons_halflings_regular_eot_c.h autogen/Glyphicons_halflings_regular_eot_c.o autogen/Glyphicons_halflings_regular_svg.ur autogen/Glyphicons_halflings_regular_svg.urs autogen/Glyphicons_halflings_regular_svg_c.h autogen/Glyphicons_halflings_regular_svg_c.o autogen/Glyphicons_halflings_regular_ttf.ur autogen/Glyphicons_halflings_regular_ttf.urs autogen/Glyphicons_halflings_regular_ttf_c.h autogen/Glyphicons_halflings_regular_ttf_c.o autogen/Glyphicons_halflings_regular_woff.ur autogen/Glyphicons_halflings_regular_woff.urs autogen/Glyphicons_halflings_regular_woff_c.h autogen/Glyphicons_halflings_regular_woff_c.o
 	cat .cake3/tmp__lib_in > ./lib.urp
 .cake3/tmp__lib_in: ./Makefile
 	-rm -rf .cake3/tmp__lib_in
@@ -101,6 +93,13 @@ lib: ./Makefile ./lib.urp
 	echo 'allow mime text/javascript' >> .cake3/tmp__lib_in
 	echo 'safeGet Bootstrap_min_js/blobpage' >> .cake3/tmp__lib_in
 	echo 'safeGet Bootstrap_min_js/blob' >> .cake3/tmp__lib_in
+	echo 'include autogen/FormSignin_css_c.h' >> .cake3/tmp__lib_in
+	echo 'link autogen/FormSignin_css_c.o' >> .cake3/tmp__lib_in
+	echo 'ffi autogen/FormSignin_css_c' >> .cake3/tmp__lib_in
+	echo 'ffi autogen/FormSignin_css_js' >> .cake3/tmp__lib_in
+	echo 'allow mime text/css' >> .cake3/tmp__lib_in
+	echo 'safeGet FormSignin_css/blobpage' >> .cake3/tmp__lib_in
+	echo 'safeGet FormSignin_css/blob' >> .cake3/tmp__lib_in
 	echo '' >> .cake3/tmp__lib_in
 	echo 'autogen/Glyphicons_halflings_regular_eot' >> .cake3/tmp__lib_in
 	echo 'autogen/Glyphicons_halflings_regular_svg' >> .cake3/tmp__lib_in
@@ -110,6 +109,8 @@ lib: ./Makefile ./lib.urp
 	echo 'autogen/Bootstrap_theme_css' >> .cake3/tmp__lib_in
 	echo 'autogen/Bootstrap_min_js' >> .cake3/tmp__lib_in
 	echo './Bootstrap' >> .cake3/tmp__lib_in
+	echo 'autogen/FormSignin_css' >> .cake3/tmp__lib_in
+	echo './FormSignin' >> .cake3/tmp__lib_in
 ./test/B2.exe: ./Makefile ./test/B2.urp $(call GUARD,URVERSION)
 	urweb -dbms sqlite ./test/B2
 ./test/B2.urp: ./Makefile ./lib.urp ./test/B2.ur ./test/B2.urs .cake3/tmp__testB2_in autogen/B2_css.ur autogen/B2_css.urs autogen/B2_css_c.h autogen/B2_css_c.o autogen/Holder_js.ur autogen/Holder_js.urs autogen/Holder_js_c.h autogen/Holder_js_c.o
