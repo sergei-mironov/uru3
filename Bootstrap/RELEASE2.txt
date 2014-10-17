@@ -1,31 +1,44 @@
 [ANNOUNCE] Uru, new version available
 
-Hi. Recent Ur/Web improvements make it possible to compile even more compact
-Uru code, so I'd like to announce new version of Uru the high-level
-modularisaton library aimed to simplify the writing of user interface
-application.
+Hi. Recent Ur/Web improvements have made it possible to compile a part of Uru
+sources, so I'd like to announce new version of the library.
 
-User interface libraries in the Web programming world contain different types of
-materials. For example, Bootstrap [1] library package contains JavaScripts, CSS
-files, fonts and pictures whith mutual references to each other.
+Uru is a modularization library aimed to simplify the writing of user interface
+code in Ur/Web.
 
-The typical process of including such a library into a web project may include
-a) Setting up the static content directories and placing the library's files
-into it b) For every static CSS file, providing application with correct <link
+    https://github.com/grwlf/uru3
+
+In Web programming world, user interface libraries usually contain very
+different types of materials to be included into the master application's
+project. Often they consist of some JavaScript code, CSS files, contain some
+image files and more. For example, Bootstrap [1] library package includes the
+following files: bootstrap.css, bootstrap.js, glyphicons-halflings-regular.eot
+
+Typical process of including such a library into a web project may include a)
+Setting up the static content directories and placing the library's files into
+it b) For every static CSS file, providing application with correct <link
 rel="stylesheet" ...> tag c) For every JavaScript file, providing the
-application template's <head> with corresponding <script> tag, and not forget to
-track the dependencies! For example, many libraries use JQuery library as a
-basis for their own interface.
+application template's <head> with corresponding <script> tag (and it's
+dependencies!). Often, the list of dependencies includes JQuery library and it's
+siblings like JQueryUI. 
 
-Uru tries to authomate steps a) and b) and provide hints for step c) by using a
-continuation-based approach to XML generation. Here is the example application
+Setting up links to thirdparty user-interface objects as well as keeping
+references up to date may become a bothersome task for the unprepared Ur/Web
+programmer.
+
+Uru tries to solve part of the problem by automating steps a) and b) and provide
+hints for step c). It attempts to provide a way of grouping resources into
+modules and allowing to turn them on or off with only a single function call.
+Here is the example application:
 
     (* ./Bootstrap/example/E1.urp *)
+
     library ..
 
     E1
 
     (* ./Bootstrap/example/E1.ur *)
+
     fun main {} : transaction page =
       Uru.run (
       JQuery.add (
@@ -46,19 +59,46 @@ continuation-based approach to XML generation. Here is the example application
         </xml>
       )))))
 
-In this example, `Uru.run' function is responcible for building the final page
-of the application. It starts with creation of empty page (see `Uru.dpage'
-type constructor) and pass it to it's argument - a set of transformers. Each
-transformer changes the page in some way and passes it downstream. For example,
+In this example, `Uru.run' function is responsible for building the main page of
+the application. It starts by creating an empty page (see `Uru.dpage' type
+constructor) and pass it to it's argument set of transformers. Each transformer
+changes the page in some way and passes it downstream.  For example,
 [Bootstrap.add] adds full set of references to the Bootstrap CSS library,
-including javascript, fonts and glyphs.
+including javascript, fonts and glyphs. Finally, the `Uru.withBody' transformer
+ends the process by specifying the body of a page.
 
-Note, that `Uru.dpage' type is paramethrized with a type argument `deps'. It is
-used in checking transformer dependecies. For example, Uru/Bootstrap library is
-designed to depend on Uru/JQuery. That means that if you remove call to
-`JQuery.add ( .. )' from E1.ur, the example will fail to compile.
+Note, that Uru's page representation tracks transformer dependencies. For
+example, Uru/Bootstrap library is designed to depend on Uru/JQuery. That means
+that if you remove call to `JQuery.add ( .. )' from E1.ur, the example will fail
+to compile.
+
+This is the third version of a library which may be considered somewhat stable.
+Some demo application do exist:
+
+  http://hit.msk.ru:8080/B1/main
+  http://hit.msk.ru:8080/B2/main
+  http://hit.msk.ru:8080/B3_Login/main
 
 
+Regards,
+Sergey
 
+[1] - http://getbootstrap.com/ (Bootstrap library)
+[2] - https://github.com/grwlf/cake3
 
+Notes:
+
+Automatically generated modules are used for providing static content. The
+generator, cake3 [2], is not required for using Uru as a library, but it should
+be installed for it's development.
+
+Uru3 contains adopted version of the following pre-existing Ur/Web libraries:
+https://github.com/doublec/urweb-persona (interface changes, static content
+included, linked with third-party C libraries via pkg-config)
+http://hg.impredicative.com/bootstrap (more styles, static content included,
+JQuery dependency included)
+
+The Ur/Web following compiler patch is required for building the Bootstrap
+demos:
+https://github.com/grwlf/uru3/blob/master/1_of_1_HTML5_input_attributes__placeholder__required__autofocus__email_input_type__without_cformTag_equivalent_.patch
 
