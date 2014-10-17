@@ -12,21 +12,21 @@ URCC = $(shell $(shell urweb -print-ccompiler) -print-prog-name=gcc)
 URINCL = -I$(shell urweb -print-cinclude) 
 .PHONY: all
 all: ./Makefile ./lib.urp
-./lib.urp: ./../Uru/lib.urp ./JQuery.ur ./JQuery.urs ./Makefile .cake3/tmplib.in0 autogen/Jquery_1_9_1_js.ur autogen/Jquery_1_9_1_js.urs autogen/Jquery_1_9_1_js_c.h autogen/Jquery_1_9_1_js_c.o
-	cat .cake3/tmplib.in0 > ./lib.urp
-.cake3/tmplib.in0: ./Makefile
-	-rm -rf .cake3/tmplib.in0
-	echo 'library ./../Uru' >> .cake3/tmplib.in0
-	echo 'include autogen/Jquery_1_9_1_js_c.h' >> .cake3/tmplib.in0
-	echo 'link autogen/Jquery_1_9_1_js_c.o' >> .cake3/tmplib.in0
-	echo 'ffi autogen/Jquery_1_9_1_js_c' >> .cake3/tmplib.in0
-	echo 'ffi autogen/Jquery_1_9_1_js_js' >> .cake3/tmplib.in0
-	echo 'allow mime text/javascript' >> .cake3/tmplib.in0
-	echo 'safeGet Jquery_1_9_1_js/blobpage' >> .cake3/tmplib.in0
-	echo 'safeGet Jquery_1_9_1_js/blob' >> .cake3/tmplib.in0
-	echo '' >> .cake3/tmplib.in0
-	echo 'autogen/Jquery_1_9_1_js' >> .cake3/tmplib.in0
-	echo './JQuery' >> .cake3/tmplib.in0
+./lib.urp: ./../Uru/lib.urp ./JQuery.ur ./JQuery.urs ./Makefile .cake3/tmp__lib_in autogen/Jquery_1_9_1_js.ur autogen/Jquery_1_9_1_js.urs autogen/Jquery_1_9_1_js_c.h autogen/Jquery_1_9_1_js_c.o
+	cat .cake3/tmp__lib_in > ./lib.urp
+.cake3/tmp__lib_in: ./Makefile
+	-rm -rf .cake3/tmp__lib_in
+	echo 'library ./../Uru' >> .cake3/tmp__lib_in
+	echo 'include autogen/Jquery_1_9_1_js_c.h' >> .cake3/tmp__lib_in
+	echo 'link autogen/Jquery_1_9_1_js_c.o' >> .cake3/tmp__lib_in
+	echo 'ffi autogen/Jquery_1_9_1_js_c' >> .cake3/tmp__lib_in
+	echo 'ffi autogen/Jquery_1_9_1_js_js' >> .cake3/tmp__lib_in
+	echo 'allow mime text/javascript' >> .cake3/tmp__lib_in
+	echo 'safeGet Jquery_1_9_1_js/blobpage' >> .cake3/tmp__lib_in
+	echo 'safeGet Jquery_1_9_1_js/blob' >> .cake3/tmp__lib_in
+	echo '' >> .cake3/tmp__lib_in
+	echo 'autogen/Jquery_1_9_1_js' >> .cake3/tmp__lib_in
+	echo './JQuery' >> .cake3/tmp__lib_in
 autogen/Jquery_1_9_1_js_c.o: ./Makefile autogen/Jquery_1_9_1_js_c.c $(call GUARD,URCC) $(call GUARD,URINCL) $(call GUARD,UR_CFLAGS)
 	$(URCC) -c $(URINCL) $(UR_CFLAGS)  -o autogen/Jquery_1_9_1_js_c.o autogen/Jquery_1_9_1_js_c.c
 $(call GUARD,URCC):
@@ -49,8 +49,8 @@ ifneq ($(MAKECMDGOALS),clean)
 all: .fix-multy1
 .PHONY: ./lib.urp
 ./lib.urp: .fix-multy1
-.PHONY: .cake3/tmplib.in0
-.cake3/tmplib.in0: .fix-multy1
+.PHONY: .cake3/tmp__lib_in
+.cake3/tmp__lib_in: .fix-multy1
 .INTERMEDIATE: .fix-multy1
 .fix-multy1: 
 	-mkdir .cake3
@@ -62,7 +62,7 @@ autogen/Jquery_1_9_1_js_c.o: .fix-multy1
 endif
 .PHONY: clean
 clean: 
-	-rm ./lib.urp .cake3/tmplib.in0 autogen/Jquery_1_9_1_js_c.o
+	-rm ./lib.urp .cake3/tmp__lib_in autogen/Jquery_1_9_1_js_c.o
 	-rm -rf .cake3
 
 endif
