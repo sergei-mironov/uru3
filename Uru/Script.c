@@ -6,7 +6,7 @@
 
 #include "Script.h"
 
-uw_Basis_string   uw_Script_insert (uw_context ctx, uw_Basis_string mime, uw_Basis_string url)
+uw_Basis_string uw_Script_insert (uw_context ctx, uw_Basis_string mime, uw_Basis_string url)
 {
   const char *pattern = "<script type=\"%s\" src=\"%s\"></script>";
   int len = strlen(mime) + strlen(url) + strlen(pattern);
@@ -15,3 +15,12 @@ uw_Basis_string   uw_Script_insert (uw_context ctx, uw_Basis_string mime, uw_Bas
   return tag;
 }
 
+uw_Basis_string uw_Script_insertHead (uw_context ctx, uw_Basis_string mime, uw_Basis_string url)
+{
+  return uw_Script_insert (ctx, mime, url);
+}
+
+uw_Basis_string uw_Script_insertBody (uw_context ctx, uw_Basis_string mime, uw_Basis_string url)
+{
+  return uw_Script_insert (ctx, mime, url);
+}
