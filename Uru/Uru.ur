@@ -11,6 +11,9 @@ fun addTag [t1] [tm] [n :: Name] [t1 ~ [n=tm]] tv r =
 fun addEmptyTag [t1] [n :: Name] [t1 ~ [n={}]] r =
   (r -- #Tags ++ {Tags = r.Tags ++ {n = {}}})
 
+val addBodyTail [t1] b r =
+  (r -- #BodyTail ++ {BodyTail = <xml>{r.BodyTail}{b}</xml>})
+
 fun withBody [t] f r =
   b <- f r;
   return
@@ -20,6 +23,7 @@ fun withBody [t] f r =
       </head>
       <body onload={r.Bdy_onload}>
       {b}
+      {r.BodyTail}
       </body>
     </xml>
 
@@ -34,6 +38,7 @@ fun withHeadBody [t] fh fb r =
       </head>
       <body onload={r.Bdy_onload}>
       {b}
+      {r.BodyTail}
       </body>
     </xml>
 
@@ -47,7 +52,8 @@ fun run f : transaction page =
   f {
     Tags = {} ,
     Hdr = <xml/> ,
-    Bdy_onload = return {}
+    Bdy_onload = return {},
+    BodyTail = <xml/>
     }
 
 val javascript = blessMime "text/javascript"
