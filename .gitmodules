@@ -4,3 +4,6 @@
 [submodule "DialogPolyfill/dialog-polyfill"]
 	path = DialogPolyfill/dialog-polyfill
 	url = https://github.com/GoogleChrome/dialog-polyfill
+[submodule "Dialog/dialog-polyfill"]
+	path = Dialog/dialog-polyfill
+	url = https://github.com/GoogleChrome/dialog-polyfill
