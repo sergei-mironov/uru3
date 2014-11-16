@@ -1,3 +1,0 @@
-
-val dialog : bodyTag boxAttrs
-
