@@ -13,6 +13,7 @@ lib = do
     bin (file "dialog-polyfill/dialog-polyfill.js") [NoScan]
     bin (file "dialog-polyfill/dialog-polyfill.css") [NoScan]
     bin (file "DialogPolyfill.js") [NoScan]
+    bin (file "Dialog.js") []
     ur (single (file "Dialog.ur"))
 
 demo1 = do

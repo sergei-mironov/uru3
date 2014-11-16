@@ -16,13 +16,19 @@ fun add [t:::{Type}] [t~out]
       <xml>
         <link rel="stylesheet" href={Dialog_polyfill_css.geturl}/>
         {Script.insert Uru.javascript Dialog_polyfill_js.geturl}
+        {Script.insert Uru.javascript Dialog_js.geturl}
       </xml> 
 
     val t =
       <xml>
-        {Script.insertBody Uru.javascript DialogPolyfill_js.geturl}
+        (* {Script.insertBody Uru.javascript DialogPolyfill_js.geturl} *)
       </xml>
   in
     f (Uru.addHeader h (Uru.addTag [#POLYFILL] {} (Uru.addBodyTail t r)))
   end
 
+(* JavaScript API *)
+
+val show = Dialog_js.dialog_show
+val showModal = Dialog_js.dialog_showModal
+val close = Dialog_js.dialog_close

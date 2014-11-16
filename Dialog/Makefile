@@ -25,7 +25,7 @@ lib: ./Makefile ./lib.urp
 	echo '' >> .cake3/tmp__demoPolyfill1_in
 	echo '$$/list' >> .cake3/tmp__demoPolyfill1_in
 	echo '.././demo/Polyfill1' >> .cake3/tmp__demoPolyfill1_in
-./lib.urp: ./../JQuery/lib.urp ./../Uru/lib.urp ./Dialog.ur ./Makefile .cake3/tmp__lib_in autogen/DialogPolyfill_js.ur autogen/DialogPolyfill_js.urs autogen/DialogPolyfill_js_c.h autogen/DialogPolyfill_js_c.o autogen/Dialog_polyfill_css.ur autogen/Dialog_polyfill_css.urs autogen/Dialog_polyfill_css_c.h autogen/Dialog_polyfill_css_c.o autogen/Dialog_polyfill_js.ur autogen/Dialog_polyfill_js.urs autogen/Dialog_polyfill_js_c.h autogen/Dialog_polyfill_js_c.o
+./lib.urp: ./../JQuery/lib.urp ./../Uru/lib.urp ./Dialog.ur ./Makefile .cake3/tmp__lib_in autogen/DialogPolyfill_js.ur autogen/DialogPolyfill_js.urs autogen/DialogPolyfill_js_c.h autogen/DialogPolyfill_js_c.o autogen/Dialog_js.ur autogen/Dialog_js.urs autogen/Dialog_js_c.h autogen/Dialog_js_c.o autogen/Dialog_polyfill_css.ur autogen/Dialog_polyfill_css.urs autogen/Dialog_polyfill_css_c.h autogen/Dialog_polyfill_css_c.o autogen/Dialog_polyfill_js.ur autogen/Dialog_polyfill_js.urs autogen/Dialog_polyfill_js_c.h autogen/Dialog_polyfill_js_c.o
 	cat .cake3/tmp__lib_in > ./lib.urp
 .cake3/tmp__lib_in: ./Makefile
 	-rm -rf .cake3/tmp__lib_in
@@ -53,13 +53,26 @@ lib: ./Makefile ./lib.urp
 	echo 'allow mime text/javascript' >> .cake3/tmp__lib_in
 	echo 'safeGet DialogPolyfill_js/blobpage' >> .cake3/tmp__lib_in
 	echo 'safeGet DialogPolyfill_js/blob' >> .cake3/tmp__lib_in
+	echo 'include autogen/Dialog_js_c.h' >> .cake3/tmp__lib_in
+	echo 'link autogen/Dialog_js_c.o' >> .cake3/tmp__lib_in
+	echo 'ffi autogen/Dialog_js_c' >> .cake3/tmp__lib_in
+	echo 'jsFunc Dialog_js_js.dialog_show = dialog_show__unit' >> .cake3/tmp__lib_in
+	echo 'jsFunc Dialog_js_js.dialog_showModal = dialog_showModal__unit' >> .cake3/tmp__lib_in
+	echo 'jsFunc Dialog_js_js.dialog_close = dialog_close__unit' >> .cake3/tmp__lib_in
+	echo 'ffi autogen/Dialog_js_js' >> .cake3/tmp__lib_in
+	echo 'allow mime text/javascript' >> .cake3/tmp__lib_in
+	echo 'safeGet Dialog_js/blobpage' >> .cake3/tmp__lib_in
+	echo 'safeGet Dialog_js/blob' >> .cake3/tmp__lib_in
 	echo '' >> .cake3/tmp__lib_in
 	echo 'autogen/Dialog_polyfill_js' >> .cake3/tmp__lib_in
 	echo 'autogen/Dialog_polyfill_css' >> .cake3/tmp__lib_in
 	echo 'autogen/DialogPolyfill_js' >> .cake3/tmp__lib_in
+	echo 'autogen/Dialog_js' >> .cake3/tmp__lib_in
 	echo './Dialog' >> .cake3/tmp__lib_in
 autogen/DialogPolyfill_js_c.o: ./Makefile autogen/DialogPolyfill_js_c.c $(call GUARD,URCC) $(call GUARD,URINCL) $(call GUARD,UR_CFLAGS)
 	$(URCC) -c $(URINCL) $(UR_CFLAGS)  -o autogen/DialogPolyfill_js_c.o autogen/DialogPolyfill_js_c.c
+autogen/Dialog_js_c.o: ./Makefile autogen/Dialog_js_c.c $(call GUARD,URCC) $(call GUARD,URINCL) $(call GUARD,UR_CFLAGS)
+	$(URCC) -c $(URINCL) $(UR_CFLAGS)  -o autogen/Dialog_js_c.o autogen/Dialog_js_c.c
 autogen/Dialog_polyfill_css_c.o: ./Makefile autogen/Dialog_polyfill_css_c.c $(call GUARD,URCC) $(call GUARD,URINCL) $(call GUARD,UR_CFLAGS)
 	$(URCC) -c $(URINCL) $(UR_CFLAGS)  -o autogen/Dialog_polyfill_css_c.o autogen/Dialog_polyfill_css_c.c
 autogen/Dialog_polyfill_js_c.o: ./Makefile autogen/Dialog_polyfill_js_c.c $(call GUARD,URCC) $(call GUARD,URINCL) $(call GUARD,UR_CFLAGS)
@@ -107,6 +120,8 @@ lib: .fix-multy1
 	MAIN=1 $(MAKE) -f ./Makefile $(MAKECMDGOALS)
 .PHONY: autogen/DialogPolyfill_js_c.o
 autogen/DialogPolyfill_js_c.o: .fix-multy1
+.PHONY: autogen/Dialog_js_c.o
+autogen/Dialog_js_c.o: .fix-multy1
 .PHONY: autogen/Dialog_polyfill_css_c.o
 autogen/Dialog_polyfill_css_c.o: .fix-multy1
 .PHONY: autogen/Dialog_polyfill_js_c.o
@@ -115,7 +130,7 @@ autogen/Dialog_polyfill_js_c.o: .fix-multy1
 endif
 .PHONY: clean
 clean: 
-	-rm ./demo/Polyfill1.exe ./demo/Polyfill1.urp ./lib.urp .cake3/tmp__demoPolyfill1_in .cake3/tmp__lib_in autogen/DialogPolyfill_js_c.o autogen/Dialog_polyfill_css_c.o autogen/Dialog_polyfill_js_c.o
+	-rm ./demo/Polyfill1.exe ./demo/Polyfill1.urp ./lib.urp .cake3/tmp__demoPolyfill1_in .cake3/tmp__lib_in autogen/DialogPolyfill_js_c.o autogen/Dialog_js_c.o autogen/Dialog_polyfill_css_c.o autogen/Dialog_polyfill_js_c.o
 	-rm -rf .cake3
 
 endif
