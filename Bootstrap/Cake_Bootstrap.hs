@@ -54,6 +54,14 @@ demo3 useUrembed = do
     bin (file "test/B3_Login.css") useUrembed
     ur (pair (file "test/B3_Login.ur"))
 
+demo_modal useUrembed = do
+  u <- lib
+  uwapp "-dbms sqlite" (file "test/Modal.urp") $ do
+    library u
+    ur (sys "list")
+    bin (file "test/Modal.css") useUrembed
+    ur (single (file "test/Modal.ur"))
+
 mfiles f = do
   writeMake (file "Makefile.devel") (f [UseUrembed,NoScan])
   writeMake (file "Makefile") (f [NoScan])
@@ -77,4 +85,5 @@ main = do
       depend d1
       depend d2
       depend d3
+      depend (demo_modal useUrembed)
 
