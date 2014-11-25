@@ -26,7 +26,7 @@ fun main {} : transaction page =
           <div class={B.modal_dialog}>
             <div class={B.modal_content}>
               <div class={B.modal_header}>
-                <a role="button" class={B.close} data={data_attrs (data "dismiss" "modal") (aria "hidden" "true")} link={main {}}>times</a>
+                <a role="button" class={B.close} data={data_attrs (data "dismiss" "modal") (aria "hidden" "true")} link={main {}}>×</a>
                 <h4 class={B.modal_title}>Modal title</h4>
               </div>
               <div class={B.modal_body}>
