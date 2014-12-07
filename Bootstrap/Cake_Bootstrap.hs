@@ -54,13 +54,21 @@ demo3 useUrembed = do
     bin (file "test/B3_Login.css") useUrembed
     ur (pair (file "test/B3_Login.ur"))
 
-demo_modal useUrembed = do
+mkdemo1 src bdy useUrembed = do
   u <- lib
-  uwapp "-dbms sqlite" (file "test/Modal.urp") $ do
+  uwapp "-dbms sqlite" ((src .= "urp")) $ do
     library u
     ur (sys "list")
-    bin (file "test/Modal.css") useUrembed
-    ur (single (file "test/Modal.ur"))
+    bin ((src .= "css")) useUrembed
+    ur (single ((src .= "ur")))
+    bdy
+
+demo_modal = mkdemo1 (file "test/Modal.ur") $ do
+  return ()
+
+demo_narrow = mkdemo1 (file "test/Narrow.ur") $ do
+  ffi (file "NavTag.urs")
+  return ()
 
 mfiles f = do
   writeMake (file "Makefile.devel") (f [UseUrembed,NoScan])
@@ -68,22 +76,15 @@ mfiles f = do
 
 main = do
   mfiles $ \useUrembed -> do
-    u <- lib
-    
-    d1 <- demo1 useUrembed
-
-    d2 <- demo2 useUrembed
-
-    d3 <- demo3 useUrembed
-
     rule $ do
       phony "lib"
-      depend u
+      depend lib
 
     rule $ do
       phony "all"
-      depend d1
-      depend d2
-      depend d3
+      depend (demo1 useUrembed)
+      depend (demo2 useUrembed)
+      depend (demo3 useUrembed)
       depend (demo_modal useUrembed)
+      depend (demo_narrow useUrembed)
 
