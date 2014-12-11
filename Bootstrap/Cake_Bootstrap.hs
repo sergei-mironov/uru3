@@ -9,6 +9,7 @@ lib = do
   uwlib (file "lib.urp") $ do
     rewrite style "Bootstrap/bs3_table table"
     rewrite style "Bootstrap/* [-]"
+    ffi (file "NavTag.urs")
     library' (externalMake (file "../Uru/lib.urp"))
     library' (externalMake (file "../JQuery/lib.urp"))
     bin (file "dist/fonts/glyphicons-halflings-regular.eot") []
@@ -67,7 +68,6 @@ demo_modal = mkdemo1 (file "test/Modal.ur") $ do
   return ()
 
 demo_narrow = mkdemo1 (file "test/Narrow.ur") $ do
-  ffi (file "NavTag.urs")
   return ()
 
 mfiles f = do

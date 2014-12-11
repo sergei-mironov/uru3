@@ -27,7 +27,6 @@ all: ./Makefile ./test/B1.exe ./test/B2.exe ./test/B3_Login.exe ./test/Modal.exe
 	echo 'allow mime text/css' >> .cake3/tmp__testNarrow_in
 	echo 'safeGet Narrow_css/blobpage' >> .cake3/tmp__testNarrow_in
 	echo 'safeGet Narrow_css/blob' >> .cake3/tmp__testNarrow_in
-	echo 'ffi .././NavTag' >> .cake3/tmp__testNarrow_in
 	echo '' >> .cake3/tmp__testNarrow_in
 	echo '$$/list' >> .cake3/tmp__testNarrow_in
 	echo '../autogen/Narrow_css' >> .cake3/tmp__testNarrow_in
@@ -38,6 +37,7 @@ all: ./Makefile ./test/B1.exe ./test/B2.exe ./test/B3_Login.exe ./test/Modal.exe
 	-rm -rf .cake3/tmp__lib_in
 	echo 'rewrite style Bootstrap/bs3_table table' >> .cake3/tmp__lib_in
 	echo 'rewrite style Bootstrap/* [-]' >> .cake3/tmp__lib_in
+	echo 'ffi ./NavTag' >> .cake3/tmp__lib_in
 	echo 'library ./../Uru' >> .cake3/tmp__lib_in
 	echo 'library ./../JQuery' >> .cake3/tmp__lib_in
 	echo 'include autogen/Glyphicons_halflings_regular_eot_c.h' >> .cake3/tmp__lib_in
