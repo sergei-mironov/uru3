@@ -9,15 +9,23 @@ fun add [t] [t~out] f r =
         <link rel="urwebhint" href={l}/>
         {x}
       </xml>) <xml/> Bootstrap_css.propagated_urls
+
     val h = <xml>
               {css_urls}
               <link rel="stylesheet" href={Bootstrap_css.geturl}/>
               <link rel="stylesheet" href={Bootstrap_theme_css.geturl}/>
               {Script.insert Uru.javascript Bootstrap_min_js.geturl}
+              {Script.insert Uru.javascript Tooltip_js.geturl}
             </xml> 
+    
+    (* val l = return {} *)
+    val l = Tooltip_js.enable_tooltips {}
   in
-    f (Uru.addHeader h (Uru.addTag [#BOOTSTRAP] {} r))
+    f (Uru.addOnLoad l (Uru.addHeader h (Uru.addTag [#BOOTSTRAP] {} r)))
   end
+
+fun tooltip_show id s  = Tooltip_js.tooltip ("#" ^ (show id)) s
+fun popover_show id s  = Tooltip_js.popover ("#" ^ (show id)) s
 
 style active
 style divider

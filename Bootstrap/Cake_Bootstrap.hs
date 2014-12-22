@@ -19,6 +19,8 @@ lib = do
     bin (file "dist/css/bootstrap.css") []
     bin (file "dist/css/bootstrap-theme.css") []
     bin (file "dist/js/bootstrap.min.js") [NoScan]
+    bin (file "Tooltip.js") []
+    safeGet' "Tooltip_js/enable_tooltips"
     ur (pair (file "Bootstrap.ur"))
     bin (file "FormSignin.css") []
     ur (single (file "FormSignin.ur"))

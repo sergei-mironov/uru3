@@ -31,7 +31,7 @@ all: ./Makefile ./test/B1.exe ./test/B2.exe ./test/B3_Login.exe ./test/Modal.exe
 	echo '$$/list' >> .cake3/tmp__testNarrow_in
 	echo '../autogen/Narrow_css' >> .cake3/tmp__testNarrow_in
 	echo '.././test/Narrow' >> .cake3/tmp__testNarrow_in
-./lib.urp: ./../JQuery/lib.urp ./../Uru/lib.urp ./Bootstrap.ur ./Bootstrap.urs ./FormSignin.ur ./Makefile .cake3/tmp__lib_in autogen/Bootstrap_css.ur autogen/Bootstrap_css.urs autogen/Bootstrap_css_c.h autogen/Bootstrap_css_c.o autogen/Bootstrap_min_js.ur autogen/Bootstrap_min_js.urs autogen/Bootstrap_min_js_c.h autogen/Bootstrap_min_js_c.o autogen/Bootstrap_theme_css.ur autogen/Bootstrap_theme_css.urs autogen/Bootstrap_theme_css_c.h autogen/Bootstrap_theme_css_c.o autogen/FormSignin_css.ur autogen/FormSignin_css.urs autogen/FormSignin_css_c.h autogen/FormSignin_css_c.o autogen/Glyphicons_halflings_regular_eot.ur autogen/Glyphicons_halflings_regular_eot.urs autogen/Glyphicons_halflings_regular_eot_c.h autogen/Glyphicons_halflings_regular_eot_c.o autogen/Glyphicons_halflings_regular_svg.ur autogen/Glyphicons_halflings_regular_svg.urs autogen/Glyphicons_halflings_regular_svg_c.h autogen/Glyphicons_halflings_regular_svg_c.o autogen/Glyphicons_halflings_regular_ttf.ur autogen/Glyphicons_halflings_regular_ttf.urs autogen/Glyphicons_halflings_regular_ttf_c.h autogen/Glyphicons_halflings_regular_ttf_c.o autogen/Glyphicons_halflings_regular_woff.ur autogen/Glyphicons_halflings_regular_woff.urs autogen/Glyphicons_halflings_regular_woff_c.h autogen/Glyphicons_halflings_regular_woff_c.o
+./lib.urp: ./../JQuery/lib.urp ./../Uru/lib.urp ./Bootstrap.ur ./Bootstrap.urs ./FormSignin.ur ./Makefile .cake3/tmp__lib_in autogen/Bootstrap_css.ur autogen/Bootstrap_css.urs autogen/Bootstrap_css_c.h autogen/Bootstrap_css_c.o autogen/Bootstrap_min_js.ur autogen/Bootstrap_min_js.urs autogen/Bootstrap_min_js_c.h autogen/Bootstrap_min_js_c.o autogen/Bootstrap_theme_css.ur autogen/Bootstrap_theme_css.urs autogen/Bootstrap_theme_css_c.h autogen/Bootstrap_theme_css_c.o autogen/FormSignin_css.ur autogen/FormSignin_css.urs autogen/FormSignin_css_c.h autogen/FormSignin_css_c.o autogen/Glyphicons_halflings_regular_eot.ur autogen/Glyphicons_halflings_regular_eot.urs autogen/Glyphicons_halflings_regular_eot_c.h autogen/Glyphicons_halflings_regular_eot_c.o autogen/Glyphicons_halflings_regular_svg.ur autogen/Glyphicons_halflings_regular_svg.urs autogen/Glyphicons_halflings_regular_svg_c.h autogen/Glyphicons_halflings_regular_svg_c.o autogen/Glyphicons_halflings_regular_ttf.ur autogen/Glyphicons_halflings_regular_ttf.urs autogen/Glyphicons_halflings_regular_ttf_c.h autogen/Glyphicons_halflings_regular_ttf_c.o autogen/Glyphicons_halflings_regular_woff.ur autogen/Glyphicons_halflings_regular_woff.urs autogen/Glyphicons_halflings_regular_woff_c.h autogen/Glyphicons_halflings_regular_woff_c.o autogen/Tooltip_js.ur autogen/Tooltip_js.urs autogen/Tooltip_js_c.h autogen/Tooltip_js_c.o
 	cat .cake3/tmp__lib_in > ./lib.urp
 .cake3/tmp__lib_in: ./Makefile
 	-rm -rf .cake3/tmp__lib_in
@@ -89,6 +89,20 @@ all: ./Makefile ./test/B1.exe ./test/B2.exe ./test/B3_Login.exe ./test/Modal.exe
 	echo 'allow mime text/javascript' >> .cake3/tmp__lib_in
 	echo 'safeGet Bootstrap_min_js/blobpage' >> .cake3/tmp__lib_in
 	echo 'safeGet Bootstrap_min_js/blob' >> .cake3/tmp__lib_in
+	echo 'include autogen/Tooltip_js_c.h' >> .cake3/tmp__lib_in
+	echo 'link autogen/Tooltip_js_c.o' >> .cake3/tmp__lib_in
+	echo 'ffi autogen/Tooltip_js_c' >> .cake3/tmp__lib_in
+	echo 'jsFunc Tooltip_js_js.enable_tooltips = enable_tooltips__unit' >> .cake3/tmp__lib_in
+	echo 'clientOnly Tooltip_js_js.enable_tooltips' >> .cake3/tmp__lib_in
+	echo 'jsFunc Tooltip_js_js.popover = popover__unit' >> .cake3/tmp__lib_in
+	echo 'clientOnly Tooltip_js_js.popover' >> .cake3/tmp__lib_in
+	echo 'jsFunc Tooltip_js_js.tooltip = tooltip__unit' >> .cake3/tmp__lib_in
+	echo 'clientOnly Tooltip_js_js.tooltip' >> .cake3/tmp__lib_in
+	echo 'ffi autogen/Tooltip_js_js' >> .cake3/tmp__lib_in
+	echo 'allow mime text/javascript' >> .cake3/tmp__lib_in
+	echo 'safeGet Tooltip_js/blobpage' >> .cake3/tmp__lib_in
+	echo 'safeGet Tooltip_js/blob' >> .cake3/tmp__lib_in
+	echo 'safeGet Tooltip_js/enable_tooltips' >> .cake3/tmp__lib_in
 	echo 'include autogen/FormSignin_css_c.h' >> .cake3/tmp__lib_in
 	echo 'link autogen/FormSignin_css_c.o' >> .cake3/tmp__lib_in
 	echo 'ffi autogen/FormSignin_css_c' >> .cake3/tmp__lib_in
@@ -104,6 +118,7 @@ all: ./Makefile ./test/B1.exe ./test/B2.exe ./test/B3_Login.exe ./test/Modal.exe
 	echo 'autogen/Bootstrap_css' >> .cake3/tmp__lib_in
 	echo 'autogen/Bootstrap_theme_css' >> .cake3/tmp__lib_in
 	echo 'autogen/Bootstrap_min_js' >> .cake3/tmp__lib_in
+	echo 'autogen/Tooltip_js' >> .cake3/tmp__lib_in
 	echo './Bootstrap' >> .cake3/tmp__lib_in
 	echo 'autogen/FormSignin_css' >> .cake3/tmp__lib_in
 	echo './FormSignin' >> .cake3/tmp__lib_in
@@ -224,6 +239,8 @@ autogen/Modal_css_c.o: ./Makefile autogen/Modal_css_c.c $(call GUARD,URCC) $(cal
 	$(URCC) -c $(URINCL) $(UR_CFLAGS)  -o autogen/Modal_css_c.o autogen/Modal_css_c.c
 autogen/Narrow_css_c.o: ./Makefile autogen/Narrow_css_c.c $(call GUARD,URCC) $(call GUARD,URINCL) $(call GUARD,UR_CFLAGS)
 	$(URCC) -c $(URINCL) $(UR_CFLAGS)  -o autogen/Narrow_css_c.o autogen/Narrow_css_c.c
+autogen/Tooltip_js_c.o: ./Makefile autogen/Tooltip_js_c.c $(call GUARD,URCC) $(call GUARD,URINCL) $(call GUARD,UR_CFLAGS)
+	$(URCC) -c $(URINCL) $(UR_CFLAGS)  -o autogen/Tooltip_js_c.o autogen/Tooltip_js_c.c
 $(call GUARD,URCC):
 	rm -f .cake3/GUARD_URCC_*
 	touch $@
@@ -325,11 +342,13 @@ autogen/Holder_js_c.o: .fix-multy1
 autogen/Modal_css_c.o: .fix-multy1
 .PHONY: autogen/Narrow_css_c.o
 autogen/Narrow_css_c.o: .fix-multy1
+.PHONY: autogen/Tooltip_js_c.o
+autogen/Tooltip_js_c.o: .fix-multy1
 
 endif
 .PHONY: clean
 clean: 
-	-rm ./lib.urp ./test/B1.exe ./test/B1.urp ./test/B2.exe ./test/B2.urp ./test/B3_Login.exe ./test/B3_Login.urp ./test/Modal.exe ./test/Modal.urp ./test/Narrow.exe ./test/Narrow.urp .cake3/tmp__lib_in .cake3/tmp__testB1_in .cake3/tmp__testB2_in .cake3/tmp__testB3_Login_in .cake3/tmp__testModal_in .cake3/tmp__testNarrow_in autogen/B1_css_c.o autogen/B2_css_c.o autogen/B3_Login_css_c.o autogen/Bootstrap_css_c.o autogen/Bootstrap_min_js_c.o autogen/Bootstrap_theme_css_c.o autogen/FormSignin_css_c.o autogen/Glyphicons_halflings_regular_eot_c.o autogen/Glyphicons_halflings_regular_svg_c.o autogen/Glyphicons_halflings_regular_ttf_c.o autogen/Glyphicons_halflings_regular_woff_c.o autogen/Holder_js_c.o autogen/Modal_css_c.o autogen/Narrow_css_c.o
+	-rm ./lib.urp ./test/B1.exe ./test/B1.urp ./test/B2.exe ./test/B2.urp ./test/B3_Login.exe ./test/B3_Login.urp ./test/Modal.exe ./test/Modal.urp ./test/Narrow.exe ./test/Narrow.urp .cake3/tmp__lib_in .cake3/tmp__testB1_in .cake3/tmp__testB2_in .cake3/tmp__testB3_Login_in .cake3/tmp__testModal_in .cake3/tmp__testNarrow_in autogen/B1_css_c.o autogen/B2_css_c.o autogen/B3_Login_css_c.o autogen/Bootstrap_css_c.o autogen/Bootstrap_min_js_c.o autogen/Bootstrap_theme_css_c.o autogen/FormSignin_css_c.o autogen/Glyphicons_halflings_regular_eot_c.o autogen/Glyphicons_halflings_regular_svg_c.o autogen/Glyphicons_halflings_regular_ttf_c.o autogen/Glyphicons_halflings_regular_woff_c.o autogen/Holder_js_c.o autogen/Modal_css_c.o autogen/Narrow_css_c.o autogen/Tooltip_js_c.o
 	-rm -rf .cake3
 
 endif

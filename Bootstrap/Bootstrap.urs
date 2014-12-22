@@ -8,6 +8,9 @@ val add : t ::: {Type} -> [t ~ out]
   => (record (dpage (t ++ out)) -> transaction page)
   -> record (dpage (t ++ need)) -> transaction page
 
+val tooltip_show : id -> string -> transaction unit
+val popover_show : id -> string -> transaction unit
+
 style active
 style divider
 style item
