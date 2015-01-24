@@ -29,6 +29,7 @@ fun main {} : transaction page =
           <active code={
             BM.slider_add i
               { Min = 0, Max = 20, Step = 1, Value = 2, Label = "Current value",
+                Tooltip = "show",
                 OnSlide = (fn v => set s (show v)) 
               };
             return <xml/>

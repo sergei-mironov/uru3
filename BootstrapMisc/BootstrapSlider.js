@@ -6,6 +6,7 @@ function bootstrap_slider_add__unit (
        Max : int,
        Step : int,
        Value : int,
+       Tooltip : string,
        OnSlide : (int -> transaction {})
      }
    */ o) {
@@ -15,6 +16,7 @@ function bootstrap_slider_add__unit (
     max : o._Max,
     step : o._Step,
     value : o._Value,
+    tooltip : o._Tooltip,
     formatter: function(value) {
       return o._Label + ': ' + value;
     }
