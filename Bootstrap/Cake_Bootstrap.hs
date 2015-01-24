@@ -10,8 +10,8 @@ lib = do
     rewrite style "Bootstrap/bs3_table table"
     rewrite style "Bootstrap/* [-]"
     ffi (file "NavTag.urs")
-    library' (externalMake (file "../Uru/lib.urp"))
-    library' (externalMake (file "../JQuery/lib.urp"))
+    library (externalMake (file "../Uru/lib.urp"))
+    library (externalMake (file "../JQuery/lib.urp"))
     bin (file "dist/fonts/glyphicons-halflings-regular.eot") []
     bin (file "dist/fonts/glyphicons-halflings-regular.svg") []
     bin (file "dist/fonts/glyphicons-halflings-regular.ttf") []

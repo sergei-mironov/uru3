@@ -301,18 +301,8 @@ lib: .fix-multy1
 .INTERMEDIATE: .fix-multy1
 .fix-multy1: 
 	-mkdir .cake3
-	$(MAKE) -C ./../Uru -f Makefile 
 	$(MAKE) -C ./../JQuery -f Makefile 
 	$(MAKE) -C ./../Uru -f Makefile 
-	$(MAKE) -C ./../JQuery -f Makefile 
-	$(MAKE) -C ./../Uru -f Makefile 
-	$(MAKE) -C ./../JQuery -f Makefile 
-	$(MAKE) -C ./../Uru -f Makefile 
-	$(MAKE) -C ./../JQuery -f Makefile 
-	$(MAKE) -C ./../Uru -f Makefile 
-	$(MAKE) -C ./../JQuery -f Makefile 
-	$(MAKE) -C ./../Uru -f Makefile 
-	$(MAKE) -C ./../JQuery -f Makefile 
 	MAIN=1 $(MAKE) -f ./Makefile $(MAKECMDGOALS)
 .PHONY: autogen/B1_css_c.o
 autogen/B1_css_c.o: .fix-multy1

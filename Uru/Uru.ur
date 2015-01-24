@@ -48,6 +48,9 @@ fun withHeader [t] h f r =
   *)
   f (r -- #Hdr ++ {Hdr = <xml>{r.Hdr}{h}</xml>})
 
+fun withStylesheet [t] u f r =
+  f (r -- #Hdr ++ {Hdr = <xml>{r.Hdr}<link rel="stylesheet" href={u}/></xml>})
+
 fun run f : transaction page =
   f {
     Tags = {} ,

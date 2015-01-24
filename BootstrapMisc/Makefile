@@ -13,7 +13,7 @@ URINCL = -I$(shell urweb -print-cinclude)
 URVERSION = $(shell urweb -version)
 .PHONY: all
 all: ./Makefile ./lib.urp ./test/BSM1.exe
-./lib.urp: ./../Bootstrap/lib.urp ./BootstrapMisc.ur ./Makefile .cake3/tmp__lib_in autogen/Bootstrap_slider_css.ur autogen/Bootstrap_slider_css.urs autogen/Bootstrap_slider_css_c.h autogen/Bootstrap_slider_css_c.o autogen/Bootstrap_slider_min_js.ur autogen/Bootstrap_slider_min_js.urs autogen/Bootstrap_slider_min_js_c.h autogen/Bootstrap_slider_min_js_c.o
+./lib.urp: ./../Bootstrap/lib.urp ./BootstrapMisc.ur ./Makefile .cake3/tmp__lib_in autogen/BootstrapSlider_js.ur autogen/BootstrapSlider_js.urs autogen/BootstrapSlider_js_c.h autogen/BootstrapSlider_js_c.o autogen/Bootstrap_slider_css.ur autogen/Bootstrap_slider_css.urs autogen/Bootstrap_slider_css_c.h autogen/Bootstrap_slider_css_c.o autogen/Bootstrap_slider_min_js.ur autogen/Bootstrap_slider_min_js.urs autogen/Bootstrap_slider_min_js_c.h autogen/Bootstrap_slider_min_js_c.o
 	cat .cake3/tmp__lib_in > ./lib.urp
 .cake3/tmp__lib_in: ./Makefile
 	-rm -rf .cake3/tmp__lib_in
@@ -32,9 +32,19 @@ all: ./Makefile ./lib.urp ./test/BSM1.exe
 	echo 'allow mime text/css' >> .cake3/tmp__lib_in
 	echo 'safeGet Bootstrap_slider_css/blobpage' >> .cake3/tmp__lib_in
 	echo 'safeGet Bootstrap_slider_css/blob' >> .cake3/tmp__lib_in
+	echo 'include autogen/BootstrapSlider_js_c.h' >> .cake3/tmp__lib_in
+	echo 'link autogen/BootstrapSlider_js_c.o' >> .cake3/tmp__lib_in
+	echo 'ffi autogen/BootstrapSlider_js_c' >> .cake3/tmp__lib_in
+	echo 'jsFunc BootstrapSlider_js_js.bootstrap_slider_add = bootstrap_slider_add__unit' >> .cake3/tmp__lib_in
+	echo 'clientOnly BootstrapSlider_js_js.bootstrap_slider_add' >> .cake3/tmp__lib_in
+	echo 'ffi autogen/BootstrapSlider_js_js' >> .cake3/tmp__lib_in
+	echo 'allow mime text/javascript' >> .cake3/tmp__lib_in
+	echo 'safeGet BootstrapSlider_js/blobpage' >> .cake3/tmp__lib_in
+	echo 'safeGet BootstrapSlider_js/blob' >> .cake3/tmp__lib_in
 	echo '' >> .cake3/tmp__lib_in
 	echo 'autogen/Bootstrap_slider_min_js' >> .cake3/tmp__lib_in
 	echo 'autogen/Bootstrap_slider_css' >> .cake3/tmp__lib_in
+	echo 'autogen/BootstrapSlider_js' >> .cake3/tmp__lib_in
 	echo './BootstrapMisc' >> .cake3/tmp__lib_in
 ./test/BSM1.exe: ./Makefile ./test/BSM1.urp $(call GUARD,URVERSION)
 	urweb -dbms sqlite ./test/BSM1
@@ -60,6 +70,8 @@ all: ./Makefile ./lib.urp ./test/BSM1.exe
 lib: ./Makefile ./lib.urp
 autogen/BSM1_css_c.o: ./Makefile autogen/BSM1_css_c.c $(call GUARD,URCC) $(call GUARD,URINCL) $(call GUARD,UR_CFLAGS)
 	$(URCC) -c $(URINCL) $(UR_CFLAGS)  -o autogen/BSM1_css_c.o autogen/BSM1_css_c.c
+autogen/BootstrapSlider_js_c.o: ./Makefile autogen/BootstrapSlider_js_c.c $(call GUARD,URCC) $(call GUARD,URINCL) $(call GUARD,UR_CFLAGS)
+	$(URCC) -c $(URINCL) $(UR_CFLAGS)  -o autogen/BootstrapSlider_js_c.o autogen/BootstrapSlider_js_c.c
 autogen/Bootstrap_slider_css_c.o: ./Makefile autogen/Bootstrap_slider_css_c.c $(call GUARD,URCC) $(call GUARD,URINCL) $(call GUARD,UR_CFLAGS)
 	$(URCC) -c $(URINCL) $(UR_CFLAGS)  -o autogen/Bootstrap_slider_css_c.o autogen/Bootstrap_slider_css_c.c
 autogen/Bootstrap_slider_min_js_c.o: ./Makefile autogen/Bootstrap_slider_min_js_c.c $(call GUARD,URCC) $(call GUARD,URINCL) $(call GUARD,UR_CFLAGS)
@@ -101,11 +113,11 @@ lib: .fix-multy1
 .fix-multy1: 
 	-mkdir .cake3
 	$(MAKE) -C ./../Bootstrap -f Makefile 
-	$(MAKE) -C ./../Bootstrap -f Makefile 
-	$(MAKE) -C ./../Bootstrap -f Makefile 
 	MAIN=1 $(MAKE) -f ./Makefile $(MAKECMDGOALS)
 .PHONY: autogen/BSM1_css_c.o
 autogen/BSM1_css_c.o: .fix-multy1
+.PHONY: autogen/BootstrapSlider_js_c.o
+autogen/BootstrapSlider_js_c.o: .fix-multy1
 .PHONY: autogen/Bootstrap_slider_css_c.o
 autogen/Bootstrap_slider_css_c.o: .fix-multy1
 .PHONY: autogen/Bootstrap_slider_min_js_c.o
@@ -114,7 +126,7 @@ autogen/Bootstrap_slider_min_js_c.o: .fix-multy1
 endif
 .PHONY: clean
 clean: 
-	-rm ./lib.urp ./test/BSM1.exe ./test/BSM1.urp .cake3/tmp__lib_in .cake3/tmp__testBSM1_in autogen/BSM1_css_c.o autogen/Bootstrap_slider_css_c.o autogen/Bootstrap_slider_min_js_c.o
+	-rm ./lib.urp ./test/BSM1.exe ./test/BSM1.urp .cake3/tmp__lib_in .cake3/tmp__testBSM1_in autogen/BSM1_css_c.o autogen/BootstrapSlider_js_c.o autogen/Bootstrap_slider_css_c.o autogen/Bootstrap_slider_min_js_c.o
 	-rm -rf .cake3
 
 endif

@@ -11,7 +11,10 @@ fun add [t:::{Type}] [t~out]
     val h = <xml>
               <link rel="stylesheet" href={Bootstrap_slider_css.geturl}/>
               {Script.insert Uru.javascript Bootstrap_slider_min_js.geturl}
+              {Script.insert Uru.javascript BootstrapSlider_js.geturl}
             </xml> 
   in
     f (Uru.addHeader h (Uru.addTag [#BOOTSTRAP_MISC] {} r))
   end
+
+val slider_add = BootstrapSlider_js.bootstrap_slider_add

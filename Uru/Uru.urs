@@ -22,6 +22,11 @@ val withHeader : t ::: {Type}
   -> (record (dpage t) -> transaction page)
   -> record (dpage t) -> transaction page
 
+val withStylesheet : t ::: {Type}
+  -> url
+  -> (record (dpage t) -> transaction page)
+  -> record (dpage t) -> transaction page
+
 val addHeader : t1 ::: {Type}
   -> xhead
   -> record (dpage t1) -> (record (dpage t1))

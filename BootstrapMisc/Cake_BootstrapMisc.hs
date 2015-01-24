@@ -11,6 +11,7 @@ lib = do
     library (externalMake (file "../Bootstrap/lib.urp"))
     bin (file "bootstrap-slider/dist/bootstrap-slider.min.js") [NoScan]
     bin (file "bootstrap-slider/dist/css/bootstrap-slider.css") [NoScan]
+    bin (file "BootstrapSlider.js") []
     ur (single (file "BootstrapMisc.ur"))
 
 bsm1 = mkDemo (file "test/BSM1.ur") (return ())
