@@ -112,7 +112,7 @@ lib: .fix-multy1
 .INTERMEDIATE: .fix-multy1
 .fix-multy1: 
 	-mkdir .cake3
-	$(MAKE) -C ./../Bootstrap -f Makefile 
+	$(MAKE) -C ./../Bootstrap -f Makefile lib
 	MAIN=1 $(MAKE) -f ./Makefile $(MAKECMDGOALS)
 .PHONY: autogen/BSM1_css_c.o
 autogen/BSM1_css_c.o: .fix-multy1

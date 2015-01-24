@@ -8,7 +8,7 @@ import Cake_BootstrapMisc_P
 
 lib = do
   uwlib (file "lib.urp") $ do
-    library (externalMake (file "../Bootstrap/lib.urp"))
+    library (externalMakeTarget (file "../Bootstrap/lib.urp") "lib")
     bin (file "bootstrap-slider/dist/bootstrap-slider.min.js") [NoScan]
     bin (file "bootstrap-slider/dist/css/bootstrap-slider.css") [NoScan]
     bin (file "BootstrapSlider.js") []
