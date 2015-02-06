@@ -8,31 +8,36 @@ unexport MAIN
 
 # Main section
 
-URCC = $(shell $(shell urweb -print-ccompiler) -print-prog-name=gcc)
-URINCL = -I$(shell urweb -print-cinclude) 
-.PHONY: all
-all: ./Makefile ./lib.urp
-./lib.urp: ./CSS.ur ./CSS.urs ./Makefile ./Script.h ./Script.o ./Uru.ur ./Uru.urs .cake3/tmplib.in0
-	cat .cake3/tmplib.in0 > ./lib.urp
-.cake3/tmplib.in0: ./Makefile
-	-rm -rf .cake3/tmplib.in0
-	echo 'ffi ./Script' >> .cake3/tmplib.in0
-	echo 'include ./Script.h' >> .cake3/tmplib.in0
-	echo 'link ./Script.o' >> .cake3/tmplib.in0
-	echo '' >> .cake3/tmplib.in0
-	echo '$$/list' >> .cake3/tmplib.in0
-	echo './CSS' >> .cake3/tmplib.in0
-	echo './Uru' >> .cake3/tmplib.in0
-./Script.o: ./Makefile ./Script.c $(call GUARD,URCC) $(call GUARD,URINCL) $(call GUARD,UR_CFLAGS)
-	$(URCC) -c $(URINCL) $(UR_CFLAGS)  -o ./Script.o ./Script.c
-$(call GUARD,URCC):
-	rm -f .cake3/GUARD_URCC_*
-	touch $@
-$(call GUARD,URINCL):
-	rm -f .cake3/GUARD_URINCL_*
+UR_CC = $(shell $(shell urweb -print-ccompiler) -print-prog-name=gcc)
+UR_INCL = -I$(shell urweb -print-cinclude) 
+.PHONY: ./all
+./all: ./Makefile ./lib.urp
+./.cake3/tmp___lib_in_2: ./Makefile ./CSS.ur ./CSS.urs ./Script.h ./Script.o ./Uru.ur ./Uru.urs
+	( \
+	echo   ;\
+	echo $$\/list  ;\
+	echo \.\/CSS  ;\
+	echo \.\/Uru  ;\
+	) > ./.cake3/tmp___lib_in_2
+./.cake3/tmp___lib_in_1: ./Makefile ./CSS.ur ./CSS.urs ./Script.h ./Script.o ./Uru.ur ./Uru.urs
+	( \
+	echo ffi\ \.\/Script  ;\
+	echo include\ \.\/Script\.h  ;\
+	echo link\ \.\/Script\.o  ;\
+	) > ./.cake3/tmp___lib_in_1
+./Script.o: ./Makefile ./Script.c $(call GUARD,UR_CC) $(call GUARD,UR_CFLAGS) $(call GUARD,UR_INCL)
+	$(UR_CC) -c $(UR_INCL) $(UR_CFLAGS)  -o ./Script.o ./Script.c
+./lib.urp: ./Makefile ./.cake3/tmp___lib_in_1 ./.cake3/tmp___lib_in_2
+	cat ./.cake3/tmp___lib_in_1 > ./lib.urp
+	cat ./.cake3/tmp___lib_in_2 >> ./lib.urp
+$(call GUARD,UR_CC):
+	rm -f .cake3/GUARD_UR_CC_*
 	touch $@
 $(call GUARD,UR_CFLAGS):
 	rm -f .cake3/GUARD_UR_CFLAGS_*
+	touch $@
+$(call GUARD,UR_INCL):
+	rm -f .cake3/GUARD_UR_INCL_*
 	touch $@
 
 else
@@ -41,23 +46,25 @@ else
 
 ifneq ($(MAKECMDGOALS),clean)
 
-.PHONY: all
-all: .fix-multy1
-.PHONY: ./lib.urp
-./lib.urp: .fix-multy1
-.PHONY: .cake3/tmplib.in0
-.cake3/tmplib.in0: .fix-multy1
-.PHONY: ./Script.o
-./Script.o: .fix-multy1
-.INTERMEDIATE: .fix-multy1
-.fix-multy1: 
+.PHONY: ./all
+./all: ./.fix-multy1
+.PHONY: ./.cake3/tmp___lib_in_2
+./.cake3/tmp___lib_in_2: ./.fix-multy1
+.PHONY: ./.cake3/tmp___lib_in_1
+./.cake3/tmp___lib_in_1: ./.fix-multy1
+.INTERMEDIATE: ./.fix-multy1
+./.fix-multy1: 
 	-mkdir .cake3
 	MAIN=1 $(MAKE) -f ./Makefile $(MAKECMDGOALS)
+.PHONY: ./Script.o
+./Script.o: ./.fix-multy1
+.PHONY: ./lib.urp
+./lib.urp: ./.fix-multy1
 
 endif
-.PHONY: clean
-clean: 
-	-rm ./Script.o ./lib.urp .cake3/tmplib.in0
+.PHONY: ./clean
+./clean: 
+	-rm ./.cake3/tmp___lib_in_1 ./.cake3/tmp___lib_in_2 ./Script.o ./lib.urp
 	-rm -rf .cake3
 
 endif
