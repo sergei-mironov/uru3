@@ -12,10 +12,10 @@ fun add [t] [t~out] f r =
 
     val h = <xml>
               {css_urls}
-              <link rel="stylesheet" href={Bootstrap_css.geturl}/>
-              <link rel="stylesheet" href={Bootstrap_theme_css.geturl}/>
-              {Script.insert Uru.javascript Bootstrap_min_js.geturl}
-              {Script.insert Uru.javascript Tooltip_js.geturl}
+              <link rel="stylesheet" href={Bootstrap_css.url}/>
+              <link rel="stylesheet" href={Bootstrap_theme_css.url}/>
+              {Script.insert Uru.javascript Bootstrap_min_js.url}
+              {Script.insert Uru.javascript Tooltip_js.url}
             </xml> 
     
     (* val l = return {} *)

@@ -8,7 +8,7 @@ fun main {} : transaction page =
   Bootstrap.add (
   Uru.withHeader (
     <xml>
-      <link rel="stylesheet" href={B1_css.geturl}/>
+      <link rel="stylesheet" href={B1_css.url}/>
     </xml>) (
   Uru.withBody (fn _ =>
     cls <- return (CSS.list);

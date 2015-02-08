@@ -9,7 +9,7 @@ fun add [t:::{Type}] [t~out]
 
   let
     val h = <xml>
-              <link rel="stylesheet" href={FormSignin_css.geturl}/>
+              <link rel="stylesheet" href={FormSignin_css.url}/>
             </xml> 
   in
     f (Uru.addHeader h (Uru.addTag [#SIGNIN] {} r))

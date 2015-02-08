@@ -3,90 +3,86 @@ module Cake_Bootstrap where
 
 import Development.Cake3
 import Development.Cake3.Ext.UrWeb
+import Development.Cake3.Utils.Slice
 import Cake_Bootstrap_P
+import qualified Cake_URU as URU
+import qualified Cake_JQ as JQ
 
 lib = do
   uwlib (file "lib.urp") $ do
     rewrite style "Bootstrap/bs3_table table"
     rewrite style "Bootstrap/* [-]"
     ffi (file "NavTag.urs")
-    library (externalMake (file "../Uru/lib.urp"))
-    library (externalMake (file "../JQuery/lib.urp"))
-    bin (file "dist/fonts/glyphicons-halflings-regular.eot") []
-    bin (file "dist/fonts/glyphicons-halflings-regular.svg") []
-    bin (file "dist/fonts/glyphicons-halflings-regular.ttf") []
-    bin (file "dist/fonts/glyphicons-halflings-regular.woff") []
-    bin (file "dist/css/bootstrap.css") []
-    bin (file "dist/css/bootstrap-theme.css") []
-    bin (file "dist/js/bootstrap.min.js") [NoScan]
-    bin (file "Tooltip.js") []
-    safeGet' "Tooltip_js/enable_tooltips"
-    ur (pair (file "Bootstrap.ur"))
-    bin (file "FormSignin.css") []
-    ur (single (file "FormSignin.ur"))
+    library JQ.lib
+    library URU.lib
+    embed (file "dist/fonts/glyphicons-halflings-regular.eot")
+    embed (file "dist/fonts/glyphicons-halflings-regular.svg")
+    embed (file "dist/fonts/glyphicons-halflings-regular.ttf")
+    embed (file "dist/fonts/glyphicons-halflings-regular.woff")
+    embed (mangled (file "dist/css/bootstrap.css"))
+    embed (file "dist/css/bootstrap-theme.css")
+    embed (file "dist/js/bootstrap.min.js")
+    embed (mangled (file "Tooltip.js"))
+    embed (file "FormSignin.css")
 
-demo1 useUrembed = do
+    safeGet "Tooltip_js/enable_tooltips"
+    ur (pair (file "Bootstrap.ur"))
+    ur (file "FormSignin.ur")
+
+demo1 = do
   u <- lib
   uwapp "-dbms sqlite" (file "test/B1.urp") $ do
     rewrite style "B1/* [-]"
     library u
     ur (sys "list")
-    bin (file "test/B1.css") useUrembed
+    embed (file "test/B1.css")
     ur (pair (file "test/B1.ur"))
 
-demo2 useUrembed = do
-  u <- lib
+demo2 = do
   uwapp "-dbms sqlite" (file "test/B2.urp") $ do
     allow url "https://github.com/grwlf/*"
     allow url "https://camo.githubusercontent.com/*"
     rewrite style "B2/* [-]"
-    library u
+    library lib
     ur (sys "list")
-    bin (file "test/B2.css") useUrembed
-    bin (file "test/holder.js") useUrembed
+    embed (file "test/B2.css")
+    embed (file "test/holder.js")
     ur (pair (file "test/B2.ur"))
 
-demo3 useUrembed = do
-  u <- lib
+demo3 = do
   uwapp "-dbms sqlite" (file "test/B3_Login.urp") $ do
     allow url "https://github.com/grwlf/*"
     allow url "https://camo.githubusercontent.com/*"
     rewrite style "B3_Login/* [-]"
-    library u
+    library lib
     ur (sys "list")
-    bin (file "test/B3_Login.css") useUrembed
+    embed (file "test/B3_Login.css")
     ur (pair (file "test/B3_Login.ur"))
 
-mkdemo1 src bdy useUrembed = do
-  u <- lib
+mkdemo1 src bdy = do
   uwapp "-dbms sqlite" ((src .= "urp")) $ do
-    library u
+    library lib
     ur (sys "list")
-    bin ((src .= "css")) useUrembed
-    ur (single ((src .= "ur")))
+    embed ((src .= "css"))
+    ur (src .= "ur")
     bdy
 
-demo_modal = mkdemo1 (file "test/Modal.ur") $ do
-  return ()
+demo_modal = mkdemo1 (file "test/Modal.ur") $ return ()
 
-demo_narrow = mkdemo1 (file "test/Narrow.ur") $ do
-  return ()
+demo_narrow = mkdemo1 (file "test/Narrow.ur") $ return ()
 
-mfiles f = do
-  writeMake (file "Makefile.devel") (f [UseUrembed,NoScan])
-  writeMake (file "Makefile") (f [NoScan])
+main = writeSliced (file "Makefile.dev") [(file "Makefile", [urembed,cake3,cakegen])] $ do
+  selfUpdate
 
-main = do
-  mfiles $ \useUrembed -> do
-    rule $ do
-      phony "lib"
-      depend lib
+  rule $ do
+    phony "lib"
+    depend lib
 
-    rule $ do
-      phony "all"
-      depend (demo1 useUrembed)
-      depend (demo2 useUrembed)
-      depend (demo3 useUrembed)
-      depend (demo_modal useUrembed)
-      depend (demo_narrow useUrembed)
+  rule $ do
+    phony "all"
+    depend demo1
+    depend demo2
+    depend demo3
+    depend demo_modal
+    depend demo_narrow
 

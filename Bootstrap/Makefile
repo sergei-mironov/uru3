@@ -8,250 +8,258 @@ unexport MAIN
 
 # Main section
 
-URCC = $(shell $(shell urweb -print-ccompiler) -print-prog-name=gcc)
-URINCL = -I$(shell urweb -print-cinclude) 
 URVERSION = $(shell urweb -version)
-.PHONY: all
-all: ./Makefile ./test/B1.exe ./test/B2.exe ./test/B3_Login.exe ./test/Modal.exe ./test/Narrow.exe
-./test/Narrow.exe: ./Makefile ./test/Narrow.urp $(call GUARD,URVERSION)
-	urweb -dbms sqlite ./test/Narrow
-./test/Narrow.urp: ./Makefile ./lib.urp ./test/Narrow.ur .cake3/tmp__testNarrow_in autogen/Narrow_css.ur autogen/Narrow_css.urs autogen/Narrow_css_c.h autogen/Narrow_css_c.o
-	cat .cake3/tmp__testNarrow_in > ./test/Narrow.urp
-.cake3/tmp__testNarrow_in: ./Makefile
-	-rm -rf .cake3/tmp__testNarrow_in
-	echo 'library ../.' >> .cake3/tmp__testNarrow_in
-	echo 'include ../autogen/Narrow_css_c.h' >> .cake3/tmp__testNarrow_in
-	echo 'link ../autogen/Narrow_css_c.o' >> .cake3/tmp__testNarrow_in
-	echo 'ffi ../autogen/Narrow_css_c' >> .cake3/tmp__testNarrow_in
-	echo 'ffi ../autogen/Narrow_css_js' >> .cake3/tmp__testNarrow_in
-	echo 'allow mime text/css' >> .cake3/tmp__testNarrow_in
-	echo 'safeGet Narrow_css/blobpage' >> .cake3/tmp__testNarrow_in
-	echo 'safeGet Narrow_css/blob' >> .cake3/tmp__testNarrow_in
-	echo '' >> .cake3/tmp__testNarrow_in
-	echo '$$/list' >> .cake3/tmp__testNarrow_in
-	echo '../autogen/Narrow_css' >> .cake3/tmp__testNarrow_in
-	echo '.././test/Narrow' >> .cake3/tmp__testNarrow_in
-./lib.urp: ./../JQuery/lib.urp ./../Uru/lib.urp ./Bootstrap.ur ./Bootstrap.urs ./FormSignin.ur ./Makefile .cake3/tmp__lib_in autogen/Bootstrap_css.ur autogen/Bootstrap_css.urs autogen/Bootstrap_css_c.h autogen/Bootstrap_css_c.o autogen/Bootstrap_min_js.ur autogen/Bootstrap_min_js.urs autogen/Bootstrap_min_js_c.h autogen/Bootstrap_min_js_c.o autogen/Bootstrap_theme_css.ur autogen/Bootstrap_theme_css.urs autogen/Bootstrap_theme_css_c.h autogen/Bootstrap_theme_css_c.o autogen/FormSignin_css.ur autogen/FormSignin_css.urs autogen/FormSignin_css_c.h autogen/FormSignin_css_c.o autogen/Glyphicons_halflings_regular_eot.ur autogen/Glyphicons_halflings_regular_eot.urs autogen/Glyphicons_halflings_regular_eot_c.h autogen/Glyphicons_halflings_regular_eot_c.o autogen/Glyphicons_halflings_regular_svg.ur autogen/Glyphicons_halflings_regular_svg.urs autogen/Glyphicons_halflings_regular_svg_c.h autogen/Glyphicons_halflings_regular_svg_c.o autogen/Glyphicons_halflings_regular_ttf.ur autogen/Glyphicons_halflings_regular_ttf.urs autogen/Glyphicons_halflings_regular_ttf_c.h autogen/Glyphicons_halflings_regular_ttf_c.o autogen/Glyphicons_halflings_regular_woff.ur autogen/Glyphicons_halflings_regular_woff.urs autogen/Glyphicons_halflings_regular_woff_c.h autogen/Glyphicons_halflings_regular_woff_c.o autogen/Tooltip_js.ur autogen/Tooltip_js.urs autogen/Tooltip_js_c.h autogen/Tooltip_js_c.o
-	cat .cake3/tmp__lib_in > ./lib.urp
-.cake3/tmp__lib_in: ./Makefile
-	-rm -rf .cake3/tmp__lib_in
-	echo 'rewrite style Bootstrap/bs3_table table' >> .cake3/tmp__lib_in
-	echo 'rewrite style Bootstrap/* [-]' >> .cake3/tmp__lib_in
-	echo 'ffi ./NavTag' >> .cake3/tmp__lib_in
-	echo 'library ./../Uru' >> .cake3/tmp__lib_in
-	echo 'library ./../JQuery' >> .cake3/tmp__lib_in
-	echo 'include autogen/Glyphicons_halflings_regular_eot_c.h' >> .cake3/tmp__lib_in
-	echo 'link autogen/Glyphicons_halflings_regular_eot_c.o' >> .cake3/tmp__lib_in
-	echo 'ffi autogen/Glyphicons_halflings_regular_eot_c' >> .cake3/tmp__lib_in
-	echo 'ffi autogen/Glyphicons_halflings_regular_eot_js' >> .cake3/tmp__lib_in
-	echo 'allow mime application/vnd.ms-fontobject' >> .cake3/tmp__lib_in
-	echo 'safeGet Glyphicons_halflings_regular_eot/blobpage' >> .cake3/tmp__lib_in
-	echo 'safeGet Glyphicons_halflings_regular_eot/blob' >> .cake3/tmp__lib_in
-	echo 'include autogen/Glyphicons_halflings_regular_svg_c.h' >> .cake3/tmp__lib_in
-	echo 'link autogen/Glyphicons_halflings_regular_svg_c.o' >> .cake3/tmp__lib_in
-	echo 'ffi autogen/Glyphicons_halflings_regular_svg_c' >> .cake3/tmp__lib_in
-	echo 'ffi autogen/Glyphicons_halflings_regular_svg_js' >> .cake3/tmp__lib_in
-	echo 'allow mime image/svg+xml' >> .cake3/tmp__lib_in
-	echo 'safeGet Glyphicons_halflings_regular_svg/blobpage' >> .cake3/tmp__lib_in
-	echo 'safeGet Glyphicons_halflings_regular_svg/blob' >> .cake3/tmp__lib_in
-	echo 'include autogen/Glyphicons_halflings_regular_ttf_c.h' >> .cake3/tmp__lib_in
-	echo 'link autogen/Glyphicons_halflings_regular_ttf_c.o' >> .cake3/tmp__lib_in
-	echo 'ffi autogen/Glyphicons_halflings_regular_ttf_c' >> .cake3/tmp__lib_in
-	echo 'ffi autogen/Glyphicons_halflings_regular_ttf_js' >> .cake3/tmp__lib_in
-	echo 'allow mime application/x-font-ttf' >> .cake3/tmp__lib_in
-	echo 'safeGet Glyphicons_halflings_regular_ttf/blobpage' >> .cake3/tmp__lib_in
-	echo 'safeGet Glyphicons_halflings_regular_ttf/blob' >> .cake3/tmp__lib_in
-	echo 'include autogen/Glyphicons_halflings_regular_woff_c.h' >> .cake3/tmp__lib_in
-	echo 'link autogen/Glyphicons_halflings_regular_woff_c.o' >> .cake3/tmp__lib_in
-	echo 'ffi autogen/Glyphicons_halflings_regular_woff_c' >> .cake3/tmp__lib_in
-	echo 'ffi autogen/Glyphicons_halflings_regular_woff_js' >> .cake3/tmp__lib_in
-	echo 'allow mime application/font-woff' >> .cake3/tmp__lib_in
-	echo 'safeGet Glyphicons_halflings_regular_woff/blobpage' >> .cake3/tmp__lib_in
-	echo 'safeGet Glyphicons_halflings_regular_woff/blob' >> .cake3/tmp__lib_in
-	echo 'include autogen/Bootstrap_css_c.h' >> .cake3/tmp__lib_in
-	echo 'link autogen/Bootstrap_css_c.o' >> .cake3/tmp__lib_in
-	echo 'ffi autogen/Bootstrap_css_c' >> .cake3/tmp__lib_in
-	echo 'ffi autogen/Bootstrap_css_js' >> .cake3/tmp__lib_in
-	echo 'allow mime text/css' >> .cake3/tmp__lib_in
-	echo 'safeGet Bootstrap_css/blobpage' >> .cake3/tmp__lib_in
-	echo 'safeGet Bootstrap_css/blob' >> .cake3/tmp__lib_in
-	echo 'include autogen/Bootstrap_theme_css_c.h' >> .cake3/tmp__lib_in
-	echo 'link autogen/Bootstrap_theme_css_c.o' >> .cake3/tmp__lib_in
-	echo 'ffi autogen/Bootstrap_theme_css_c' >> .cake3/tmp__lib_in
-	echo 'ffi autogen/Bootstrap_theme_css_js' >> .cake3/tmp__lib_in
-	echo 'allow mime text/css' >> .cake3/tmp__lib_in
-	echo 'safeGet Bootstrap_theme_css/blobpage' >> .cake3/tmp__lib_in
-	echo 'safeGet Bootstrap_theme_css/blob' >> .cake3/tmp__lib_in
-	echo 'include autogen/Bootstrap_min_js_c.h' >> .cake3/tmp__lib_in
-	echo 'link autogen/Bootstrap_min_js_c.o' >> .cake3/tmp__lib_in
-	echo 'ffi autogen/Bootstrap_min_js_c' >> .cake3/tmp__lib_in
-	echo 'ffi autogen/Bootstrap_min_js_js' >> .cake3/tmp__lib_in
-	echo 'allow mime text/javascript' >> .cake3/tmp__lib_in
-	echo 'safeGet Bootstrap_min_js/blobpage' >> .cake3/tmp__lib_in
-	echo 'safeGet Bootstrap_min_js/blob' >> .cake3/tmp__lib_in
-	echo 'include autogen/Tooltip_js_c.h' >> .cake3/tmp__lib_in
-	echo 'link autogen/Tooltip_js_c.o' >> .cake3/tmp__lib_in
-	echo 'ffi autogen/Tooltip_js_c' >> .cake3/tmp__lib_in
-	echo 'jsFunc Tooltip_js_js.enable_tooltips = enable_tooltips__unit' >> .cake3/tmp__lib_in
-	echo 'clientOnly Tooltip_js_js.enable_tooltips' >> .cake3/tmp__lib_in
-	echo 'jsFunc Tooltip_js_js.popover = popover__unit' >> .cake3/tmp__lib_in
-	echo 'clientOnly Tooltip_js_js.popover' >> .cake3/tmp__lib_in
-	echo 'jsFunc Tooltip_js_js.tooltip = tooltip__unit' >> .cake3/tmp__lib_in
-	echo 'clientOnly Tooltip_js_js.tooltip' >> .cake3/tmp__lib_in
-	echo 'ffi autogen/Tooltip_js_js' >> .cake3/tmp__lib_in
-	echo 'allow mime text/javascript' >> .cake3/tmp__lib_in
-	echo 'safeGet Tooltip_js/blobpage' >> .cake3/tmp__lib_in
-	echo 'safeGet Tooltip_js/blob' >> .cake3/tmp__lib_in
-	echo 'safeGet Tooltip_js/enable_tooltips' >> .cake3/tmp__lib_in
-	echo 'include autogen/FormSignin_css_c.h' >> .cake3/tmp__lib_in
-	echo 'link autogen/FormSignin_css_c.o' >> .cake3/tmp__lib_in
-	echo 'ffi autogen/FormSignin_css_c' >> .cake3/tmp__lib_in
-	echo 'ffi autogen/FormSignin_css_js' >> .cake3/tmp__lib_in
-	echo 'allow mime text/css' >> .cake3/tmp__lib_in
-	echo 'safeGet FormSignin_css/blobpage' >> .cake3/tmp__lib_in
-	echo 'safeGet FormSignin_css/blob' >> .cake3/tmp__lib_in
-	echo '' >> .cake3/tmp__lib_in
-	echo 'autogen/Glyphicons_halflings_regular_eot' >> .cake3/tmp__lib_in
-	echo 'autogen/Glyphicons_halflings_regular_svg' >> .cake3/tmp__lib_in
-	echo 'autogen/Glyphicons_halflings_regular_ttf' >> .cake3/tmp__lib_in
-	echo 'autogen/Glyphicons_halflings_regular_woff' >> .cake3/tmp__lib_in
-	echo 'autogen/Bootstrap_css' >> .cake3/tmp__lib_in
-	echo 'autogen/Bootstrap_theme_css' >> .cake3/tmp__lib_in
-	echo 'autogen/Bootstrap_min_js' >> .cake3/tmp__lib_in
-	echo 'autogen/Tooltip_js' >> .cake3/tmp__lib_in
-	echo './Bootstrap' >> .cake3/tmp__lib_in
-	echo 'autogen/FormSignin_css' >> .cake3/tmp__lib_in
-	echo './FormSignin' >> .cake3/tmp__lib_in
-./test/Modal.exe: ./Makefile ./test/Modal.urp $(call GUARD,URVERSION)
-	urweb -dbms sqlite ./test/Modal
-./test/Modal.urp: ./Makefile ./lib.urp ./test/Modal.ur .cake3/tmp__testModal_in autogen/Modal_css.ur autogen/Modal_css.urs autogen/Modal_css_c.h autogen/Modal_css_c.o
-	cat .cake3/tmp__testModal_in > ./test/Modal.urp
-.cake3/tmp__testModal_in: ./Makefile
-	-rm -rf .cake3/tmp__testModal_in
-	echo 'library ../.' >> .cake3/tmp__testModal_in
-	echo 'include ../autogen/Modal_css_c.h' >> .cake3/tmp__testModal_in
-	echo 'link ../autogen/Modal_css_c.o' >> .cake3/tmp__testModal_in
-	echo 'ffi ../autogen/Modal_css_c' >> .cake3/tmp__testModal_in
-	echo 'ffi ../autogen/Modal_css_js' >> .cake3/tmp__testModal_in
-	echo 'allow mime text/css' >> .cake3/tmp__testModal_in
-	echo 'safeGet Modal_css/blobpage' >> .cake3/tmp__testModal_in
-	echo 'safeGet Modal_css/blob' >> .cake3/tmp__testModal_in
-	echo '' >> .cake3/tmp__testModal_in
-	echo '$$/list' >> .cake3/tmp__testModal_in
-	echo '../autogen/Modal_css' >> .cake3/tmp__testModal_in
-	echo '.././test/Modal' >> .cake3/tmp__testModal_in
-./test/B3_Login.exe: ./Makefile ./test/B3_Login.urp $(call GUARD,URVERSION)
-	urweb -dbms sqlite ./test/B3_Login
-./test/B3_Login.urp: ./Makefile ./lib.urp ./test/B3_Login.ur ./test/B3_Login.urs .cake3/tmp__testB3_Login_in autogen/B3_Login_css.ur autogen/B3_Login_css.urs autogen/B3_Login_css_c.h autogen/B3_Login_css_c.o
-	cat .cake3/tmp__testB3_Login_in > ./test/B3_Login.urp
-.cake3/tmp__testB3_Login_in: ./Makefile
-	-rm -rf .cake3/tmp__testB3_Login_in
-	echo 'allow url https://github.com/grwlf/*' >> .cake3/tmp__testB3_Login_in
-	echo 'allow url https://camo.githubusercontent.com/*' >> .cake3/tmp__testB3_Login_in
-	echo 'rewrite style B3_Login/* [-]' >> .cake3/tmp__testB3_Login_in
-	echo 'library ../.' >> .cake3/tmp__testB3_Login_in
-	echo 'include ../autogen/B3_Login_css_c.h' >> .cake3/tmp__testB3_Login_in
-	echo 'link ../autogen/B3_Login_css_c.o' >> .cake3/tmp__testB3_Login_in
-	echo 'ffi ../autogen/B3_Login_css_c' >> .cake3/tmp__testB3_Login_in
-	echo 'ffi ../autogen/B3_Login_css_js' >> .cake3/tmp__testB3_Login_in
-	echo 'allow mime text/css' >> .cake3/tmp__testB3_Login_in
-	echo 'safeGet B3_Login_css/blobpage' >> .cake3/tmp__testB3_Login_in
-	echo 'safeGet B3_Login_css/blob' >> .cake3/tmp__testB3_Login_in
-	echo '' >> .cake3/tmp__testB3_Login_in
-	echo '$$/list' >> .cake3/tmp__testB3_Login_in
-	echo '../autogen/B3_Login_css' >> .cake3/tmp__testB3_Login_in
-	echo '.././test/B3_Login' >> .cake3/tmp__testB3_Login_in
-./test/B2.exe: ./Makefile ./test/B2.urp $(call GUARD,URVERSION)
-	urweb -dbms sqlite ./test/B2
-./test/B2.urp: ./Makefile ./lib.urp ./test/B2.ur ./test/B2.urs .cake3/tmp__testB2_in autogen/B2_css.ur autogen/B2_css.urs autogen/B2_css_c.h autogen/B2_css_c.o autogen/Holder_js.ur autogen/Holder_js.urs autogen/Holder_js_c.h autogen/Holder_js_c.o
-	cat .cake3/tmp__testB2_in > ./test/B2.urp
-.cake3/tmp__testB2_in: ./Makefile
-	-rm -rf .cake3/tmp__testB2_in
-	echo 'allow url https://github.com/grwlf/*' >> .cake3/tmp__testB2_in
-	echo 'allow url https://camo.githubusercontent.com/*' >> .cake3/tmp__testB2_in
-	echo 'rewrite style B2/* [-]' >> .cake3/tmp__testB2_in
-	echo 'library ../.' >> .cake3/tmp__testB2_in
-	echo 'include ../autogen/B2_css_c.h' >> .cake3/tmp__testB2_in
-	echo 'link ../autogen/B2_css_c.o' >> .cake3/tmp__testB2_in
-	echo 'ffi ../autogen/B2_css_c' >> .cake3/tmp__testB2_in
-	echo 'ffi ../autogen/B2_css_js' >> .cake3/tmp__testB2_in
-	echo 'allow mime text/css' >> .cake3/tmp__testB2_in
-	echo 'safeGet B2_css/blobpage' >> .cake3/tmp__testB2_in
-	echo 'safeGet B2_css/blob' >> .cake3/tmp__testB2_in
-	echo 'include ../autogen/Holder_js_c.h' >> .cake3/tmp__testB2_in
-	echo 'link ../autogen/Holder_js_c.o' >> .cake3/tmp__testB2_in
-	echo 'ffi ../autogen/Holder_js_c' >> .cake3/tmp__testB2_in
-	echo 'ffi ../autogen/Holder_js_js' >> .cake3/tmp__testB2_in
-	echo 'allow mime text/javascript' >> .cake3/tmp__testB2_in
-	echo 'safeGet Holder_js/blobpage' >> .cake3/tmp__testB2_in
-	echo 'safeGet Holder_js/blob' >> .cake3/tmp__testB2_in
-	echo '' >> .cake3/tmp__testB2_in
-	echo '$$/list' >> .cake3/tmp__testB2_in
-	echo '../autogen/B2_css' >> .cake3/tmp__testB2_in
-	echo '../autogen/Holder_js' >> .cake3/tmp__testB2_in
-	echo '.././test/B2' >> .cake3/tmp__testB2_in
+UR_CC = $(shell $(shell urweb -print-ccompiler) -print-prog-name=gcc)
+UR_INCL = -I$(shell urweb -print-cinclude) 
+.PHONY: ./all
+./all: ./Makefile ./test/B1.exe ./test/B2.exe ./test/B3_Login.exe ./test/Modal.exe ./test/Narrow.exe
+./.cake3/tmp___test_Narrow_in_2: ./Makefile ./autogen/Narrow_css.ur ./autogen/Narrow_css_c.h ./autogen/Narrow_css_c.o ./lib.urp ./test/Narrow.ur
+	( \
+	echo   ;\
+	echo $$\/list  ;\
+	echo \.\.\/autogen\/Narrow\_css  ;\
+	echo \.\.\/test\/Narrow  ;\
+	) > ./.cake3/tmp___test_Narrow_in_2
+./.cake3/tmp___test_Narrow_in_1: ./Makefile ./autogen/Narrow_css.ur ./autogen/Narrow_css_c.h ./autogen/Narrow_css_c.o ./lib.urp ./test/Narrow.ur
+	( \
+	echo library\ \.\.\/  ;\
+	echo ffi\ \.\.\/autogen\/Narrow\_css\_c  ;\
+	echo include\ \.\.\/autogen\/Narrow\_css\_c\.h  ;\
+	echo link\ \.\.\/autogen\/Narrow\_css\_c\.o  ;\
+	) > ./.cake3/tmp___test_Narrow_in_1
+./.cake3/tmp___lib_in_2: ./Bootstrap.ur ./Bootstrap.urs ./FormSignin.ur ./Makefile ./autogen/FormSignin_css.ur ./autogen/FormSignin_css_c.h ./autogen/FormSignin_css_c.o ./autogen/Tooltip_js.ur ./autogen/Tooltip_js_c.h ./autogen/Tooltip_js_c.o ./autogen/bootstrap_css.ur ./autogen/bootstrap_css_c.h ./autogen/bootstrap_css_c.o ./autogen/bootstrap_min_js.ur ./autogen/bootstrap_min_js_c.h ./autogen/bootstrap_min_js_c.o ./autogen/bootstrap_theme_css.ur ./autogen/bootstrap_theme_css_c.h ./autogen/bootstrap_theme_css_c.o ./autogen/glyphicons_halflings_regular_eot.ur ./autogen/glyphicons_halflings_regular_eot_c.h ./autogen/glyphicons_halflings_regular_eot_c.o ./autogen/glyphicons_halflings_regular_svg.ur ./autogen/glyphicons_halflings_regular_svg_c.h ./autogen/glyphicons_halflings_regular_svg_c.o ./autogen/glyphicons_halflings_regular_ttf.ur ./autogen/glyphicons_halflings_regular_ttf_c.h ./autogen/glyphicons_halflings_regular_ttf_c.o ./autogen/glyphicons_halflings_regular_woff.ur ./autogen/glyphicons_halflings_regular_woff_c.h ./autogen/glyphicons_halflings_regular_woff_c.o ../JQuery/lib.urp ../Uru/lib.urp
+	( \
+	echo   ;\
+	echo \.\/autogen\/glyphicons\_halflings\_regular\_eot  ;\
+	echo \.\/autogen\/glyphicons\_halflings\_regular\_svg  ;\
+	echo \.\/autogen\/glyphicons\_halflings\_regular\_ttf  ;\
+	echo \.\/autogen\/glyphicons\_halflings\_regular\_woff  ;\
+	echo \.\/autogen\/bootstrap\_css  ;\
+	echo \.\/autogen\/bootstrap\_theme\_css  ;\
+	echo \.\/autogen\/bootstrap\_min\_js  ;\
+	echo \.\/autogen\/Tooltip\_js  ;\
+	echo \.\/autogen\/FormSignin\_css  ;\
+	echo \.\/Bootstrap  ;\
+	echo \.\/FormSignin  ;\
+	) > ./.cake3/tmp___lib_in_2
+./.cake3/tmp___lib_in_1: ./Bootstrap.ur ./Bootstrap.urs ./FormSignin.ur ./Makefile ./autogen/FormSignin_css.ur ./autogen/FormSignin_css_c.h ./autogen/FormSignin_css_c.o ./autogen/Tooltip_js.ur ./autogen/Tooltip_js_c.h ./autogen/Tooltip_js_c.o ./autogen/bootstrap_css.ur ./autogen/bootstrap_css_c.h ./autogen/bootstrap_css_c.o ./autogen/bootstrap_min_js.ur ./autogen/bootstrap_min_js_c.h ./autogen/bootstrap_min_js_c.o ./autogen/bootstrap_theme_css.ur ./autogen/bootstrap_theme_css_c.h ./autogen/bootstrap_theme_css_c.o ./autogen/glyphicons_halflings_regular_eot.ur ./autogen/glyphicons_halflings_regular_eot_c.h ./autogen/glyphicons_halflings_regular_eot_c.o ./autogen/glyphicons_halflings_regular_svg.ur ./autogen/glyphicons_halflings_regular_svg_c.h ./autogen/glyphicons_halflings_regular_svg_c.o ./autogen/glyphicons_halflings_regular_ttf.ur ./autogen/glyphicons_halflings_regular_ttf_c.h ./autogen/glyphicons_halflings_regular_ttf_c.o ./autogen/glyphicons_halflings_regular_woff.ur ./autogen/glyphicons_halflings_regular_woff_c.h ./autogen/glyphicons_halflings_regular_woff_c.o ../JQuery/lib.urp ../Uru/lib.urp
+	( \
+	echo rewrite\ style\ Bootstrap\/bs3\_table\ table  ;\
+	echo rewrite\ style\ Bootstrap\/\*\ \[\-\]  ;\
+	echo ffi\ \.\/NavTag  ;\
+	echo library\ \.\.\/JQuery\/  ;\
+	echo library\ \.\.\/Uru\/  ;\
+	echo ffi\ \.\/autogen\/glyphicons\_halflings\_regular\_eot\_c  ;\
+	echo include\ \.\/autogen\/glyphicons\_halflings\_regular\_eot\_c\.h  ;\
+	echo link\ \.\/autogen\/glyphicons\_halflings\_regular\_eot\_c\.o  ;\
+	echo ffi\ \.\/autogen\/glyphicons\_halflings\_regular\_svg\_c  ;\
+	echo include\ \.\/autogen\/glyphicons\_halflings\_regular\_svg\_c\.h  ;\
+	echo link\ \.\/autogen\/glyphicons\_halflings\_regular\_svg\_c\.o  ;\
+	echo ffi\ \.\/autogen\/glyphicons\_halflings\_regular\_ttf\_c  ;\
+	echo include\ \.\/autogen\/glyphicons\_halflings\_regular\_ttf\_c\.h  ;\
+	echo link\ \.\/autogen\/glyphicons\_halflings\_regular\_ttf\_c\.o  ;\
+	echo ffi\ \.\/autogen\/glyphicons\_halflings\_regular\_woff\_c  ;\
+	echo include\ \.\/autogen\/glyphicons\_halflings\_regular\_woff\_c\.h  ;\
+	echo link\ \.\/autogen\/glyphicons\_halflings\_regular\_woff\_c\.o  ;\
+	echo ffi\ \.\/autogen\/bootstrap\_css\_c  ;\
+	echo include\ \.\/autogen\/bootstrap\_css\_c\.h  ;\
+	echo link\ \.\/autogen\/bootstrap\_css\_c\.o  ;\
+	echo ffi\ \.\/autogen\/bootstrap\_theme\_css\_c  ;\
+	echo include\ \.\/autogen\/bootstrap\_theme\_css\_c\.h  ;\
+	echo link\ \.\/autogen\/bootstrap\_theme\_css\_c\.o  ;\
+	echo ffi\ \.\/autogen\/bootstrap\_min\_js\_c  ;\
+	echo include\ \.\/autogen\/bootstrap\_min\_js\_c\.h  ;\
+	echo link\ \.\/autogen\/bootstrap\_min\_js\_c\.o  ;\
+	echo ffi\ \.\/autogen\/Tooltip\_js\_js  ;\
+	echo ffi\ \.\/autogen\/Tooltip\_js\_c  ;\
+	echo include\ \.\/autogen\/Tooltip\_js\_c\.h  ;\
+	echo link\ \.\/autogen\/Tooltip\_js\_c\.o  ;\
+	echo ffi\ \.\/autogen\/FormSignin\_css\_c  ;\
+	echo include\ \.\/autogen\/FormSignin\_css\_c\.h  ;\
+	echo link\ \.\/autogen\/FormSignin\_css\_c\.o  ;\
+	echo safeGet\ Tooltip\_js\/enable\_tooltips  ;\
+	) > ./.cake3/tmp___lib_in_1
+./.cake3/tmp____Uru_lib_in_2: ./Makefile ../Uru/CSS.ur ../Uru/CSS.urs ../Uru/Script.h ../Uru/Script.o ../Uru/Uru.ur ../Uru/Uru.urs
+	( \
+	echo   ;\
+	echo $$\/list  ;\
+	echo \.\/CSS  ;\
+	echo \.\/Uru  ;\
+	) > ./.cake3/tmp____Uru_lib_in_2
+./.cake3/tmp____Uru_lib_in_1: ./Makefile ../Uru/CSS.ur ../Uru/CSS.urs ../Uru/Script.h ../Uru/Script.o ../Uru/Uru.ur ../Uru/Uru.urs
+	( \
+	echo ffi\ \.\/Script  ;\
+	echo include\ \.\/Script\.h  ;\
+	echo link\ \.\/Script\.o  ;\
+	) > ./.cake3/tmp____Uru_lib_in_1
+./.cake3/tmp____JQuery_lib_in_2: ./Makefile ../JQuery/JQuery.ur ../JQuery/JQuery.urs ../JQuery/autogen/jquery_1_9_1_js.ur ../JQuery/autogen/jquery_1_9_1_js_c.h ../JQuery/autogen/jquery_1_9_1_js_c.o ../Uru/lib.urp
+	( \
+	echo   ;\
+	echo \.\/autogen\/jquery\_1\_9\_1\_js  ;\
+	echo \.\/JQuery  ;\
+	) > ./.cake3/tmp____JQuery_lib_in_2
+./.cake3/tmp____JQuery_lib_in_1: ./Makefile ../JQuery/JQuery.ur ../JQuery/JQuery.urs ../JQuery/autogen/jquery_1_9_1_js.ur ../JQuery/autogen/jquery_1_9_1_js_c.h ../JQuery/autogen/jquery_1_9_1_js_c.o ../Uru/lib.urp
+	( \
+	echo library\ \.\.\/Bootstrap\/\.\.\/Uru\/  ;\
+	echo ffi\ \.\/autogen\/jquery\_1\_9\_1\_js\_c  ;\
+	echo include\ \.\/autogen\/jquery\_1\_9\_1\_js\_c\.h  ;\
+	echo link\ \.\/autogen\/jquery\_1\_9\_1\_js\_c\.o  ;\
+	) > ./.cake3/tmp____JQuery_lib_in_1
+./.cake3/tmp___test_Modal_in_2: ./Makefile ./autogen/Modal_css.ur ./autogen/Modal_css_c.h ./autogen/Modal_css_c.o ./lib.urp ./test/Modal.ur
+	( \
+	echo   ;\
+	echo $$\/list  ;\
+	echo \.\.\/autogen\/Modal\_css  ;\
+	echo \.\.\/test\/Modal  ;\
+	) > ./.cake3/tmp___test_Modal_in_2
+./.cake3/tmp___test_Modal_in_1: ./Makefile ./autogen/Modal_css.ur ./autogen/Modal_css_c.h ./autogen/Modal_css_c.o ./lib.urp ./test/Modal.ur
+	( \
+	echo library\ \.\.\/  ;\
+	echo ffi\ \.\.\/autogen\/Modal\_css\_c  ;\
+	echo include\ \.\.\/autogen\/Modal\_css\_c\.h  ;\
+	echo link\ \.\.\/autogen\/Modal\_css\_c\.o  ;\
+	) > ./.cake3/tmp___test_Modal_in_1
+./.cake3/tmp___test_B3_Login_in_2: ./Makefile ./autogen/B3_Login_css.ur ./autogen/B3_Login_css_c.h ./autogen/B3_Login_css_c.o ./lib.urp ./test/B3_Login.ur ./test/B3_Login.urs
+	( \
+	echo   ;\
+	echo $$\/list  ;\
+	echo \.\.\/autogen\/B3\_Login\_css  ;\
+	echo \.\.\/test\/B3\_Login  ;\
+	) > ./.cake3/tmp___test_B3_Login_in_2
+./.cake3/tmp___test_B3_Login_in_1: ./Makefile ./autogen/B3_Login_css.ur ./autogen/B3_Login_css_c.h ./autogen/B3_Login_css_c.o ./lib.urp ./test/B3_Login.ur ./test/B3_Login.urs
+	( \
+	echo allow\ url\ https\:\/\/github\.com\/grwlf\/\*  ;\
+	echo allow\ url\ https\:\/\/camo\.githubusercontent\.com\/\*  ;\
+	echo rewrite\ style\ B3\_Login\/\*\ \[\-\]  ;\
+	echo library\ \.\.\/  ;\
+	echo ffi\ \.\.\/autogen\/B3\_Login\_css\_c  ;\
+	echo include\ \.\.\/autogen\/B3\_Login\_css\_c\.h  ;\
+	echo link\ \.\.\/autogen\/B3\_Login\_css\_c\.o  ;\
+	) > ./.cake3/tmp___test_B3_Login_in_1
+./.cake3/tmp___test_B2_in_2: ./Makefile ./autogen/B2_css.ur ./autogen/B2_css_c.h ./autogen/B2_css_c.o ./autogen/holder_js.ur ./autogen/holder_js_c.h ./autogen/holder_js_c.o ./lib.urp ./test/B2.ur ./test/B2.urs
+	( \
+	echo   ;\
+	echo $$\/list  ;\
+	echo \.\.\/autogen\/B2\_css  ;\
+	echo \.\.\/autogen\/holder\_js  ;\
+	echo \.\.\/test\/B2  ;\
+	) > ./.cake3/tmp___test_B2_in_2
+./.cake3/tmp___test_B2_in_1: ./Makefile ./autogen/B2_css.ur ./autogen/B2_css_c.h ./autogen/B2_css_c.o ./autogen/holder_js.ur ./autogen/holder_js_c.h ./autogen/holder_js_c.o ./lib.urp ./test/B2.ur ./test/B2.urs
+	( \
+	echo allow\ url\ https\:\/\/github\.com\/grwlf\/\*  ;\
+	echo allow\ url\ https\:\/\/camo\.githubusercontent\.com\/\*  ;\
+	echo rewrite\ style\ B2\/\*\ \[\-\]  ;\
+	echo library\ \.\.\/  ;\
+	echo ffi\ \.\.\/autogen\/B2\_css\_c  ;\
+	echo include\ \.\.\/autogen\/B2\_css\_c\.h  ;\
+	echo link\ \.\.\/autogen\/B2\_css\_c\.o  ;\
+	echo ffi\ \.\.\/autogen\/holder\_js\_c  ;\
+	echo include\ \.\.\/autogen\/holder\_js\_c\.h  ;\
+	echo link\ \.\.\/autogen\/holder\_js\_c\.o  ;\
+	) > ./.cake3/tmp___test_B2_in_1
+./.cake3/tmp___test_B1_in_2: ./Makefile ./autogen/B1_css.ur ./autogen/B1_css_c.h ./autogen/B1_css_c.o ./lib.urp ./test/B1.ur ./test/B1.urs
+	( \
+	echo   ;\
+	echo $$\/list  ;\
+	echo \.\.\/autogen\/B1\_css  ;\
+	echo \.\.\/test\/B1  ;\
+	) > ./.cake3/tmp___test_B1_in_2
+./.cake3/tmp___test_B1_in_1: ./Makefile ./autogen/B1_css.ur ./autogen/B1_css_c.h ./autogen/B1_css_c.o ./lib.urp ./test/B1.ur ./test/B1.urs
+	( \
+	echo rewrite\ style\ B1\/\*\ \[\-\]  ;\
+	echo library\ \.\.\/  ;\
+	echo ffi\ \.\.\/autogen\/B1\_css\_c  ;\
+	echo include\ \.\.\/autogen\/B1\_css\_c\.h  ;\
+	echo link\ \.\.\/autogen\/B1\_css\_c\.o  ;\
+	) > ./.cake3/tmp___test_B1_in_1
+.PHONY: ./lib
+./lib: ./Makefile ./lib.urp
+./autogen/B1_css_c.o: ./Makefile ./autogen/B1_css_c.c $(call GUARD,UR_CC) $(call GUARD,UR_INCL)
+	$(UR_CC) -c $(UR_INCL) -o ./autogen/B1_css_c.o ./autogen/B1_css_c.c
+./autogen/B2_css_c.o: ./Makefile ./autogen/B2_css_c.c $(call GUARD,UR_CC) $(call GUARD,UR_INCL)
+	$(UR_CC) -c $(UR_INCL) -o ./autogen/B2_css_c.o ./autogen/B2_css_c.c
+./autogen/B3_Login_css_c.o: ./Makefile ./autogen/B3_Login_css_c.c $(call GUARD,UR_CC) $(call GUARD,UR_INCL)
+	$(UR_CC) -c $(UR_INCL) -o ./autogen/B3_Login_css_c.o ./autogen/B3_Login_css_c.c
+./autogen/FormSignin_css_c.o: ./Makefile ./autogen/FormSignin_css_c.c $(call GUARD,UR_CC) $(call GUARD,UR_INCL)
+	$(UR_CC) -c $(UR_INCL) -o ./autogen/FormSignin_css_c.o ./autogen/FormSignin_css_c.c
+./autogen/Modal_css_c.o: ./Makefile ./autogen/Modal_css_c.c $(call GUARD,UR_CC) $(call GUARD,UR_INCL)
+	$(UR_CC) -c $(UR_INCL) -o ./autogen/Modal_css_c.o ./autogen/Modal_css_c.c
+./autogen/Narrow_css_c.o: ./Makefile ./autogen/Narrow_css_c.c $(call GUARD,UR_CC) $(call GUARD,UR_INCL)
+	$(UR_CC) -c $(UR_INCL) -o ./autogen/Narrow_css_c.o ./autogen/Narrow_css_c.c
+./autogen/Tooltip_js_c.o: ./Makefile ./autogen/Tooltip_js_c.c $(call GUARD,UR_CC) $(call GUARD,UR_INCL)
+	$(UR_CC) -c $(UR_INCL) -o ./autogen/Tooltip_js_c.o ./autogen/Tooltip_js_c.c
+./autogen/bootstrap_css_c.o: ./Makefile ./autogen/bootstrap_css_c.c $(call GUARD,UR_CC) $(call GUARD,UR_INCL)
+	$(UR_CC) -c $(UR_INCL) -o ./autogen/bootstrap_css_c.o ./autogen/bootstrap_css_c.c
+./autogen/bootstrap_min_js_c.o: ./Makefile ./autogen/bootstrap_min_js_c.c $(call GUARD,UR_CC) $(call GUARD,UR_INCL)
+	$(UR_CC) -c $(UR_INCL) -o ./autogen/bootstrap_min_js_c.o ./autogen/bootstrap_min_js_c.c
+./autogen/bootstrap_theme_css_c.o: ./Makefile ./autogen/bootstrap_theme_css_c.c $(call GUARD,UR_CC) $(call GUARD,UR_INCL)
+	$(UR_CC) -c $(UR_INCL) -o ./autogen/bootstrap_theme_css_c.o ./autogen/bootstrap_theme_css_c.c
+./autogen/glyphicons_halflings_regular_eot_c.o: ./Makefile ./autogen/glyphicons_halflings_regular_eot_c.c $(call GUARD,UR_CC) $(call GUARD,UR_INCL)
+	$(UR_CC) -c $(UR_INCL) -o ./autogen/glyphicons_halflings_regular_eot_c.o ./autogen/glyphicons_halflings_regular_eot_c.c
+./autogen/glyphicons_halflings_regular_svg_c.o: ./Makefile ./autogen/glyphicons_halflings_regular_svg_c.c $(call GUARD,UR_CC) $(call GUARD,UR_INCL)
+	$(UR_CC) -c $(UR_INCL) -o ./autogen/glyphicons_halflings_regular_svg_c.o ./autogen/glyphicons_halflings_regular_svg_c.c
+./autogen/glyphicons_halflings_regular_ttf_c.o: ./Makefile ./autogen/glyphicons_halflings_regular_ttf_c.c $(call GUARD,UR_CC) $(call GUARD,UR_INCL)
+	$(UR_CC) -c $(UR_INCL) -o ./autogen/glyphicons_halflings_regular_ttf_c.o ./autogen/glyphicons_halflings_regular_ttf_c.c
+./autogen/glyphicons_halflings_regular_woff_c.o: ./Makefile ./autogen/glyphicons_halflings_regular_woff_c.c $(call GUARD,UR_CC) $(call GUARD,UR_INCL)
+	$(UR_CC) -c $(UR_INCL) -o ./autogen/glyphicons_halflings_regular_woff_c.o ./autogen/glyphicons_halflings_regular_woff_c.c
+./autogen/holder_js_c.o: ./Makefile ./autogen/holder_js_c.c $(call GUARD,UR_CC) $(call GUARD,UR_INCL)
+	$(UR_CC) -c $(UR_INCL) -o ./autogen/holder_js_c.o ./autogen/holder_js_c.c
+./lib.urp: ./.cake3/tmp___FormSignin_css_patch ./.cake3/tmp___Tooltip_js_patch ./.cake3/tmp___dist_css_bootstrap_css_patch ./.cake3/tmp___dist_css_bootstrap_theme_css_patch ./.cake3/tmp___dist_fonts_glyphicons_halflings_regular_eot_patch ./.cake3/tmp___dist_fonts_glyphicons_halflings_regular_svg_patch ./.cake3/tmp___dist_fonts_glyphicons_halflings_regular_ttf_patch ./.cake3/tmp___dist_fonts_glyphicons_halflings_regular_woff_patch ./.cake3/tmp___dist_js_bootstrap_min_js_patch ./.cake3/tmp___lib_in_1 ./.cake3/tmp___lib_in_2 ./Makefile
+	cat ./.cake3/tmp___lib_in_1 > ./lib.urp
+	cat ./.cake3/tmp___FormSignin_css_patch ./.cake3/tmp___Tooltip_js_patch ./.cake3/tmp___dist_js_bootstrap_min_js_patch ./.cake3/tmp___dist_css_bootstrap_theme_css_patch ./.cake3/tmp___dist_css_bootstrap_css_patch ./.cake3/tmp___dist_fonts_glyphicons_halflings_regular_woff_patch ./.cake3/tmp___dist_fonts_glyphicons_halflings_regular_ttf_patch ./.cake3/tmp___dist_fonts_glyphicons_halflings_regular_svg_patch ./.cake3/tmp___dist_fonts_glyphicons_halflings_regular_eot_patch >> ./lib.urp
+	cat ./.cake3/tmp___lib_in_2 >> ./lib.urp
 ./test/B1.exe: ./Makefile ./test/B1.urp $(call GUARD,URVERSION)
 	urweb -dbms sqlite ./test/B1
-./test/B1.urp: ./Makefile ./lib.urp ./test/B1.ur ./test/B1.urs .cake3/tmp__testB1_in autogen/B1_css.ur autogen/B1_css.urs autogen/B1_css_c.h autogen/B1_css_c.o
-	cat .cake3/tmp__testB1_in > ./test/B1.urp
-.cake3/tmp__testB1_in: ./Makefile
-	-rm -rf .cake3/tmp__testB1_in
-	echo 'rewrite style B1/* [-]' >> .cake3/tmp__testB1_in
-	echo 'library ../.' >> .cake3/tmp__testB1_in
-	echo 'include ../autogen/B1_css_c.h' >> .cake3/tmp__testB1_in
-	echo 'link ../autogen/B1_css_c.o' >> .cake3/tmp__testB1_in
-	echo 'ffi ../autogen/B1_css_c' >> .cake3/tmp__testB1_in
-	echo 'ffi ../autogen/B1_css_js' >> .cake3/tmp__testB1_in
-	echo 'allow mime text/css' >> .cake3/tmp__testB1_in
-	echo 'safeGet B1_css/blobpage' >> .cake3/tmp__testB1_in
-	echo 'safeGet B1_css/blob' >> .cake3/tmp__testB1_in
-	echo '' >> .cake3/tmp__testB1_in
-	echo '$$/list' >> .cake3/tmp__testB1_in
-	echo '../autogen/B1_css' >> .cake3/tmp__testB1_in
-	echo '.././test/B1' >> .cake3/tmp__testB1_in
-.PHONY: lib
-lib: ./Makefile ./lib.urp
-autogen/B1_css_c.o: ./Makefile autogen/B1_css_c.c $(call GUARD,URCC) $(call GUARD,URINCL) $(call GUARD,UR_CFLAGS)
-	$(URCC) -c $(URINCL) $(UR_CFLAGS)  -o autogen/B1_css_c.o autogen/B1_css_c.c
-autogen/B2_css_c.o: ./Makefile autogen/B2_css_c.c $(call GUARD,URCC) $(call GUARD,URINCL) $(call GUARD,UR_CFLAGS)
-	$(URCC) -c $(URINCL) $(UR_CFLAGS)  -o autogen/B2_css_c.o autogen/B2_css_c.c
-autogen/B3_Login_css_c.o: ./Makefile autogen/B3_Login_css_c.c $(call GUARD,URCC) $(call GUARD,URINCL) $(call GUARD,UR_CFLAGS)
-	$(URCC) -c $(URINCL) $(UR_CFLAGS)  -o autogen/B3_Login_css_c.o autogen/B3_Login_css_c.c
-autogen/Bootstrap_css_c.o: ./Makefile autogen/Bootstrap_css_c.c $(call GUARD,URCC) $(call GUARD,URINCL) $(call GUARD,UR_CFLAGS)
-	$(URCC) -c $(URINCL) $(UR_CFLAGS)  -o autogen/Bootstrap_css_c.o autogen/Bootstrap_css_c.c
-autogen/Bootstrap_min_js_c.o: ./Makefile autogen/Bootstrap_min_js_c.c $(call GUARD,URCC) $(call GUARD,URINCL) $(call GUARD,UR_CFLAGS)
-	$(URCC) -c $(URINCL) $(UR_CFLAGS)  -o autogen/Bootstrap_min_js_c.o autogen/Bootstrap_min_js_c.c
-autogen/Bootstrap_theme_css_c.o: ./Makefile autogen/Bootstrap_theme_css_c.c $(call GUARD,URCC) $(call GUARD,URINCL) $(call GUARD,UR_CFLAGS)
-	$(URCC) -c $(URINCL) $(UR_CFLAGS)  -o autogen/Bootstrap_theme_css_c.o autogen/Bootstrap_theme_css_c.c
-autogen/FormSignin_css_c.o: ./Makefile autogen/FormSignin_css_c.c $(call GUARD,URCC) $(call GUARD,URINCL) $(call GUARD,UR_CFLAGS)
-	$(URCC) -c $(URINCL) $(UR_CFLAGS)  -o autogen/FormSignin_css_c.o autogen/FormSignin_css_c.c
-autogen/Glyphicons_halflings_regular_eot_c.o: ./Makefile autogen/Glyphicons_halflings_regular_eot_c.c $(call GUARD,URCC) $(call GUARD,URINCL) $(call GUARD,UR_CFLAGS)
-	$(URCC) -c $(URINCL) $(UR_CFLAGS)  -o autogen/Glyphicons_halflings_regular_eot_c.o autogen/Glyphicons_halflings_regular_eot_c.c
-autogen/Glyphicons_halflings_regular_svg_c.o: ./Makefile autogen/Glyphicons_halflings_regular_svg_c.c $(call GUARD,URCC) $(call GUARD,URINCL) $(call GUARD,UR_CFLAGS)
-	$(URCC) -c $(URINCL) $(UR_CFLAGS)  -o autogen/Glyphicons_halflings_regular_svg_c.o autogen/Glyphicons_halflings_regular_svg_c.c
-autogen/Glyphicons_halflings_regular_ttf_c.o: ./Makefile autogen/Glyphicons_halflings_regular_ttf_c.c $(call GUARD,URCC) $(call GUARD,URINCL) $(call GUARD,UR_CFLAGS)
-	$(URCC) -c $(URINCL) $(UR_CFLAGS)  -o autogen/Glyphicons_halflings_regular_ttf_c.o autogen/Glyphicons_halflings_regular_ttf_c.c
-autogen/Glyphicons_halflings_regular_woff_c.o: ./Makefile autogen/Glyphicons_halflings_regular_woff_c.c $(call GUARD,URCC) $(call GUARD,URINCL) $(call GUARD,UR_CFLAGS)
-	$(URCC) -c $(URINCL) $(UR_CFLAGS)  -o autogen/Glyphicons_halflings_regular_woff_c.o autogen/Glyphicons_halflings_regular_woff_c.c
-autogen/Holder_js_c.o: ./Makefile autogen/Holder_js_c.c $(call GUARD,URCC) $(call GUARD,URINCL) $(call GUARD,UR_CFLAGS)
-	$(URCC) -c $(URINCL) $(UR_CFLAGS)  -o autogen/Holder_js_c.o autogen/Holder_js_c.c
-autogen/Modal_css_c.o: ./Makefile autogen/Modal_css_c.c $(call GUARD,URCC) $(call GUARD,URINCL) $(call GUARD,UR_CFLAGS)
-	$(URCC) -c $(URINCL) $(UR_CFLAGS)  -o autogen/Modal_css_c.o autogen/Modal_css_c.c
-autogen/Narrow_css_c.o: ./Makefile autogen/Narrow_css_c.c $(call GUARD,URCC) $(call GUARD,URINCL) $(call GUARD,UR_CFLAGS)
-	$(URCC) -c $(URINCL) $(UR_CFLAGS)  -o autogen/Narrow_css_c.o autogen/Narrow_css_c.c
-autogen/Tooltip_js_c.o: ./Makefile autogen/Tooltip_js_c.c $(call GUARD,URCC) $(call GUARD,URINCL) $(call GUARD,UR_CFLAGS)
-	$(URCC) -c $(URINCL) $(UR_CFLAGS)  -o autogen/Tooltip_js_c.o autogen/Tooltip_js_c.c
-$(call GUARD,URCC):
-	rm -f .cake3/GUARD_URCC_*
-	touch $@
-$(call GUARD,URINCL):
-	rm -f .cake3/GUARD_URINCL_*
-	touch $@
+./test/B1.urp: ./.cake3/tmp___test_B1_css_patch ./.cake3/tmp___test_B1_in_1 ./.cake3/tmp___test_B1_in_2 ./Makefile
+	cat ./.cake3/tmp___test_B1_in_1 > ./test/B1.urp
+	cat ./.cake3/tmp___test_B1_css_patch >> ./test/B1.urp
+	cat ./.cake3/tmp___test_B1_in_2 >> ./test/B1.urp
+./test/B2.exe: ./Makefile ./test/B2.urp $(call GUARD,URVERSION)
+	urweb -dbms sqlite ./test/B2
+./test/B2.urp: ./.cake3/tmp___test_B2_css_patch ./.cake3/tmp___test_B2_in_1 ./.cake3/tmp___test_B2_in_2 ./.cake3/tmp___test_holder_js_patch ./Makefile
+	cat ./.cake3/tmp___test_B2_in_1 > ./test/B2.urp
+	cat ./.cake3/tmp___test_holder_js_patch ./.cake3/tmp___test_B2_css_patch >> ./test/B2.urp
+	cat ./.cake3/tmp___test_B2_in_2 >> ./test/B2.urp
+./test/B3_Login.exe: ./Makefile ./test/B3_Login.urp $(call GUARD,URVERSION)
+	urweb -dbms sqlite ./test/B3_Login
+./test/B3_Login.urp: ./.cake3/tmp___test_B3_Login_css_patch ./.cake3/tmp___test_B3_Login_in_1 ./.cake3/tmp___test_B3_Login_in_2 ./Makefile
+	cat ./.cake3/tmp___test_B3_Login_in_1 > ./test/B3_Login.urp
+	cat ./.cake3/tmp___test_B3_Login_css_patch >> ./test/B3_Login.urp
+	cat ./.cake3/tmp___test_B3_Login_in_2 >> ./test/B3_Login.urp
+./test/Modal.exe: ./Makefile ./test/Modal.urp $(call GUARD,URVERSION)
+	urweb -dbms sqlite ./test/Modal
+./test/Modal.urp: ./.cake3/tmp___test_Modal_css_patch ./.cake3/tmp___test_Modal_in_1 ./.cake3/tmp___test_Modal_in_2 ./Makefile
+	cat ./.cake3/tmp___test_Modal_in_1 > ./test/Modal.urp
+	cat ./.cake3/tmp___test_Modal_css_patch >> ./test/Modal.urp
+	cat ./.cake3/tmp___test_Modal_in_2 >> ./test/Modal.urp
+./test/Narrow.exe: ./Makefile ./test/Narrow.urp $(call GUARD,URVERSION)
+	urweb -dbms sqlite ./test/Narrow
+./test/Narrow.urp: ./.cake3/tmp___test_Narrow_css_patch ./.cake3/tmp___test_Narrow_in_1 ./.cake3/tmp___test_Narrow_in_2 ./Makefile
+	cat ./.cake3/tmp___test_Narrow_in_1 > ./test/Narrow.urp
+	cat ./.cake3/tmp___test_Narrow_css_patch >> ./test/Narrow.urp
+	cat ./.cake3/tmp___test_Narrow_in_2 >> ./test/Narrow.urp
+../JQuery/autogen/jquery_1_9_1_js_c.o: ./Makefile ../JQuery/autogen/jquery_1_9_1_js_c.c $(call GUARD,UR_CC) $(call GUARD,UR_INCL)
+	$(UR_CC) -c $(UR_INCL) -o ../JQuery/autogen/jquery_1_9_1_js_c.o ../JQuery/autogen/jquery_1_9_1_js_c.c
+../JQuery/lib.urp: ./.cake3/tmp____JQuery_jquery_1_9_1_js_patch ./.cake3/tmp____JQuery_lib_in_1 ./.cake3/tmp____JQuery_lib_in_2 ./Makefile
+	cat ./.cake3/tmp____JQuery_lib_in_1 > ../JQuery/lib.urp
+	cat ./.cake3/tmp____JQuery_jquery_1_9_1_js_patch >> ../JQuery/lib.urp
+	cat ./.cake3/tmp____JQuery_lib_in_2 >> ../JQuery/lib.urp
+../Uru/Script.o: ./Makefile ../Uru/Script.c $(call GUARD,UR_CC) $(call GUARD,UR_CFLAGS) $(call GUARD,UR_INCL)
+	$(UR_CC) -c $(UR_INCL) $(UR_CFLAGS)  -o ../Uru/Script.o ../Uru/Script.c
+../Uru/lib.urp: ./.cake3/tmp____Uru_lib_in_1 ./.cake3/tmp____Uru_lib_in_2 ./Makefile
+	cat ./.cake3/tmp____Uru_lib_in_1 > ../Uru/lib.urp
+	cat ./.cake3/tmp____Uru_lib_in_2 >> ../Uru/lib.urp
 $(call GUARD,URVERSION):
 	rm -f .cake3/GUARD_URVERSION_*
 	touch $@
+$(call GUARD,UR_CC):
+	rm -f .cake3/GUARD_UR_CC_*
+	touch $@
 $(call GUARD,UR_CFLAGS):
 	rm -f .cake3/GUARD_UR_CFLAGS_*
+	touch $@
+$(call GUARD,UR_INCL):
+	rm -f .cake3/GUARD_UR_INCL_*
 	touch $@
 
 else
@@ -260,85 +268,111 @@ else
 
 ifneq ($(MAKECMDGOALS),clean)
 
-.PHONY: all
-all: .fix-multy1
-.PHONY: ./test/Narrow.exe
-./test/Narrow.exe: .fix-multy1
-.PHONY: ./test/Narrow.urp
-./test/Narrow.urp: .fix-multy1
-.PHONY: .cake3/tmp__testNarrow_in
-.cake3/tmp__testNarrow_in: .fix-multy1
-.PHONY: ./lib.urp
-./lib.urp: .fix-multy1
-.PHONY: .cake3/tmp__lib_in
-.cake3/tmp__lib_in: .fix-multy1
-.PHONY: ./test/Modal.exe
-./test/Modal.exe: .fix-multy1
-.PHONY: ./test/Modal.urp
-./test/Modal.urp: .fix-multy1
-.PHONY: .cake3/tmp__testModal_in
-.cake3/tmp__testModal_in: .fix-multy1
-.PHONY: ./test/B3_Login.exe
-./test/B3_Login.exe: .fix-multy1
-.PHONY: ./test/B3_Login.urp
-./test/B3_Login.urp: .fix-multy1
-.PHONY: .cake3/tmp__testB3_Login_in
-.cake3/tmp__testB3_Login_in: .fix-multy1
-.PHONY: ./test/B2.exe
-./test/B2.exe: .fix-multy1
-.PHONY: ./test/B2.urp
-./test/B2.urp: .fix-multy1
-.PHONY: .cake3/tmp__testB2_in
-.cake3/tmp__testB2_in: .fix-multy1
-.PHONY: ./test/B1.exe
-./test/B1.exe: .fix-multy1
-.PHONY: ./test/B1.urp
-./test/B1.urp: .fix-multy1
-.PHONY: .cake3/tmp__testB1_in
-.cake3/tmp__testB1_in: .fix-multy1
-.PHONY: lib
-lib: .fix-multy1
-.INTERMEDIATE: .fix-multy1
-.fix-multy1: 
+.PHONY: ./all
+./all: ./.fix-multy1
+.PHONY: ./.cake3/tmp___test_Narrow_in_2
+./.cake3/tmp___test_Narrow_in_2: ./.fix-multy1
+.PHONY: ./.cake3/tmp___test_Narrow_in_1
+./.cake3/tmp___test_Narrow_in_1: ./.fix-multy1
+.PHONY: ./.cake3/tmp___lib_in_2
+./.cake3/tmp___lib_in_2: ./.fix-multy1
+.PHONY: ./.cake3/tmp___lib_in_1
+./.cake3/tmp___lib_in_1: ./.fix-multy1
+.PHONY: ./.cake3/tmp____Uru_lib_in_2
+./.cake3/tmp____Uru_lib_in_2: ./.fix-multy1
+.PHONY: ./.cake3/tmp____Uru_lib_in_1
+./.cake3/tmp____Uru_lib_in_1: ./.fix-multy1
+.PHONY: ./.cake3/tmp____JQuery_lib_in_2
+./.cake3/tmp____JQuery_lib_in_2: ./.fix-multy1
+.PHONY: ./.cake3/tmp____JQuery_lib_in_1
+./.cake3/tmp____JQuery_lib_in_1: ./.fix-multy1
+.PHONY: ./.cake3/tmp___test_Modal_in_2
+./.cake3/tmp___test_Modal_in_2: ./.fix-multy1
+.PHONY: ./.cake3/tmp___test_Modal_in_1
+./.cake3/tmp___test_Modal_in_1: ./.fix-multy1
+.PHONY: ./.cake3/tmp___test_B3_Login_in_2
+./.cake3/tmp___test_B3_Login_in_2: ./.fix-multy1
+.PHONY: ./.cake3/tmp___test_B3_Login_in_1
+./.cake3/tmp___test_B3_Login_in_1: ./.fix-multy1
+.PHONY: ./.cake3/tmp___test_B2_in_2
+./.cake3/tmp___test_B2_in_2: ./.fix-multy1
+.PHONY: ./.cake3/tmp___test_B2_in_1
+./.cake3/tmp___test_B2_in_1: ./.fix-multy1
+.PHONY: ./.cake3/tmp___test_B1_in_2
+./.cake3/tmp___test_B1_in_2: ./.fix-multy1
+.PHONY: ./.cake3/tmp___test_B1_in_1
+./.cake3/tmp___test_B1_in_1: ./.fix-multy1
+.PHONY: ./lib
+./lib: ./.fix-multy1
+.INTERMEDIATE: ./.fix-multy1
+./.fix-multy1: 
 	-mkdir .cake3
-	$(MAKE) -C ./../JQuery -f Makefile 
-	$(MAKE) -C ./../Uru -f Makefile 
 	MAIN=1 $(MAKE) -f ./Makefile $(MAKECMDGOALS)
-.PHONY: autogen/B1_css_c.o
-autogen/B1_css_c.o: .fix-multy1
-.PHONY: autogen/B2_css_c.o
-autogen/B2_css_c.o: .fix-multy1
-.PHONY: autogen/B3_Login_css_c.o
-autogen/B3_Login_css_c.o: .fix-multy1
-.PHONY: autogen/Bootstrap_css_c.o
-autogen/Bootstrap_css_c.o: .fix-multy1
-.PHONY: autogen/Bootstrap_min_js_c.o
-autogen/Bootstrap_min_js_c.o: .fix-multy1
-.PHONY: autogen/Bootstrap_theme_css_c.o
-autogen/Bootstrap_theme_css_c.o: .fix-multy1
-.PHONY: autogen/FormSignin_css_c.o
-autogen/FormSignin_css_c.o: .fix-multy1
-.PHONY: autogen/Glyphicons_halflings_regular_eot_c.o
-autogen/Glyphicons_halflings_regular_eot_c.o: .fix-multy1
-.PHONY: autogen/Glyphicons_halflings_regular_svg_c.o
-autogen/Glyphicons_halflings_regular_svg_c.o: .fix-multy1
-.PHONY: autogen/Glyphicons_halflings_regular_ttf_c.o
-autogen/Glyphicons_halflings_regular_ttf_c.o: .fix-multy1
-.PHONY: autogen/Glyphicons_halflings_regular_woff_c.o
-autogen/Glyphicons_halflings_regular_woff_c.o: .fix-multy1
-.PHONY: autogen/Holder_js_c.o
-autogen/Holder_js_c.o: .fix-multy1
-.PHONY: autogen/Modal_css_c.o
-autogen/Modal_css_c.o: .fix-multy1
-.PHONY: autogen/Narrow_css_c.o
-autogen/Narrow_css_c.o: .fix-multy1
-.PHONY: autogen/Tooltip_js_c.o
-autogen/Tooltip_js_c.o: .fix-multy1
+.PHONY: ./autogen/B1_css_c.o
+./autogen/B1_css_c.o: ./.fix-multy1
+.PHONY: ./autogen/B2_css_c.o
+./autogen/B2_css_c.o: ./.fix-multy1
+.PHONY: ./autogen/B3_Login_css_c.o
+./autogen/B3_Login_css_c.o: ./.fix-multy1
+.PHONY: ./autogen/FormSignin_css_c.o
+./autogen/FormSignin_css_c.o: ./.fix-multy1
+.PHONY: ./autogen/Modal_css_c.o
+./autogen/Modal_css_c.o: ./.fix-multy1
+.PHONY: ./autogen/Narrow_css_c.o
+./autogen/Narrow_css_c.o: ./.fix-multy1
+.PHONY: ./autogen/Tooltip_js_c.o
+./autogen/Tooltip_js_c.o: ./.fix-multy1
+.PHONY: ./autogen/bootstrap_css_c.o
+./autogen/bootstrap_css_c.o: ./.fix-multy1
+.PHONY: ./autogen/bootstrap_min_js_c.o
+./autogen/bootstrap_min_js_c.o: ./.fix-multy1
+.PHONY: ./autogen/bootstrap_theme_css_c.o
+./autogen/bootstrap_theme_css_c.o: ./.fix-multy1
+.PHONY: ./autogen/glyphicons_halflings_regular_eot_c.o
+./autogen/glyphicons_halflings_regular_eot_c.o: ./.fix-multy1
+.PHONY: ./autogen/glyphicons_halflings_regular_svg_c.o
+./autogen/glyphicons_halflings_regular_svg_c.o: ./.fix-multy1
+.PHONY: ./autogen/glyphicons_halflings_regular_ttf_c.o
+./autogen/glyphicons_halflings_regular_ttf_c.o: ./.fix-multy1
+.PHONY: ./autogen/glyphicons_halflings_regular_woff_c.o
+./autogen/glyphicons_halflings_regular_woff_c.o: ./.fix-multy1
+.PHONY: ./autogen/holder_js_c.o
+./autogen/holder_js_c.o: ./.fix-multy1
+.PHONY: ./lib.urp
+./lib.urp: ./.fix-multy1
+.PHONY: ./test/B1.exe
+./test/B1.exe: ./.fix-multy1
+.PHONY: ./test/B1.urp
+./test/B1.urp: ./.fix-multy1
+.PHONY: ./test/B2.exe
+./test/B2.exe: ./.fix-multy1
+.PHONY: ./test/B2.urp
+./test/B2.urp: ./.fix-multy1
+.PHONY: ./test/B3_Login.exe
+./test/B3_Login.exe: ./.fix-multy1
+.PHONY: ./test/B3_Login.urp
+./test/B3_Login.urp: ./.fix-multy1
+.PHONY: ./test/Modal.exe
+./test/Modal.exe: ./.fix-multy1
+.PHONY: ./test/Modal.urp
+./test/Modal.urp: ./.fix-multy1
+.PHONY: ./test/Narrow.exe
+./test/Narrow.exe: ./.fix-multy1
+.PHONY: ./test/Narrow.urp
+./test/Narrow.urp: ./.fix-multy1
+.PHONY: ../JQuery/autogen/jquery_1_9_1_js_c.o
+../JQuery/autogen/jquery_1_9_1_js_c.o: ./.fix-multy1
+.PHONY: ../JQuery/lib.urp
+../JQuery/lib.urp: ./.fix-multy1
+.PHONY: ../Uru/Script.o
+../Uru/Script.o: ./.fix-multy1
+.PHONY: ../Uru/lib.urp
+../Uru/lib.urp: ./.fix-multy1
 
 endif
-.PHONY: clean
-clean: 
-	-rm ./lib.urp ./test/B1.exe ./test/B1.urp ./test/B2.exe ./test/B2.urp ./test/B3_Login.exe ./test/B3_Login.urp ./test/Modal.exe ./test/Modal.urp ./test/Narrow.exe ./test/Narrow.urp .cake3/tmp__lib_in .cake3/tmp__testB1_in .cake3/tmp__testB2_in .cake3/tmp__testB3_Login_in .cake3/tmp__testModal_in .cake3/tmp__testNarrow_in autogen/B1_css_c.o autogen/B2_css_c.o autogen/B3_Login_css_c.o autogen/Bootstrap_css_c.o autogen/Bootstrap_min_js_c.o autogen/Bootstrap_theme_css_c.o autogen/FormSignin_css_c.o autogen/Glyphicons_halflings_regular_eot_c.o autogen/Glyphicons_halflings_regular_svg_c.o autogen/Glyphicons_halflings_regular_ttf_c.o autogen/Glyphicons_halflings_regular_woff_c.o autogen/Holder_js_c.o autogen/Modal_css_c.o autogen/Narrow_css_c.o autogen/Tooltip_js_c.o
+.PHONY: ./clean
+./clean: 
+	-rm ./.cake3/tmp____JQuery_lib_in_1 ./.cake3/tmp____JQuery_lib_in_2 ./.cake3/tmp____Uru_lib_in_1 ./.cake3/tmp____Uru_lib_in_2 ./.cake3/tmp___lib_in_1 ./.cake3/tmp___lib_in_2 ./.cake3/tmp___test_B1_in_1 ./.cake3/tmp___test_B1_in_2 ./.cake3/tmp___test_B2_in_1 ./.cake3/tmp___test_B2_in_2 ./.cake3/tmp___test_B3_Login_in_1 ./.cake3/tmp___test_B3_Login_in_2 ./.cake3/tmp___test_Modal_in_1 ./.cake3/tmp___test_Modal_in_2 ./.cake3/tmp___test_Narrow_in_1 ./.cake3/tmp___test_Narrow_in_2 ./autogen/B1_css_c.o ./autogen/B2_css_c.o ./autogen/B3_Login_css_c.o ./autogen/FormSignin_css_c.o ./autogen/Modal_css_c.o ./autogen/Narrow_css_c.o ./autogen/Tooltip_js_c.o ./autogen/bootstrap_css_c.o ./autogen/bootstrap_min_js_c.o ./autogen/bootstrap_theme_css_c.o ./autogen/glyphicons_halflings_regular_eot_c.o ./autogen/glyphicons_halflings_regular_svg_c.o ./autogen/glyphicons_halflings_regular_ttf_c.o ./autogen/glyphicons_halflings_regular_woff_c.o ./autogen/holder_js_c.o ./lib.urp ./test/B1.exe ./test/B1.urp ./test/B2.exe ./test/B2.urp ./test/B3_Login.exe ./test/B3_Login.urp ./test/Modal.exe ./test/Modal.urp ./test/Narrow.exe ./test/Narrow.urp ../JQuery/autogen/jquery_1_9_1_js_c.o ../JQuery/lib.urp ../Uru/Script.o ../Uru/lib.urp
 	-rm -rf .cake3
 
 endif
