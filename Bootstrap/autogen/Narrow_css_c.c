@@ -1,9 +1,12 @@
-/* Thanks, http://stupefydeveloper.blogspot.ru/2008/08/cc-embed-binary-data-into-elf.html */
+/* http://stupefydeveloper.blogspot.ru/2008/08/cc-embed-binary-data-into-elf.html */
 #include <urweb.h>
 #include <stdio.h>
+#include "Narrow_css_c.h"
+
 #define BLOBSZ 0
 static char blob[BLOBSZ];
-uw_Basis_blob uw_Narrow_css_c_binary (uw_context ctx, uw_unit unit)
+
+uw_Basis_blob uw_Narrow_css_c_blob (uw_context ctx, uw_unit unit)
 {
   uw_Basis_blob uwblob;
   uwblob.data = &blob[0];
@@ -26,7 +29,6 @@ uw_Basis_string uw_Narrow_css_c_text (uw_context ctx, uw_unit unit) {
   *write=0;
   return c;
   }
-
 
 static char blob[BLOBSZ] = {
 };

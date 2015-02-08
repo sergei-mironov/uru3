@@ -1,6 +1,6 @@
-val binary = Modal_css_c.binary
-val text = Modal_css_c.text
-fun blobpage {} = b <- binary () ; returnBlob b (blessMime "text/css")
-val geturl = url(blobpage {})
-val propagated_urls = 
+open Modal_css_c
+fun content {} = b <- blob () ; returnBlob b (blessMime "text/css")
+val propagated_urls : list url = 
     []
+val url = url(content {})
+val geturl = url
