@@ -2,17 +2,21 @@
 module Cake_BootstrapMisc where
 
 import Development.Cake3
+import Development.Cake3.Utils.Slice
 import Development.Cake3.Ext.UrWeb
 
+import qualified Cake_Bootstrap as Bootstrap
+import qualified Cake_URU as Uru
 import Cake_BootstrapMisc_P
 
 lib = do
   uwlib (file "lib.urp") $ do
-    library (externalMakeTarget (file "../Bootstrap/lib.urp") "lib")
-    bin (file "bootstrap-slider/dist/bootstrap-slider.min.js") [NoScan]
-    bin (file "bootstrap-slider/dist/css/bootstrap-slider.css") [NoScan]
-    bin (file "BootstrapSlider.js") []
-    ur (single (file "BootstrapMisc.ur"))
+    library Bootstrap.lib
+    library Uru.lib
+    embed (file "bootstrap-slider/dist/bootstrap-slider.min.js")
+    embed (file "bootstrap-slider/dist/css/bootstrap-slider.css")
+    embed (mangled (file "BootstrapSlider.js"))
+    ur (file "BootstrapMisc.ur")
 
 bsm1 = mkDemo (file "test/BSM1.ur") (return ())
 
@@ -22,18 +26,18 @@ mkDemo src bdy = do
     allow url "https://camo.githubusercontent.com/*"
     library lib
     ur (sys "list")
-    bin ((src .= "css")) [NoScan]
-    ur (single ((src .= "ur")))
+    embed (src .= "css")
+    ur (src .= "ur")
     bdy
 
-main = do
-  writeMake (file "Makefile") $ do
-    rule $ do
-      phony "lib"
-      depend lib
+main = writeSliced (file "Makefile.dev") [(file "Makefile", [urembed,cake3,cakegen])] $ do
+  selfUpdate
+  rule $ do
+    phony "lib"
+    depend lib
 
-    rule $ do
-      phony "all"
-      depend bsm1
-      depend lib
+  rule $ do
+    phony "all"
+    depend bsm1
+    depend lib
 

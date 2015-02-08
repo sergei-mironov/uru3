@@ -1,4 +1,4 @@
-open BSM1_css_c
+open Bootstrap_slider_css_c
 fun content {} = b <- blob () ; returnBlob b (blessMime "text/css")
 val propagated_urls : list url = 
     []

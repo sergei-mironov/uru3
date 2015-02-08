@@ -8,7 +8,7 @@ fun main {} : transaction page =
   JQuery.add (
   Bootstrap.add (
   BootstrapMisc.add (
-  Uru.withStylesheet (BSM1_css.geturl) (
+  Uru.withStylesheet (BSM1_css.url) (
   Uru.withBody (fn _ =>
     let
       val data = data_attr data_kind
