@@ -8,86 +8,116 @@ unexport MAIN
 
 # Main section
 
-URCC = $(shell $(shell urweb -print-ccompiler) -print-prog-name=gcc)
-URINCL = -I$(shell urweb -print-cinclude) 
 URVERSION = $(shell urweb -version)
-.PHONY: all
-all: ./Makefile ./demo/Polyfill1.exe ./lib.urp
-.PHONY: lib
-lib: ./Makefile ./lib.urp
+UR_CC = $(shell $(shell urweb -print-ccompiler) -print-prog-name=gcc)
+UR_INCL = -I$(shell urweb -print-cinclude) 
+.PHONY: ./all
+./all: ./Makefile ./demo/Polyfill1.exe
+./.cake3/tmp___demo_Polyfill1_in_2: ./Makefile ./demo/Polyfill1.ur ./lib.urp
+	( \
+	echo   ;\
+	echo $$\/list  ;\
+	echo \.\.\/demo\/Polyfill1  ;\
+	) > ./.cake3/tmp___demo_Polyfill1_in_2
+./.cake3/tmp___demo_Polyfill1_in_1: ./Makefile ./demo/Polyfill1.ur ./lib.urp
+	( \
+	echo library\ \.\.\/  ;\
+	) > ./.cake3/tmp___demo_Polyfill1_in_1
+./.cake3/tmp___lib_in_2: ./Dialog.ur ./Makefile ./autogen/DialogPolyfill_js.ur ./autogen/DialogPolyfill_js_c.h ./autogen/DialogPolyfill_js_c.o ./autogen/Dialog_js.ur ./autogen/Dialog_js_c.h ./autogen/Dialog_js_c.o ./autogen/dialog_polyfill_css.ur ./autogen/dialog_polyfill_css_c.h ./autogen/dialog_polyfill_css_c.o ./autogen/dialog_polyfill_js.ur ./autogen/dialog_polyfill_js_c.h ./autogen/dialog_polyfill_js_c.o ../JQuery/lib.urp ../Uru/lib.urp
+	( \
+	echo   ;\
+	echo \.\/autogen\/dialog\_polyfill\_js  ;\
+	echo \.\/autogen\/dialog\_polyfill\_css  ;\
+	echo \.\/autogen\/DialogPolyfill\_js  ;\
+	echo \.\/autogen\/Dialog\_js  ;\
+	echo \.\/Dialog  ;\
+	) > ./.cake3/tmp___lib_in_2
+./.cake3/tmp___lib_in_1: ./Dialog.ur ./Makefile ./autogen/DialogPolyfill_js.ur ./autogen/DialogPolyfill_js_c.h ./autogen/DialogPolyfill_js_c.o ./autogen/Dialog_js.ur ./autogen/Dialog_js_c.h ./autogen/Dialog_js_c.o ./autogen/dialog_polyfill_css.ur ./autogen/dialog_polyfill_css_c.h ./autogen/dialog_polyfill_css_c.o ./autogen/dialog_polyfill_js.ur ./autogen/dialog_polyfill_js_c.h ./autogen/dialog_polyfill_js_c.o ../JQuery/lib.urp ../Uru/lib.urp
+	( \
+	echo ffi\ \.\/DialogTag  ;\
+	echo library\ \.\.\/Uru\/  ;\
+	echo library\ \.\.\/JQuery\/  ;\
+	echo ffi\ \.\/autogen\/dialog\_polyfill\_js\_c  ;\
+	echo include\ \.\/autogen\/dialog\_polyfill\_js\_c\.h  ;\
+	echo link\ \.\/autogen\/dialog\_polyfill\_js\_c\.o  ;\
+	echo ffi\ \.\/autogen\/dialog\_polyfill\_css\_c  ;\
+	echo include\ \.\/autogen\/dialog\_polyfill\_css\_c\.h  ;\
+	echo link\ \.\/autogen\/dialog\_polyfill\_css\_c\.o  ;\
+	echo ffi\ \.\/autogen\/DialogPolyfill\_js\_c  ;\
+	echo include\ \.\/autogen\/DialogPolyfill\_js\_c\.h  ;\
+	echo link\ \.\/autogen\/DialogPolyfill\_js\_c\.o  ;\
+	echo ffi\ \.\/autogen\/Dialog\_js\_js  ;\
+	echo ffi\ \.\/autogen\/Dialog\_js\_c  ;\
+	echo include\ \.\/autogen\/Dialog\_js\_c\.h  ;\
+	echo link\ \.\/autogen\/Dialog\_js\_c\.o  ;\
+	) > ./.cake3/tmp___lib_in_1
+./.cake3/tmp____JQuery_lib_in_2: ./Makefile ../JQuery/JQuery.ur ../JQuery/JQuery.urs ../JQuery/autogen/jquery_1_9_1_js.ur ../JQuery/autogen/jquery_1_9_1_js_c.h ../JQuery/autogen/jquery_1_9_1_js_c.o ../Uru/lib.urp
+	( \
+	echo   ;\
+	echo \.\/autogen\/jquery\_1\_9\_1\_js  ;\
+	echo \.\/JQuery  ;\
+	) > ./.cake3/tmp____JQuery_lib_in_2
+./.cake3/tmp____JQuery_lib_in_1: ./Makefile ../JQuery/JQuery.ur ../JQuery/JQuery.urs ../JQuery/autogen/jquery_1_9_1_js.ur ../JQuery/autogen/jquery_1_9_1_js_c.h ../JQuery/autogen/jquery_1_9_1_js_c.o ../Uru/lib.urp
+	( \
+	echo library\ \.\.\/Dialog\/\.\.\/Uru\/  ;\
+	echo ffi\ \.\/autogen\/jquery\_1\_9\_1\_js\_c  ;\
+	echo include\ \.\/autogen\/jquery\_1\_9\_1\_js\_c\.h  ;\
+	echo link\ \.\/autogen\/jquery\_1\_9\_1\_js\_c\.o  ;\
+	) > ./.cake3/tmp____JQuery_lib_in_1
+./.cake3/tmp____Uru_lib_in_2: ./Makefile ../Uru/CSS.ur ../Uru/CSS.urs ../Uru/Script.h ../Uru/Script.o ../Uru/Uru.ur ../Uru/Uru.urs
+	( \
+	echo   ;\
+	echo $$\/list  ;\
+	echo \.\/CSS  ;\
+	echo \.\/Uru  ;\
+	) > ./.cake3/tmp____Uru_lib_in_2
+./.cake3/tmp____Uru_lib_in_1: ./Makefile ../Uru/CSS.ur ../Uru/CSS.urs ../Uru/Script.h ../Uru/Script.o ../Uru/Uru.ur ../Uru/Uru.urs
+	( \
+	echo ffi\ \.\/Script  ;\
+	echo include\ \.\/Script\.h  ;\
+	echo link\ \.\/Script\.o  ;\
+	) > ./.cake3/tmp____Uru_lib_in_1
+.PHONY: ./lib
+./lib: ./Makefile ./lib.urp
+./autogen/DialogPolyfill_js_c.o: ./Makefile ./autogen/DialogPolyfill_js_c.c $(call GUARD,UR_CC) $(call GUARD,UR_INCL)
+	$(UR_CC) -c $(UR_INCL) -o ./autogen/DialogPolyfill_js_c.o ./autogen/DialogPolyfill_js_c.c
+./autogen/Dialog_js_c.o: ./Makefile ./autogen/Dialog_js_c.c $(call GUARD,UR_CC) $(call GUARD,UR_INCL)
+	$(UR_CC) -c $(UR_INCL) -o ./autogen/Dialog_js_c.o ./autogen/Dialog_js_c.c
+./autogen/dialog_polyfill_css_c.o: ./Makefile ./autogen/dialog_polyfill_css_c.c $(call GUARD,UR_CC) $(call GUARD,UR_INCL)
+	$(UR_CC) -c $(UR_INCL) -o ./autogen/dialog_polyfill_css_c.o ./autogen/dialog_polyfill_css_c.c
+./autogen/dialog_polyfill_js_c.o: ./Makefile ./autogen/dialog_polyfill_js_c.c $(call GUARD,UR_CC) $(call GUARD,UR_INCL)
+	$(UR_CC) -c $(UR_INCL) -o ./autogen/dialog_polyfill_js_c.o ./autogen/dialog_polyfill_js_c.c
 ./demo/Polyfill1.exe: ./Makefile ./demo/Polyfill1.urp $(call GUARD,URVERSION)
 	urweb -dbms sqlite ./demo/Polyfill1
-./demo/Polyfill1.urp: ./Makefile ./demo/Polyfill1.ur ./lib.urp .cake3/tmp__demoPolyfill1_in
-	cat .cake3/tmp__demoPolyfill1_in > ./demo/Polyfill1.urp
-.cake3/tmp__demoPolyfill1_in: ./Makefile
-	-rm -rf .cake3/tmp__demoPolyfill1_in
-	echo 'library ../.' >> .cake3/tmp__demoPolyfill1_in
-	echo '' >> .cake3/tmp__demoPolyfill1_in
-	echo '$$/list' >> .cake3/tmp__demoPolyfill1_in
-	echo '.././demo/Polyfill1' >> .cake3/tmp__demoPolyfill1_in
-./lib.urp: ./../JQuery/lib.urp ./../Uru/lib.urp ./Dialog.ur ./Makefile .cake3/tmp__lib_in autogen/DialogPolyfill_js.ur autogen/DialogPolyfill_js.urs autogen/DialogPolyfill_js_c.h autogen/DialogPolyfill_js_c.o autogen/Dialog_js.ur autogen/Dialog_js.urs autogen/Dialog_js_c.h autogen/Dialog_js_c.o autogen/Dialog_polyfill_css.ur autogen/Dialog_polyfill_css.urs autogen/Dialog_polyfill_css_c.h autogen/Dialog_polyfill_css_c.o autogen/Dialog_polyfill_js.ur autogen/Dialog_polyfill_js.urs autogen/Dialog_polyfill_js_c.h autogen/Dialog_polyfill_js_c.o
-	cat .cake3/tmp__lib_in > ./lib.urp
-.cake3/tmp__lib_in: ./Makefile
-	-rm -rf .cake3/tmp__lib_in
-	echo 'ffi ./DialogTag' >> .cake3/tmp__lib_in
-	echo 'library ./../Uru' >> .cake3/tmp__lib_in
-	echo 'library ./../JQuery' >> .cake3/tmp__lib_in
-	echo 'include autogen/Dialog_polyfill_js_c.h' >> .cake3/tmp__lib_in
-	echo 'link autogen/Dialog_polyfill_js_c.o' >> .cake3/tmp__lib_in
-	echo 'ffi autogen/Dialog_polyfill_js_c' >> .cake3/tmp__lib_in
-	echo 'ffi autogen/Dialog_polyfill_js_js' >> .cake3/tmp__lib_in
-	echo 'allow mime text/javascript' >> .cake3/tmp__lib_in
-	echo 'safeGet Dialog_polyfill_js/blobpage' >> .cake3/tmp__lib_in
-	echo 'safeGet Dialog_polyfill_js/blob' >> .cake3/tmp__lib_in
-	echo 'include autogen/Dialog_polyfill_css_c.h' >> .cake3/tmp__lib_in
-	echo 'link autogen/Dialog_polyfill_css_c.o' >> .cake3/tmp__lib_in
-	echo 'ffi autogen/Dialog_polyfill_css_c' >> .cake3/tmp__lib_in
-	echo 'ffi autogen/Dialog_polyfill_css_js' >> .cake3/tmp__lib_in
-	echo 'allow mime text/css' >> .cake3/tmp__lib_in
-	echo 'safeGet Dialog_polyfill_css/blobpage' >> .cake3/tmp__lib_in
-	echo 'safeGet Dialog_polyfill_css/blob' >> .cake3/tmp__lib_in
-	echo 'include autogen/DialogPolyfill_js_c.h' >> .cake3/tmp__lib_in
-	echo 'link autogen/DialogPolyfill_js_c.o' >> .cake3/tmp__lib_in
-	echo 'ffi autogen/DialogPolyfill_js_c' >> .cake3/tmp__lib_in
-	echo 'ffi autogen/DialogPolyfill_js_js' >> .cake3/tmp__lib_in
-	echo 'allow mime text/javascript' >> .cake3/tmp__lib_in
-	echo 'safeGet DialogPolyfill_js/blobpage' >> .cake3/tmp__lib_in
-	echo 'safeGet DialogPolyfill_js/blob' >> .cake3/tmp__lib_in
-	echo 'include autogen/Dialog_js_c.h' >> .cake3/tmp__lib_in
-	echo 'link autogen/Dialog_js_c.o' >> .cake3/tmp__lib_in
-	echo 'ffi autogen/Dialog_js_c' >> .cake3/tmp__lib_in
-	echo 'jsFunc Dialog_js_js.dialog_show = dialog_show__unit' >> .cake3/tmp__lib_in
-	echo 'jsFunc Dialog_js_js.dialog_showModal = dialog_showModal__unit' >> .cake3/tmp__lib_in
-	echo 'jsFunc Dialog_js_js.dialog_close = dialog_close__unit' >> .cake3/tmp__lib_in
-	echo 'ffi autogen/Dialog_js_js' >> .cake3/tmp__lib_in
-	echo 'allow mime text/javascript' >> .cake3/tmp__lib_in
-	echo 'safeGet Dialog_js/blobpage' >> .cake3/tmp__lib_in
-	echo 'safeGet Dialog_js/blob' >> .cake3/tmp__lib_in
-	echo '' >> .cake3/tmp__lib_in
-	echo 'autogen/Dialog_polyfill_js' >> .cake3/tmp__lib_in
-	echo 'autogen/Dialog_polyfill_css' >> .cake3/tmp__lib_in
-	echo 'autogen/DialogPolyfill_js' >> .cake3/tmp__lib_in
-	echo 'autogen/Dialog_js' >> .cake3/tmp__lib_in
-	echo './Dialog' >> .cake3/tmp__lib_in
-autogen/DialogPolyfill_js_c.o: ./Makefile autogen/DialogPolyfill_js_c.c $(call GUARD,URCC) $(call GUARD,URINCL) $(call GUARD,UR_CFLAGS)
-	$(URCC) -c $(URINCL) $(UR_CFLAGS)  -o autogen/DialogPolyfill_js_c.o autogen/DialogPolyfill_js_c.c
-autogen/Dialog_js_c.o: ./Makefile autogen/Dialog_js_c.c $(call GUARD,URCC) $(call GUARD,URINCL) $(call GUARD,UR_CFLAGS)
-	$(URCC) -c $(URINCL) $(UR_CFLAGS)  -o autogen/Dialog_js_c.o autogen/Dialog_js_c.c
-autogen/Dialog_polyfill_css_c.o: ./Makefile autogen/Dialog_polyfill_css_c.c $(call GUARD,URCC) $(call GUARD,URINCL) $(call GUARD,UR_CFLAGS)
-	$(URCC) -c $(URINCL) $(UR_CFLAGS)  -o autogen/Dialog_polyfill_css_c.o autogen/Dialog_polyfill_css_c.c
-autogen/Dialog_polyfill_js_c.o: ./Makefile autogen/Dialog_polyfill_js_c.c $(call GUARD,URCC) $(call GUARD,URINCL) $(call GUARD,UR_CFLAGS)
-	$(URCC) -c $(URINCL) $(UR_CFLAGS)  -o autogen/Dialog_polyfill_js_c.o autogen/Dialog_polyfill_js_c.c
-$(call GUARD,URCC):
-	rm -f .cake3/GUARD_URCC_*
-	touch $@
-$(call GUARD,URINCL):
-	rm -f .cake3/GUARD_URINCL_*
-	touch $@
+./demo/Polyfill1.urp: ./.cake3/tmp___demo_Polyfill1_in_1 ./.cake3/tmp___demo_Polyfill1_in_2 ./Makefile
+	cat ./.cake3/tmp___demo_Polyfill1_in_1 > ./demo/Polyfill1.urp
+	cat ./.cake3/tmp___demo_Polyfill1_in_2 >> ./demo/Polyfill1.urp
+./lib.urp: ./.cake3/tmp___DialogPolyfill_js_patch ./.cake3/tmp___Dialog_js_patch ./.cake3/tmp___dialog_polyfill_dialog_polyfill_css_patch ./.cake3/tmp___dialog_polyfill_dialog_polyfill_js_patch ./.cake3/tmp___lib_in_1 ./.cake3/tmp___lib_in_2 ./Makefile
+	cat ./.cake3/tmp___lib_in_1 > ./lib.urp
+	cat ./.cake3/tmp___Dialog_js_patch ./.cake3/tmp___DialogPolyfill_js_patch ./.cake3/tmp___dialog_polyfill_dialog_polyfill_css_patch ./.cake3/tmp___dialog_polyfill_dialog_polyfill_js_patch >> ./lib.urp
+	cat ./.cake3/tmp___lib_in_2 >> ./lib.urp
+../JQuery/autogen/jquery_1_9_1_js_c.o: ./Makefile ../JQuery/autogen/jquery_1_9_1_js_c.c $(call GUARD,UR_CC) $(call GUARD,UR_INCL)
+	$(UR_CC) -c $(UR_INCL) -o ../JQuery/autogen/jquery_1_9_1_js_c.o ../JQuery/autogen/jquery_1_9_1_js_c.c
+../JQuery/lib.urp: ./.cake3/tmp____JQuery_jquery_1_9_1_js_patch ./.cake3/tmp____JQuery_lib_in_1 ./.cake3/tmp____JQuery_lib_in_2 ./Makefile
+	cat ./.cake3/tmp____JQuery_lib_in_1 > ../JQuery/lib.urp
+	cat ./.cake3/tmp____JQuery_jquery_1_9_1_js_patch >> ../JQuery/lib.urp
+	cat ./.cake3/tmp____JQuery_lib_in_2 >> ../JQuery/lib.urp
+../Uru/Script.o: ./Makefile ../Uru/Script.c $(call GUARD,UR_CC) $(call GUARD,UR_CFLAGS) $(call GUARD,UR_INCL)
+	$(UR_CC) -c $(UR_INCL) $(UR_CFLAGS)  -o ../Uru/Script.o ../Uru/Script.c
+../Uru/lib.urp: ./.cake3/tmp____Uru_lib_in_1 ./.cake3/tmp____Uru_lib_in_2 ./Makefile
+	cat ./.cake3/tmp____Uru_lib_in_1 > ../Uru/lib.urp
+	cat ./.cake3/tmp____Uru_lib_in_2 >> ../Uru/lib.urp
 $(call GUARD,URVERSION):
 	rm -f .cake3/GUARD_URVERSION_*
 	touch $@
+$(call GUARD,UR_CC):
+	rm -f .cake3/GUARD_UR_CC_*
+	touch $@
 $(call GUARD,UR_CFLAGS):
 	rm -f .cake3/GUARD_UR_CFLAGS_*
+	touch $@
+$(call GUARD,UR_INCL):
+	rm -f .cake3/GUARD_UR_INCL_*
 	touch $@
 
 else
@@ -96,41 +126,57 @@ else
 
 ifneq ($(MAKECMDGOALS),clean)
 
-.PHONY: all
-all: .fix-multy1
-.PHONY: lib
-lib: .fix-multy1
-.PHONY: ./demo/Polyfill1.exe
-./demo/Polyfill1.exe: .fix-multy1
-.PHONY: ./demo/Polyfill1.urp
-./demo/Polyfill1.urp: .fix-multy1
-.PHONY: .cake3/tmp__demoPolyfill1_in
-.cake3/tmp__demoPolyfill1_in: .fix-multy1
-.PHONY: ./lib.urp
-./lib.urp: .fix-multy1
-.PHONY: .cake3/tmp__lib_in
-.cake3/tmp__lib_in: .fix-multy1
-.INTERMEDIATE: .fix-multy1
-.fix-multy1: 
+.PHONY: ./all
+./all: ./.fix-multy1
+.PHONY: ./.cake3/tmp___demo_Polyfill1_in_2
+./.cake3/tmp___demo_Polyfill1_in_2: ./.fix-multy1
+.PHONY: ./.cake3/tmp___demo_Polyfill1_in_1
+./.cake3/tmp___demo_Polyfill1_in_1: ./.fix-multy1
+.PHONY: ./.cake3/tmp___lib_in_2
+./.cake3/tmp___lib_in_2: ./.fix-multy1
+.PHONY: ./.cake3/tmp___lib_in_1
+./.cake3/tmp___lib_in_1: ./.fix-multy1
+.PHONY: ./.cake3/tmp____JQuery_lib_in_2
+./.cake3/tmp____JQuery_lib_in_2: ./.fix-multy1
+.PHONY: ./.cake3/tmp____JQuery_lib_in_1
+./.cake3/tmp____JQuery_lib_in_1: ./.fix-multy1
+.PHONY: ./.cake3/tmp____Uru_lib_in_2
+./.cake3/tmp____Uru_lib_in_2: ./.fix-multy1
+.PHONY: ./.cake3/tmp____Uru_lib_in_1
+./.cake3/tmp____Uru_lib_in_1: ./.fix-multy1
+.PHONY: ./lib
+./lib: ./.fix-multy1
+.INTERMEDIATE: ./.fix-multy1
+./.fix-multy1: 
 	-mkdir .cake3
-	$(MAKE) -C ./../Uru -f Makefile 
-	$(MAKE) -C ./../JQuery -f Makefile 
-	$(MAKE) -C ./../Uru -f Makefile 
-	$(MAKE) -C ./../JQuery -f Makefile 
 	MAIN=1 $(MAKE) -f ./Makefile $(MAKECMDGOALS)
-.PHONY: autogen/DialogPolyfill_js_c.o
-autogen/DialogPolyfill_js_c.o: .fix-multy1
-.PHONY: autogen/Dialog_js_c.o
-autogen/Dialog_js_c.o: .fix-multy1
-.PHONY: autogen/Dialog_polyfill_css_c.o
-autogen/Dialog_polyfill_css_c.o: .fix-multy1
-.PHONY: autogen/Dialog_polyfill_js_c.o
-autogen/Dialog_polyfill_js_c.o: .fix-multy1
+.PHONY: ./autogen/DialogPolyfill_js_c.o
+./autogen/DialogPolyfill_js_c.o: ./.fix-multy1
+.PHONY: ./autogen/Dialog_js_c.o
+./autogen/Dialog_js_c.o: ./.fix-multy1
+.PHONY: ./autogen/dialog_polyfill_css_c.o
+./autogen/dialog_polyfill_css_c.o: ./.fix-multy1
+.PHONY: ./autogen/dialog_polyfill_js_c.o
+./autogen/dialog_polyfill_js_c.o: ./.fix-multy1
+.PHONY: ./demo/Polyfill1.exe
+./demo/Polyfill1.exe: ./.fix-multy1
+.PHONY: ./demo/Polyfill1.urp
+./demo/Polyfill1.urp: ./.fix-multy1
+.PHONY: ./lib.urp
+./lib.urp: ./.fix-multy1
+.PHONY: ../JQuery/autogen/jquery_1_9_1_js_c.o
+../JQuery/autogen/jquery_1_9_1_js_c.o: ./.fix-multy1
+.PHONY: ../JQuery/lib.urp
+../JQuery/lib.urp: ./.fix-multy1
+.PHONY: ../Uru/Script.o
+../Uru/Script.o: ./.fix-multy1
+.PHONY: ../Uru/lib.urp
+../Uru/lib.urp: ./.fix-multy1
 
 endif
-.PHONY: clean
-clean: 
-	-rm ./demo/Polyfill1.exe ./demo/Polyfill1.urp ./lib.urp .cake3/tmp__demoPolyfill1_in .cake3/tmp__lib_in autogen/DialogPolyfill_js_c.o autogen/Dialog_js_c.o autogen/Dialog_polyfill_css_c.o autogen/Dialog_polyfill_js_c.o
+.PHONY: ./clean
+./clean: 
+	-rm ./.cake3/tmp____JQuery_lib_in_1 ./.cake3/tmp____JQuery_lib_in_2 ./.cake3/tmp____Uru_lib_in_1 ./.cake3/tmp____Uru_lib_in_2 ./.cake3/tmp___demo_Polyfill1_in_1 ./.cake3/tmp___demo_Polyfill1_in_2 ./.cake3/tmp___lib_in_1 ./.cake3/tmp___lib_in_2 ./autogen/DialogPolyfill_js_c.o ./autogen/Dialog_js_c.o ./autogen/dialog_polyfill_css_c.o ./autogen/dialog_polyfill_js_c.o ./demo/Polyfill1.exe ./demo/Polyfill1.urp ./lib.urp ../JQuery/autogen/jquery_1_9_1_js_c.o ../JQuery/lib.urp ../Uru/Script.o ../Uru/lib.urp
 	-rm -rf .cake3
 
 endif

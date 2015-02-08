@@ -3,37 +3,36 @@ module Cake_Dialog where
 
 import Development.Cake3
 import Development.Cake3.Ext.UrWeb
+import Development.Cake3.Utils.Slice
+import qualified Cake_URU as Uru
+import qualified Cake_JQ as JQuery
 import Cake_Dialog_P
 
 lib = do
   uwlib (file "lib.urp") $ do
     ffi (file "DialogTag.urs")
-    library' (externalMake (file "../Uru/lib.urp"))
-    library' (externalMake (file "../JQuery/lib.urp"))
-    bin (file "dialog-polyfill/dialog-polyfill.js") [NoScan]
-    bin (file "dialog-polyfill/dialog-polyfill.css") [NoScan]
-    bin (file "DialogPolyfill.js") [NoScan]
-    bin (file "Dialog.js") []
-    ur (single (file "Dialog.ur"))
+    library Uru.lib
+    library JQuery.lib
+    embed (file "dialog-polyfill/dialog-polyfill.js")
+    embed (file "dialog-polyfill/dialog-polyfill.css")
+    embed (file "DialogPolyfill.js")
+    embed (mangled (file "Dialog.js"))
+    ur (file "Dialog.ur")
 
 demo1 = do
-  l <- lib
   uwapp "-dbms sqlite" (file "demo/Polyfill1.urp") $ do
-    library l
+    library lib
     ur (sys "list")
-    ur (single (file "demo/Polyfill1.ur"))
+    ur (file "demo/Polyfill1.ur")
 
-main = do
-  writeMake (file "Makefile") $ do
-    l <- lib
-    d1 <- demo1
-    
-    rule $ do
-      phony "lib"
-      depend l
+main = writeSliced (file "Makefile.dev") [(file "Makefile", [urembed,cake3,cakegen])] $ do
+  selfUpdate
 
-    rule $ do
-      phony "all"
-      depend l
-      depend d1
+  rule $ do
+    phony "lib"
+    depend lib
+
+  rule $ do
+    phony "all"
+    depend demo1
 

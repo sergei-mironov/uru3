@@ -1,7 +1,6 @@
-open Dialog_js_c
+open Dialog_polyfill_js_c
 fun content {} = b <- blob () ; returnBlob b (blessMime "text/javascript")
 val propagated_urls : list url = 
     []
-open Dialog_js_js
 val url = url(content {})
 val geturl = url

@@ -1,6 +1,6 @@
-val binary = DialogPolyfill_js_c.binary
-val text = DialogPolyfill_js_c.text
-fun blobpage {} = b <- binary () ; returnBlob b (blessMime "text/javascript")
-val geturl = url(blobpage {})
-val propagated_urls = 
+open DialogPolyfill_js_c
+fun content {} = b <- blob () ; returnBlob b (blessMime "text/javascript")
+val propagated_urls : list url = 
     []
+val url = url(content {})
+val geturl = url
