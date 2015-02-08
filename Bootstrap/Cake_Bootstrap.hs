@@ -4,9 +4,9 @@ module Cake_Bootstrap where
 import Development.Cake3
 import Development.Cake3.Ext.UrWeb
 import Development.Cake3.Utils.Slice
-import Cake_Bootstrap_P
 import qualified Cake_URU as URU
 import qualified Cake_JQ as JQ
+import Cake_Bootstrap_P
 
 lib = do
   uwlib (file "lib.urp") $ do
