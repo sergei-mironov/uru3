@@ -71,8 +71,7 @@ demo_modal = mkdemo1 (file "test/Modal.ur") $ return ()
 
 demo_narrow = mkdemo1 (file "test/Narrow.ur") $ return ()
 
-main = writeSliced (file "Makefile.dev") [(file "Makefile", [urembed,cake3,cakegen])] $ do
-  selfUpdate
+main = writeDefaultMakefiles $ do
 
   rule $ do
     phony "lib"

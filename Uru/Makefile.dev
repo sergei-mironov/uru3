@@ -11,23 +11,27 @@ unexport MAIN
 UR_CC = $(shell $(shell urweb -print-ccompiler) -print-prog-name=gcc)
 UR_INCL = -I$(shell urweb -print-cinclude)
 .PHONY: ./all
-./all: ./Makefile ./lib.urp
-./.cake3/tmp___lib_in_2: ./CSS.ur ./CSS.urs ./Makefile ./Script.h ./Script.o ./Uru.ur ./Uru.urs
+./all: ./Makefile.dev ./lib.urp
+./.cake3/tmp___lib_in_2: ./CSS.ur ./CSS.urs ./Makefile.dev ./Script.h ./Script.o ./Uru.ur ./Uru.urs
 	( \
 	echo   ;\
 	echo $$\/list  ;\
 	echo \.\/CSS  ;\
 	echo \.\/Uru  ;\
 	) > ./.cake3/tmp___lib_in_2
-./.cake3/tmp___lib_in_1: ./CSS.ur ./CSS.urs ./Makefile ./Script.h ./Script.o ./Uru.ur ./Uru.urs
+./.cake3/tmp___lib_in_1: ./CSS.ur ./CSS.urs ./Makefile.dev ./Script.h ./Script.o ./Uru.ur ./Uru.urs
 	( \
 	echo ffi\ \.\/Script  ;\
 	echo include\ \.\/Script\.h  ;\
 	echo link\ \.\/Script\.o  ;\
 	) > ./.cake3/tmp___lib_in_1
-./Script.o: ./Makefile ./Script.c $(call GUARD,UR_CC) $(call GUARD,UR_CFLAGS) $(call GUARD,UR_INCL)
+./Cakegen: ../Bootstrap/Cake_Bootstrap.hs ../BootstrapMisc/Cake_BootstrapMisc.hs ../Dialog/Cake_Dialog.hs ../JQuery/Cake_JQ.hs ../Persona/Cake_Persona.hs ../Uru/Cake_URU.hs ./Cake_URU.hs
+	cake3 -C ..
+./Makefile.dev: ./Cakegen
+	./Cakegen
+./Script.o: ./Makefile.dev ./Script.c $(call GUARD,UR_CC) $(call GUARD,UR_CFLAGS) $(call GUARD,UR_INCL)
 	$(UR_CC) -c $(UR_INCL) $(UR_CFLAGS)  -o ./Script.o ./Script.c
-./lib.urp: ./.cake3/tmp___lib_in_1 ./.cake3/tmp___lib_in_2 ./Makefile
+./lib.urp: ./.cake3/tmp___lib_in_1 ./.cake3/tmp___lib_in_2 ./Makefile.dev
 	cat ./.cake3/tmp___lib_in_1 > ./lib.urp
 	cat ./.cake3/tmp___lib_in_2 >> ./lib.urp
 $(call GUARD,UR_CC):
@@ -55,7 +59,11 @@ ifneq ($(MAKECMDGOALS),clean)
 .INTERMEDIATE: ./.fix-multy1
 ./.fix-multy1:
 	-mkdir .cake3
-	MAIN=1 $(MAKE) -f ./Makefile $(MAKECMDGOALS)
+	MAIN=1 $(MAKE) -f ./Makefile.dev $(MAKECMDGOALS)
+.PHONY: ./Cakegen
+./Cakegen: ./.fix-multy1
+.PHONY: ./Makefile.dev
+./Makefile.dev: ./.fix-multy1
 .PHONY: ./Script.o
 ./Script.o: ./.fix-multy1
 .PHONY: ./lib.urp
@@ -64,7 +72,7 @@ ifneq ($(MAKECMDGOALS),clean)
 endif
 .PHONY: ./clean
 ./clean:
-	-rm ./.cake3/tmp___lib_in_1 ./.cake3/tmp___lib_in_2 ./Script.o ./lib.urp
+	-rm ./.cake3/tmp___lib_in_1 ./.cake3/tmp___lib_in_2 ./Cakegen ./Script.o ./lib.urp
 	-rm -rf .cake3
 
 endif

@@ -12,7 +12,7 @@ LIBJANSSON = $(shell pkg-config --libs jansson)
 LIBLIBCURL = $(shell pkg-config --libs libcurl)
 URVERSION = $(shell urweb -version)
 UR_CC = $(shell $(shell urweb -print-ccompiler) -print-prog-name=gcc)
-UR_INCL = -I$(shell urweb -print-cinclude) 
+UR_INCL = -I$(shell urweb -print-cinclude)
 .PHONY: ./all
 ./all: ./Makefile ./lib.urp ./test/P1.exe
 ./.cake3/tmp___test_P1_in_2: ./Makefile ./lib.urp ./test/P1.ur
@@ -136,7 +136,7 @@ ifneq ($(MAKECMDGOALS),clean)
 .PHONY: ./lib
 ./lib: ./.fix-multy1
 .INTERMEDIATE: ./.fix-multy1
-./.fix-multy1: 
+./.fix-multy1:
 	-mkdir .cake3
 	MAIN=1 $(MAKE) -f ./Makefile $(MAKECMDGOALS)
 .PHONY: ./autogen/urweb_persona_js_c.o
@@ -156,7 +156,7 @@ ifneq ($(MAKECMDGOALS),clean)
 
 endif
 .PHONY: ./clean
-./clean: 
+./clean:
 	-rm ./.cake3/tmp____Uru_lib_in_1 ./.cake3/tmp____Uru_lib_in_2 ./.cake3/tmp___lib_in_1 ./.cake3/tmp___lib_in_2 ./.cake3/tmp___test_P1_in_1 ./.cake3/tmp___test_P1_in_2 ./autogen/urweb_persona_js_c.o ./ffi.o ./lib.urp ./test/P1.exe ./test/P1.urp ../Uru/Script.o ../Uru/lib.urp
 	-rm -rf .cake3
 

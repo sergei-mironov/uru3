@@ -10,7 +10,7 @@ unexport MAIN
 
 URVERSION = $(shell urweb -version)
 UR_CC = $(shell $(shell urweb -print-ccompiler) -print-prog-name=gcc)
-UR_INCL = -I$(shell urweb -print-cinclude) 
+UR_INCL = -I$(shell urweb -print-cinclude)
 .PHONY: ./all
 ./all: ./Makefile.dev ./lib.urp ./test/BSM1.exe
 ./.cake3/tmp___lib_in_2: ./.cake3/tmp___BootstrapSlider_js_patch ./.cake3/tmp___bootstrap_slider_dist_bootstrap_slider_min_js_patch ./.cake3/tmp___bootstrap_slider_dist_css_bootstrap_slider_css_patch ./BootstrapMisc.ur ./Makefile.dev ./autogen/BootstrapSlider_js.ur ./autogen/BootstrapSlider_js_c.c ./autogen/BootstrapSlider_js_c.h ./autogen/BootstrapSlider_js_c.o ./autogen/BootstrapSlider_js_c.urs ./autogen/BootstrapSlider_js_js.urs ./autogen/bootstrap_slider_css.ur ./autogen/bootstrap_slider_css_c.c ./autogen/bootstrap_slider_css_c.h ./autogen/bootstrap_slider_css_c.o ./autogen/bootstrap_slider_css_c.urs ./autogen/bootstrap_slider_min_js.ur ./autogen/bootstrap_slider_min_js_c.c ./autogen/bootstrap_slider_min_js_c.h ./autogen/bootstrap_slider_min_js_c.o ./autogen/bootstrap_slider_min_js_c.urs ../Bootstrap/lib.urp ../Uru/lib.urp
@@ -188,8 +188,8 @@ UR_INCL = -I$(shell urweb -print-cinclude)
 .INTERMEDIATE: ./.fix-multy9
 ./.fix-multy9: ./Makefile.dev ../Bootstrap/dist/fonts/glyphicons-halflings-regular.woff
 	urembed  -c ../Bootstrap/autogen/glyphicons_halflings_regular_woff_c.c -H ../Bootstrap/autogen/glyphicons_halflings_regular_woff_c.h -s ../Bootstrap/autogen/glyphicons_halflings_regular_woff_c.urs -w ../Bootstrap/autogen/glyphicons_halflings_regular_woff.ur  ../Bootstrap/dist/fonts/glyphicons-halflings-regular.woff > ./.cake3/tmp____Bootstrap_dist_fonts_glyphicons_halflings_regular_woff_patch
-./Cakegen: ../Bootstrap/Cake_Bootstrap.hs ../BootstrapMisc/Cake_BootstrapMisc.hs ../Dialog/Cake_Dialog.hs ../JQuery/Cake_JQ.hs ../Persona/Cakefile.hs ../Uru/Cake_URU.hs ./Cake_BootstrapMisc.hs
-	cake3
+./Cakegen: ../Bootstrap/Cake_Bootstrap.hs ../BootstrapMisc/Cake_BootstrapMisc.hs ../Dialog/Cake_Dialog.hs ../JQuery/Cake_JQ.hs ../Persona/Cake_Persona.hs ../Uru/Cake_URU.hs ./Cake_BootstrapMisc.hs
+	cake3 -C ..
 ./Makefile.dev: ./Cakegen
 	./Cakegen
 ./autogen/BSM1_css.ur: ./.fix-multy14
@@ -373,7 +373,7 @@ ifneq ($(MAKECMDGOALS),clean)
 .PHONY: ./.cake3/tmp___test_BSM1_css_patch
 ./.cake3/tmp___test_BSM1_css_patch: ./.fix-multy1
 .INTERMEDIATE: ./.fix-multy1
-./.fix-multy1: 
+./.fix-multy1:
 	-mkdir .cake3
 	MAIN=1 $(MAKE) -f ./Makefile.dev $(MAKECMDGOALS)
 .PHONY: ./Cakegen
@@ -541,7 +541,7 @@ ifneq ($(MAKECMDGOALS),clean)
 
 endif
 .PHONY: ./clean
-./clean: 
+./clean:
 	-rm ./.cake3/tmp___BootstrapSlider_js_patch ./.cake3/tmp____Bootstrap_FormSignin_css_patch ./.cake3/tmp____Bootstrap_Tooltip_js_patch ./.cake3/tmp____Bootstrap_dist_css_bootstrap_css_patch ./.cake3/tmp____Bootstrap_dist_css_bootstrap_theme_css_patch ./.cake3/tmp____Bootstrap_dist_fonts_glyphicons_halflings_regular_eot_patch ./.cake3/tmp____Bootstrap_dist_fonts_glyphicons_halflings_regular_svg_patch ./.cake3/tmp____Bootstrap_dist_fonts_glyphicons_halflings_regular_ttf_patch ./.cake3/tmp____Bootstrap_dist_fonts_glyphicons_halflings_regular_woff_patch ./.cake3/tmp____Bootstrap_dist_js_bootstrap_min_js_patch ./.cake3/tmp____Bootstrap_lib_in_1 ./.cake3/tmp____Bootstrap_lib_in_2 ./.cake3/tmp____JQuery_jquery_1_9_1_js_patch ./.cake3/tmp____JQuery_lib_in_1 ./.cake3/tmp____JQuery_lib_in_2 ./.cake3/tmp____Uru_lib_in_1 ./.cake3/tmp____Uru_lib_in_2 ./.cake3/tmp___bootstrap_slider_dist_bootstrap_slider_min_js_patch ./.cake3/tmp___bootstrap_slider_dist_css_bootstrap_slider_css_patch ./.cake3/tmp___lib_in_1 ./.cake3/tmp___lib_in_2 ./.cake3/tmp___test_BSM1_css_patch ./.cake3/tmp___test_BSM1_in_1 ./.cake3/tmp___test_BSM1_in_2 ./Cakegen ./autogen/BSM1_css.ur ./autogen/BSM1_css_c.c ./autogen/BSM1_css_c.h ./autogen/BSM1_css_c.o ./autogen/BSM1_css_c.urs ./autogen/BootstrapSlider_js.ur ./autogen/BootstrapSlider_js_c.c ./autogen/BootstrapSlider_js_c.h ./autogen/BootstrapSlider_js_c.o ./autogen/BootstrapSlider_js_c.urs ./autogen/BootstrapSlider_js_js.urs ./autogen/bootstrap_slider_css.ur ./autogen/bootstrap_slider_css_c.c ./autogen/bootstrap_slider_css_c.h ./autogen/bootstrap_slider_css_c.o ./autogen/bootstrap_slider_css_c.urs ./autogen/bootstrap_slider_min_js.ur ./autogen/bootstrap_slider_min_js_c.c ./autogen/bootstrap_slider_min_js_c.h ./autogen/bootstrap_slider_min_js_c.o ./autogen/bootstrap_slider_min_js_c.urs ./lib.urp ./test/BSM1.exe ./test/BSM1.urp ../Bootstrap/autogen/FormSignin_css.ur ../Bootstrap/autogen/FormSignin_css_c.c ../Bootstrap/autogen/FormSignin_css_c.h ../Bootstrap/autogen/FormSignin_css_c.o ../Bootstrap/autogen/FormSignin_css_c.urs ../Bootstrap/autogen/Tooltip_js.ur ../Bootstrap/autogen/Tooltip_js_c.c ../Bootstrap/autogen/Tooltip_js_c.h ../Bootstrap/autogen/Tooltip_js_c.o ../Bootstrap/autogen/Tooltip_js_c.urs ../Bootstrap/autogen/Tooltip_js_js.urs ../Bootstrap/autogen/bootstrap_css.ur ../Bootstrap/autogen/bootstrap_css_c.c ../Bootstrap/autogen/bootstrap_css_c.h ../Bootstrap/autogen/bootstrap_css_c.o ../Bootstrap/autogen/bootstrap_css_c.urs ../Bootstrap/autogen/bootstrap_min_js.ur ../Bootstrap/autogen/bootstrap_min_js_c.c ../Bootstrap/autogen/bootstrap_min_js_c.h ../Bootstrap/autogen/bootstrap_min_js_c.o ../Bootstrap/autogen/bootstrap_min_js_c.urs ../Bootstrap/autogen/bootstrap_theme_css.ur ../Bootstrap/autogen/bootstrap_theme_css_c.c ../Bootstrap/autogen/bootstrap_theme_css_c.h ../Bootstrap/autogen/bootstrap_theme_css_c.o ../Bootstrap/autogen/bootstrap_theme_css_c.urs ../Bootstrap/autogen/glyphicons_halflings_regular_eot.ur ../Bootstrap/autogen/glyphicons_halflings_regular_eot_c.c ../Bootstrap/autogen/glyphicons_halflings_regular_eot_c.h ../Bootstrap/autogen/glyphicons_halflings_regular_eot_c.o ../Bootstrap/autogen/glyphicons_halflings_regular_eot_c.urs ../Bootstrap/autogen/glyphicons_halflings_regular_svg.ur ../Bootstrap/autogen/glyphicons_halflings_regular_svg_c.c ../Bootstrap/autogen/glyphicons_halflings_regular_svg_c.h ../Bootstrap/autogen/glyphicons_halflings_regular_svg_c.o ../Bootstrap/autogen/glyphicons_halflings_regular_svg_c.urs ../Bootstrap/autogen/glyphicons_halflings_regular_ttf.ur ../Bootstrap/autogen/glyphicons_halflings_regular_ttf_c.c ../Bootstrap/autogen/glyphicons_halflings_regular_ttf_c.h ../Bootstrap/autogen/glyphicons_halflings_regular_ttf_c.o ../Bootstrap/autogen/glyphicons_halflings_regular_ttf_c.urs ../Bootstrap/autogen/glyphicons_halflings_regular_woff.ur ../Bootstrap/autogen/glyphicons_halflings_regular_woff_c.c ../Bootstrap/autogen/glyphicons_halflings_regular_woff_c.h ../Bootstrap/autogen/glyphicons_halflings_regular_woff_c.o ../Bootstrap/autogen/glyphicons_halflings_regular_woff_c.urs ../Bootstrap/lib.urp ../JQuery/autogen/jquery_1_9_1_js.ur ../JQuery/autogen/jquery_1_9_1_js_c.c ../JQuery/autogen/jquery_1_9_1_js_c.h ../JQuery/autogen/jquery_1_9_1_js_c.o ../JQuery/autogen/jquery_1_9_1_js_c.urs ../JQuery/lib.urp ../Uru/Script.o ../Uru/lib.urp
 	-rm -rf .cake3
 

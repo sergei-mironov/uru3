@@ -12,8 +12,8 @@ lib = uwlib (file "lib.urp") $ do
   embed (file "jquery-1.9.1.js")
   ur (file "JQuery.ur", file "JQuery.urs")
 
-main = writeSliced (file "Makefile.dev") [(file "Makefile", [urembed,cake3,cakegen])] $ do
-  selfUpdate
+main = writeDefaultMakefiles $ do
+
   rule $ do
     phony "all"
     depend lib

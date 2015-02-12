@@ -8,12 +8,12 @@ lib = uwlib (file "lib.urp") $ do
   ffi (file "Script.urs")
   include (file "Script.h")
   src (file "Script.c")
-
   ur (sys "list")
   ur (file "CSS.ur", file "CSS.urs")
   ur (file "Uru.ur", file "Uru.urs")
 
-main = writeMake (file "Makefile") $ do
+
+main = writeDefaultMakefiles $ do
   rule $ do
     phony "all"
     depend lib

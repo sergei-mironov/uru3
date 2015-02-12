@@ -30,8 +30,8 @@ mkDemo src bdy = do
     ur (src .= "ur")
     bdy
 
-main = writeSliced (file "Makefile.dev") [(file "Makefile", [urembed,cake3,cakegen])] $ do
-  selfUpdate
+main = writeDefaultMakefiles $ do
+
   rule $ do
     phony "lib"
     depend lib

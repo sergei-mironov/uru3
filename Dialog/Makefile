@@ -10,7 +10,7 @@ unexport MAIN
 
 URVERSION = $(shell urweb -version)
 UR_CC = $(shell $(shell urweb -print-ccompiler) -print-prog-name=gcc)
-UR_INCL = -I$(shell urweb -print-cinclude) 
+UR_INCL = -I$(shell urweb -print-cinclude)
 .PHONY: ./all
 ./all: ./Makefile ./demo/Polyfill1.exe
 ./.cake3/tmp___demo_Polyfill1_in_2: ./Makefile ./demo/Polyfill1.ur ./lib.urp
@@ -147,7 +147,7 @@ ifneq ($(MAKECMDGOALS),clean)
 .PHONY: ./lib
 ./lib: ./.fix-multy1
 .INTERMEDIATE: ./.fix-multy1
-./.fix-multy1: 
+./.fix-multy1:
 	-mkdir .cake3
 	MAIN=1 $(MAKE) -f ./Makefile $(MAKECMDGOALS)
 .PHONY: ./autogen/DialogPolyfill_js_c.o
@@ -175,7 +175,7 @@ ifneq ($(MAKECMDGOALS),clean)
 
 endif
 .PHONY: ./clean
-./clean: 
+./clean:
 	-rm ./.cake3/tmp____JQuery_lib_in_1 ./.cake3/tmp____JQuery_lib_in_2 ./.cake3/tmp____Uru_lib_in_1 ./.cake3/tmp____Uru_lib_in_2 ./.cake3/tmp___demo_Polyfill1_in_1 ./.cake3/tmp___demo_Polyfill1_in_2 ./.cake3/tmp___lib_in_1 ./.cake3/tmp___lib_in_2 ./autogen/DialogPolyfill_js_c.o ./autogen/Dialog_js_c.o ./autogen/dialog_polyfill_css_c.o ./autogen/dialog_polyfill_js_c.o ./demo/Polyfill1.exe ./demo/Polyfill1.urp ./lib.urp ../JQuery/autogen/jquery_1_9_1_js_c.o ../JQuery/lib.urp ../Uru/Script.o ../Uru/lib.urp
 	-rm -rf .cake3
 

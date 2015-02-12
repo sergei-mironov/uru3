@@ -9,7 +9,7 @@ unexport MAIN
 # Main section
 
 UR_CC = $(shell $(shell urweb -print-ccompiler) -print-prog-name=gcc)
-UR_INCL = -I$(shell urweb -print-cinclude) 
+UR_INCL = -I$(shell urweb -print-cinclude)
 .PHONY: ./all
 ./all: ./Makefile.dev ./lib.urp
 ./.cake3/tmp___lib_in_2: ./.cake3/tmp___jquery_1_9_1_js_patch ./JQuery.ur ./JQuery.urs ./Makefile.dev ./autogen/jquery_1_9_1_js.ur ./autogen/jquery_1_9_1_js_c.c ./autogen/jquery_1_9_1_js_c.h ./autogen/jquery_1_9_1_js_c.o ./autogen/jquery_1_9_1_js_c.urs ../Uru/lib.urp
@@ -42,8 +42,8 @@ UR_INCL = -I$(shell urweb -print-cinclude)
 .INTERMEDIATE: ./.fix-multy1
 ./.fix-multy1: ./Makefile.dev ./jquery-1.9.1.js
 	urembed  -c ./autogen/jquery_1_9_1_js_c.c -H ./autogen/jquery_1_9_1_js_c.h -s ./autogen/jquery_1_9_1_js_c.urs -w ./autogen/jquery_1_9_1_js.ur  ./jquery-1.9.1.js > ./.cake3/tmp___jquery_1_9_1_js_patch
-./Cakegen: ../Bootstrap/Cake_Bootstrap.hs ../BootstrapMisc/Cake_BootstrapMisc.hs ../Dialog/Cake_Dialog.hs ../JQuery/Cake_JQ.hs ../Persona/Cakefile.hs ../Uru/Cake_URU.hs ./Cake_JQ.hs
-	cake3
+./Cakegen: ../Bootstrap/Cake_Bootstrap.hs ../BootstrapMisc/Cake_BootstrapMisc.hs ../Dialog/Cake_Dialog.hs ../JQuery/Cake_JQ.hs ../Persona/Cake_Persona.hs ../Uru/Cake_URU.hs ./Cake_JQ.hs
+	cake3 -C ..
 ./Makefile.dev: ./Cakegen
 	./Cakegen
 ./autogen/jquery_1_9_1_js.ur: ./.fix-multy1
@@ -90,7 +90,7 @@ ifneq ($(MAKECMDGOALS),clean)
 .PHONY: ./.cake3/tmp___jquery_1_9_1_js_patch
 ./.cake3/tmp___jquery_1_9_1_js_patch: ./.fix-multy1
 .INTERMEDIATE: ./.fix-multy1
-./.fix-multy1: 
+./.fix-multy1:
 	-mkdir .cake3
 	MAIN=1 $(MAKE) -f ./Makefile.dev $(MAKECMDGOALS)
 .PHONY: ./Cakegen
@@ -116,7 +116,7 @@ ifneq ($(MAKECMDGOALS),clean)
 
 endif
 .PHONY: ./clean
-./clean: 
+./clean:
 	-rm ./.cake3/tmp____Uru_lib_in_1 ./.cake3/tmp____Uru_lib_in_2 ./.cake3/tmp___jquery_1_9_1_js_patch ./.cake3/tmp___lib_in_1 ./.cake3/tmp___lib_in_2 ./Cakegen ./autogen/jquery_1_9_1_js.ur ./autogen/jquery_1_9_1_js_c.c ./autogen/jquery_1_9_1_js_c.h ./autogen/jquery_1_9_1_js_c.o ./autogen/jquery_1_9_1_js_c.urs ./lib.urp ../Uru/Script.o ../Uru/lib.urp
 	-rm -rf .cake3
 

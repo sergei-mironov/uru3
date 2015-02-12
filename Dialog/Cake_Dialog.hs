@@ -25,8 +25,7 @@ demo1 = do
     ur (sys "list")
     ur (file "demo/Polyfill1.ur")
 
-main = writeSliced (file "Makefile.dev") [(file "Makefile", [urembed,cake3,cakegen])] $ do
-  selfUpdate
+main = writeDefaultMakefiles $ do
 
   rule $ do
     phony "lib"

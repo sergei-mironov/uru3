@@ -40,8 +40,7 @@ test = uwapp "-dbms sqlite" (file "test/P1.urp") $ do
   ur (file "test/P1.ur")
   debug
 
-main = writeSliced (file "Makefile.dev") [(file "Makefile", [urembed,cake3,cakegen])] $ do
-  selfUpdate
+main = writeDefaultMakefiles $ do
 
   rule $ do
     phony "lib"

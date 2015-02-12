@@ -9,7 +9,7 @@ unexport MAIN
 # Main section
 
 UR_CC = $(shell $(shell urweb -print-ccompiler) -print-prog-name=gcc)
-UR_INCL = -I$(shell urweb -print-cinclude) 
+UR_INCL = -I$(shell urweb -print-cinclude)
 .PHONY: ./all
 ./all: ./Makefile ./lib.urp
 ./.cake3/tmp___lib_in_2: ./JQuery.ur ./JQuery.urs ./Makefile ./autogen/jquery_1_9_1_js.ur ./autogen/jquery_1_9_1_js_c.h ./autogen/jquery_1_9_1_js_c.o ../Uru/lib.urp
@@ -76,7 +76,7 @@ ifneq ($(MAKECMDGOALS),clean)
 .PHONY: ./.cake3/tmp____Uru_lib_in_1
 ./.cake3/tmp____Uru_lib_in_1: ./.fix-multy1
 .INTERMEDIATE: ./.fix-multy1
-./.fix-multy1: 
+./.fix-multy1:
 	-mkdir .cake3
 	MAIN=1 $(MAKE) -f ./Makefile $(MAKECMDGOALS)
 .PHONY: ./autogen/jquery_1_9_1_js_c.o
@@ -90,7 +90,7 @@ ifneq ($(MAKECMDGOALS),clean)
 
 endif
 .PHONY: ./clean
-./clean: 
+./clean:
 	-rm ./.cake3/tmp____Uru_lib_in_1 ./.cake3/tmp____Uru_lib_in_2 ./.cake3/tmp___lib_in_1 ./.cake3/tmp___lib_in_2 ./autogen/jquery_1_9_1_js_c.o ./lib.urp ../Uru/Script.o ../Uru/lib.urp
 	-rm -rf .cake3
 

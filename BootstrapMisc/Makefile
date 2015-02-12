@@ -10,7 +10,7 @@ unexport MAIN
 
 URVERSION = $(shell urweb -version)
 UR_CC = $(shell $(shell urweb -print-ccompiler) -print-prog-name=gcc)
-UR_INCL = -I$(shell urweb -print-cinclude) 
+UR_INCL = -I$(shell urweb -print-cinclude)
 .PHONY: ./all
 ./all: ./Makefile ./lib.urp ./test/BSM1.exe
 ./.cake3/tmp___lib_in_2: ./BootstrapMisc.ur ./Makefile ./autogen/BootstrapSlider_js.ur ./autogen/BootstrapSlider_js_c.h ./autogen/BootstrapSlider_js_c.o ./autogen/bootstrap_slider_css.ur ./autogen/bootstrap_slider_css_c.h ./autogen/bootstrap_slider_css_c.o ./autogen/bootstrap_slider_min_js.ur ./autogen/bootstrap_slider_min_js_c.h ./autogen/bootstrap_slider_min_js_c.o ../Bootstrap/lib.urp ../Uru/lib.urp
@@ -227,7 +227,7 @@ ifneq ($(MAKECMDGOALS),clean)
 .PHONY: ./lib
 ./lib: ./.fix-multy1
 .INTERMEDIATE: ./.fix-multy1
-./.fix-multy1: 
+./.fix-multy1:
 	-mkdir .cake3
 	MAIN=1 $(MAKE) -f ./Makefile $(MAKECMDGOALS)
 .PHONY: ./autogen/BSM1_css_c.o
@@ -275,7 +275,7 @@ ifneq ($(MAKECMDGOALS),clean)
 
 endif
 .PHONY: ./clean
-./clean: 
+./clean:
 	-rm ./.cake3/tmp____Bootstrap_lib_in_1 ./.cake3/tmp____Bootstrap_lib_in_2 ./.cake3/tmp____JQuery_lib_in_1 ./.cake3/tmp____JQuery_lib_in_2 ./.cake3/tmp____Uru_lib_in_1 ./.cake3/tmp____Uru_lib_in_2 ./.cake3/tmp___lib_in_1 ./.cake3/tmp___lib_in_2 ./.cake3/tmp___test_BSM1_in_1 ./.cake3/tmp___test_BSM1_in_2 ./autogen/BSM1_css_c.o ./autogen/BootstrapSlider_js_c.o ./autogen/bootstrap_slider_css_c.o ./autogen/bootstrap_slider_min_js_c.o ./lib.urp ./test/BSM1.exe ./test/BSM1.urp ../Bootstrap/autogen/FormSignin_css_c.o ../Bootstrap/autogen/Tooltip_js_c.o ../Bootstrap/autogen/bootstrap_css_c.o ../Bootstrap/autogen/bootstrap_min_js_c.o ../Bootstrap/autogen/bootstrap_theme_css_c.o ../Bootstrap/autogen/glyphicons_halflings_regular_eot_c.o ../Bootstrap/autogen/glyphicons_halflings_regular_svg_c.o ../Bootstrap/autogen/glyphicons_halflings_regular_ttf_c.o ../Bootstrap/autogen/glyphicons_halflings_regular_woff_c.o ../Bootstrap/lib.urp ../JQuery/autogen/jquery_1_9_1_js_c.o ../JQuery/lib.urp ../Uru/Script.o ../Uru/lib.urp
 	-rm -rf .cake3
 
