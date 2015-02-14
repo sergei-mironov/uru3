@@ -204,45 +204,45 @@ UR_INCL = -I$(shell urweb -print-cinclude)
 	$(UR_CC) -c $(UR_INCL) -o ./autogen/glyphicons_halflings_regular_woff_c.o ./autogen/glyphicons_halflings_regular_woff_c.c
 ./autogen/holder_js_c.o: ./Makefile ./autogen/holder_js_c.c $(call GUARD,UR_CC) $(call GUARD,UR_INCL)
 	$(UR_CC) -c $(UR_INCL) -o ./autogen/holder_js_c.o ./autogen/holder_js_c.c
-./lib.urp: ./.cake3/tmp___FormSignin_css_patch ./.cake3/tmp___Tooltip_js_patch ./.cake3/tmp___dist_css_bootstrap_css_patch ./.cake3/tmp___dist_css_bootstrap_theme_css_patch ./.cake3/tmp___dist_fonts_glyphicons_halflings_regular_eot_patch ./.cake3/tmp___dist_fonts_glyphicons_halflings_regular_svg_patch ./.cake3/tmp___dist_fonts_glyphicons_halflings_regular_ttf_patch ./.cake3/tmp___dist_fonts_glyphicons_halflings_regular_woff_patch ./.cake3/tmp___dist_js_bootstrap_min_js_patch ./.cake3/tmp___lib_in_1 ./.cake3/tmp___lib_in_2 ./Makefile
+./lib.urp: ./.cake3/tmp___lib_in_1 ./.cake3/tmp___lib_in_2 ./Makefile ./autogen/FormSignin_css.urp.in ./autogen/Tooltip_js.urp.in ./autogen/bootstrap_css.urp.in ./autogen/bootstrap_min_js.urp.in ./autogen/bootstrap_theme_css.urp.in ./autogen/glyphicons_halflings_regular_eot.urp.in ./autogen/glyphicons_halflings_regular_svg.urp.in ./autogen/glyphicons_halflings_regular_ttf.urp.in ./autogen/glyphicons_halflings_regular_woff.urp.in
 	cat ./.cake3/tmp___lib_in_1 > ./lib.urp
-	cat ./.cake3/tmp___FormSignin_css_patch ./.cake3/tmp___Tooltip_js_patch ./.cake3/tmp___dist_js_bootstrap_min_js_patch ./.cake3/tmp___dist_css_bootstrap_theme_css_patch ./.cake3/tmp___dist_css_bootstrap_css_patch ./.cake3/tmp___dist_fonts_glyphicons_halflings_regular_woff_patch ./.cake3/tmp___dist_fonts_glyphicons_halflings_regular_ttf_patch ./.cake3/tmp___dist_fonts_glyphicons_halflings_regular_svg_patch ./.cake3/tmp___dist_fonts_glyphicons_halflings_regular_eot_patch >> ./lib.urp
+	cat ./autogen/FormSignin_css.urp.in ./autogen/Tooltip_js.urp.in ./autogen/bootstrap_min_js.urp.in ./autogen/bootstrap_theme_css.urp.in ./autogen/bootstrap_css.urp.in ./autogen/glyphicons_halflings_regular_woff.urp.in ./autogen/glyphicons_halflings_regular_ttf.urp.in ./autogen/glyphicons_halflings_regular_svg.urp.in ./autogen/glyphicons_halflings_regular_eot.urp.in >> ./lib.urp
 	cat ./.cake3/tmp___lib_in_2 >> ./lib.urp
 ./test/B1.exe: ./Makefile ./test/B1.urp $(call GUARD,URVERSION)
 	urweb -dbms sqlite ./test/B1
-./test/B1.urp: ./.cake3/tmp___test_B1_css_patch ./.cake3/tmp___test_B1_in_1 ./.cake3/tmp___test_B1_in_2 ./Makefile
+./test/B1.urp: ./.cake3/tmp___test_B1_in_1 ./.cake3/tmp___test_B1_in_2 ./Makefile ./autogen/B1_css.urp.in
 	cat ./.cake3/tmp___test_B1_in_1 > ./test/B1.urp
-	cat ./.cake3/tmp___test_B1_css_patch >> ./test/B1.urp
+	cat ./autogen/B1_css.urp.in >> ./test/B1.urp
 	cat ./.cake3/tmp___test_B1_in_2 >> ./test/B1.urp
 ./test/B2.exe: ./Makefile ./test/B2.urp $(call GUARD,URVERSION)
 	urweb -dbms sqlite ./test/B2
-./test/B2.urp: ./.cake3/tmp___test_B2_css_patch ./.cake3/tmp___test_B2_in_1 ./.cake3/tmp___test_B2_in_2 ./.cake3/tmp___test_holder_js_patch ./Makefile
+./test/B2.urp: ./.cake3/tmp___test_B2_in_1 ./.cake3/tmp___test_B2_in_2 ./Makefile ./autogen/B2_css.urp.in ./autogen/holder_js.urp.in
 	cat ./.cake3/tmp___test_B2_in_1 > ./test/B2.urp
-	cat ./.cake3/tmp___test_holder_js_patch ./.cake3/tmp___test_B2_css_patch >> ./test/B2.urp
+	cat ./autogen/holder_js.urp.in ./autogen/B2_css.urp.in >> ./test/B2.urp
 	cat ./.cake3/tmp___test_B2_in_2 >> ./test/B2.urp
 ./test/B3_Login.exe: ./Makefile ./test/B3_Login.urp $(call GUARD,URVERSION)
 	urweb -dbms sqlite ./test/B3_Login
-./test/B3_Login.urp: ./.cake3/tmp___test_B3_Login_css_patch ./.cake3/tmp___test_B3_Login_in_1 ./.cake3/tmp___test_B3_Login_in_2 ./Makefile
+./test/B3_Login.urp: ./.cake3/tmp___test_B3_Login_in_1 ./.cake3/tmp___test_B3_Login_in_2 ./Makefile ./autogen/B3_Login_css.urp.in
 	cat ./.cake3/tmp___test_B3_Login_in_1 > ./test/B3_Login.urp
-	cat ./.cake3/tmp___test_B3_Login_css_patch >> ./test/B3_Login.urp
+	cat ./autogen/B3_Login_css.urp.in >> ./test/B3_Login.urp
 	cat ./.cake3/tmp___test_B3_Login_in_2 >> ./test/B3_Login.urp
 ./test/Modal.exe: ./Makefile ./test/Modal.urp $(call GUARD,URVERSION)
 	urweb -dbms sqlite ./test/Modal
-./test/Modal.urp: ./.cake3/tmp___test_Modal_css_patch ./.cake3/tmp___test_Modal_in_1 ./.cake3/tmp___test_Modal_in_2 ./Makefile
+./test/Modal.urp: ./.cake3/tmp___test_Modal_in_1 ./.cake3/tmp___test_Modal_in_2 ./Makefile ./autogen/Modal_css.urp.in
 	cat ./.cake3/tmp___test_Modal_in_1 > ./test/Modal.urp
-	cat ./.cake3/tmp___test_Modal_css_patch >> ./test/Modal.urp
+	cat ./autogen/Modal_css.urp.in >> ./test/Modal.urp
 	cat ./.cake3/tmp___test_Modal_in_2 >> ./test/Modal.urp
 ./test/Narrow.exe: ./Makefile ./test/Narrow.urp $(call GUARD,URVERSION)
 	urweb -dbms sqlite ./test/Narrow
-./test/Narrow.urp: ./.cake3/tmp___test_Narrow_css_patch ./.cake3/tmp___test_Narrow_in_1 ./.cake3/tmp___test_Narrow_in_2 ./Makefile
+./test/Narrow.urp: ./.cake3/tmp___test_Narrow_in_1 ./.cake3/tmp___test_Narrow_in_2 ./Makefile ./autogen/Narrow_css.urp.in
 	cat ./.cake3/tmp___test_Narrow_in_1 > ./test/Narrow.urp
-	cat ./.cake3/tmp___test_Narrow_css_patch >> ./test/Narrow.urp
+	cat ./autogen/Narrow_css.urp.in >> ./test/Narrow.urp
 	cat ./.cake3/tmp___test_Narrow_in_2 >> ./test/Narrow.urp
 ../JQuery/autogen/jquery_1_9_1_js_c.o: ./Makefile ../JQuery/autogen/jquery_1_9_1_js_c.c $(call GUARD,UR_CC) $(call GUARD,UR_INCL)
 	$(UR_CC) -c $(UR_INCL) -o ../JQuery/autogen/jquery_1_9_1_js_c.o ../JQuery/autogen/jquery_1_9_1_js_c.c
-../JQuery/lib.urp: ./.cake3/tmp____JQuery_jquery_1_9_1_js_patch ./.cake3/tmp____JQuery_lib_in_1 ./.cake3/tmp____JQuery_lib_in_2 ./Makefile
+../JQuery/lib.urp: ./.cake3/tmp____JQuery_lib_in_1 ./.cake3/tmp____JQuery_lib_in_2 ./Makefile ../JQuery/autogen/jquery_1_9_1_js.urp.in
 	cat ./.cake3/tmp____JQuery_lib_in_1 > ../JQuery/lib.urp
-	cat ./.cake3/tmp____JQuery_jquery_1_9_1_js_patch >> ../JQuery/lib.urp
+	cat ../JQuery/autogen/jquery_1_9_1_js.urp.in >> ../JQuery/lib.urp
 	cat ./.cake3/tmp____JQuery_lib_in_2 >> ../JQuery/lib.urp
 ../Uru/Script.o: ./Makefile ../Uru/Script.c $(call GUARD,UR_CC) $(call GUARD,UR_CFLAGS) $(call GUARD,UR_INCL)
 	$(UR_CC) -c $(UR_INCL) $(UR_CFLAGS)  -o ../Uru/Script.o ../Uru/Script.c

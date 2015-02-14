@@ -92,15 +92,15 @@ UR_INCL = -I$(shell urweb -print-cinclude)
 ./demo/Polyfill1.urp: ./.cake3/tmp___demo_Polyfill1_in_1 ./.cake3/tmp___demo_Polyfill1_in_2 ./Makefile
 	cat ./.cake3/tmp___demo_Polyfill1_in_1 > ./demo/Polyfill1.urp
 	cat ./.cake3/tmp___demo_Polyfill1_in_2 >> ./demo/Polyfill1.urp
-./lib.urp: ./.cake3/tmp___DialogPolyfill_js_patch ./.cake3/tmp___Dialog_js_patch ./.cake3/tmp___dialog_polyfill_dialog_polyfill_css_patch ./.cake3/tmp___dialog_polyfill_dialog_polyfill_js_patch ./.cake3/tmp___lib_in_1 ./.cake3/tmp___lib_in_2 ./Makefile
+./lib.urp: ./.cake3/tmp___lib_in_1 ./.cake3/tmp___lib_in_2 ./Makefile ./autogen/DialogPolyfill_js.urp.in ./autogen/Dialog_js.urp.in ./autogen/dialog_polyfill_css.urp.in ./autogen/dialog_polyfill_js.urp.in
 	cat ./.cake3/tmp___lib_in_1 > ./lib.urp
-	cat ./.cake3/tmp___Dialog_js_patch ./.cake3/tmp___DialogPolyfill_js_patch ./.cake3/tmp___dialog_polyfill_dialog_polyfill_css_patch ./.cake3/tmp___dialog_polyfill_dialog_polyfill_js_patch >> ./lib.urp
+	cat ./autogen/Dialog_js.urp.in ./autogen/DialogPolyfill_js.urp.in ./autogen/dialog_polyfill_css.urp.in ./autogen/dialog_polyfill_js.urp.in >> ./lib.urp
 	cat ./.cake3/tmp___lib_in_2 >> ./lib.urp
 ../JQuery/autogen/jquery_1_9_1_js_c.o: ./Makefile ../JQuery/autogen/jquery_1_9_1_js_c.c $(call GUARD,UR_CC) $(call GUARD,UR_INCL)
 	$(UR_CC) -c $(UR_INCL) -o ../JQuery/autogen/jquery_1_9_1_js_c.o ../JQuery/autogen/jquery_1_9_1_js_c.c
-../JQuery/lib.urp: ./.cake3/tmp____JQuery_jquery_1_9_1_js_patch ./.cake3/tmp____JQuery_lib_in_1 ./.cake3/tmp____JQuery_lib_in_2 ./Makefile
+../JQuery/lib.urp: ./.cake3/tmp____JQuery_lib_in_1 ./.cake3/tmp____JQuery_lib_in_2 ./Makefile ../JQuery/autogen/jquery_1_9_1_js.urp.in
 	cat ./.cake3/tmp____JQuery_lib_in_1 > ../JQuery/lib.urp
-	cat ./.cake3/tmp____JQuery_jquery_1_9_1_js_patch >> ../JQuery/lib.urp
+	cat ../JQuery/autogen/jquery_1_9_1_js.urp.in >> ../JQuery/lib.urp
 	cat ./.cake3/tmp____JQuery_lib_in_2 >> ../JQuery/lib.urp
 ../Uru/Script.o: ./Makefile ../Uru/Script.c $(call GUARD,UR_CC) $(call GUARD,UR_CFLAGS) $(call GUARD,UR_INCL)
 	$(UR_CC) -c $(UR_INCL) $(UR_CFLAGS)  -o ../Uru/Script.o ../Uru/Script.c

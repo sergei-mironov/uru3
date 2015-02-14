@@ -40,9 +40,9 @@ UR_INCL = -I$(shell urweb -print-cinclude)
 	) > ./.cake3/tmp____Uru_lib_in_1
 ./autogen/jquery_1_9_1_js_c.o: ./Makefile ./autogen/jquery_1_9_1_js_c.c $(call GUARD,UR_CC) $(call GUARD,UR_INCL)
 	$(UR_CC) -c $(UR_INCL) -o ./autogen/jquery_1_9_1_js_c.o ./autogen/jquery_1_9_1_js_c.c
-./lib.urp: ./.cake3/tmp___jquery_1_9_1_js_patch ./.cake3/tmp___lib_in_1 ./.cake3/tmp___lib_in_2 ./Makefile
+./lib.urp: ./.cake3/tmp___lib_in_1 ./.cake3/tmp___lib_in_2 ./Makefile ./autogen/jquery_1_9_1_js.urp.in
 	cat ./.cake3/tmp___lib_in_1 > ./lib.urp
-	cat ./.cake3/tmp___jquery_1_9_1_js_patch >> ./lib.urp
+	cat ./autogen/jquery_1_9_1_js.urp.in >> ./lib.urp
 	cat ./.cake3/tmp___lib_in_2 >> ./lib.urp
 ../Uru/Script.o: ./Makefile ../Uru/Script.c $(call GUARD,UR_CC) $(call GUARD,UR_CFLAGS) $(call GUARD,UR_INCL)
 	$(UR_CC) -c $(UR_INCL) $(UR_CFLAGS)  -o ../Uru/Script.o ../Uru/Script.c

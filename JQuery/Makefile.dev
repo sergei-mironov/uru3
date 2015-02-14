@@ -12,13 +12,13 @@ UR_CC = $(shell $(shell urweb -print-ccompiler) -print-prog-name=gcc)
 UR_INCL = -I$(shell urweb -print-cinclude)
 .PHONY: ./all
 ./all: ./Makefile.dev ./lib.urp
-./.cake3/tmp___lib_in_2: ./.cake3/tmp___jquery_1_9_1_js_patch ./JQuery.ur ./JQuery.urs ./Makefile.dev ./autogen/jquery_1_9_1_js.ur ./autogen/jquery_1_9_1_js_c.c ./autogen/jquery_1_9_1_js_c.h ./autogen/jquery_1_9_1_js_c.o ./autogen/jquery_1_9_1_js_c.urs ../Uru/lib.urp
+./.cake3/tmp___lib_in_2: ./JQuery.ur ./JQuery.urs ./Makefile.dev ./autogen/jquery_1_9_1_js.ur ./autogen/jquery_1_9_1_js.urp.in ./autogen/jquery_1_9_1_js_c.c ./autogen/jquery_1_9_1_js_c.h ./autogen/jquery_1_9_1_js_c.o ./autogen/jquery_1_9_1_js_c.urs ../Uru/lib.urp
 	( \
 	echo   ;\
 	echo \.\/autogen\/jquery\_1\_9\_1\_js  ;\
 	echo \.\/JQuery  ;\
 	) > ./.cake3/tmp___lib_in_2
-./.cake3/tmp___lib_in_1: ./.cake3/tmp___jquery_1_9_1_js_patch ./JQuery.ur ./JQuery.urs ./Makefile.dev ./autogen/jquery_1_9_1_js.ur ./autogen/jquery_1_9_1_js_c.c ./autogen/jquery_1_9_1_js_c.h ./autogen/jquery_1_9_1_js_c.o ./autogen/jquery_1_9_1_js_c.urs ../Uru/lib.urp
+./.cake3/tmp___lib_in_1: ./JQuery.ur ./JQuery.urs ./Makefile.dev ./autogen/jquery_1_9_1_js.ur ./autogen/jquery_1_9_1_js.urp.in ./autogen/jquery_1_9_1_js_c.c ./autogen/jquery_1_9_1_js_c.h ./autogen/jquery_1_9_1_js_c.o ./autogen/jquery_1_9_1_js_c.urs ../Uru/lib.urp
 	( \
 	echo library\ \.\.\/Uru\/  ;\
 	echo ffi\ \.\/autogen\/jquery\_1\_9\_1\_js\_c  ;\
@@ -38,23 +38,23 @@ UR_INCL = -I$(shell urweb -print-cinclude)
 	echo include\ \.\/Script\.h  ;\
 	echo link\ \.\/Script\.o  ;\
 	) > ./.cake3/tmp____Uru_lib_in_1
-./.cake3/tmp___jquery_1_9_1_js_patch: ./.fix-multy1
 .INTERMEDIATE: ./.fix-multy1
 ./.fix-multy1: ./Makefile.dev ./jquery-1.9.1.js
-	urembed  -c ./autogen/jquery_1_9_1_js_c.c -H ./autogen/jquery_1_9_1_js_c.h -s ./autogen/jquery_1_9_1_js_c.urs -w ./autogen/jquery_1_9_1_js.ur  ./jquery-1.9.1.js > ./.cake3/tmp___jquery_1_9_1_js_patch
+	urembed  -c ./autogen/jquery_1_9_1_js_c.c -H ./autogen/jquery_1_9_1_js_c.h -s ./autogen/jquery_1_9_1_js_c.urs -w ./autogen/jquery_1_9_1_js.ur  ./jquery-1.9.1.js > ./autogen/jquery_1_9_1_js.urp.in
 ./Cakegen: ../Bootstrap/Cake_Bootstrap.hs ../BootstrapMisc/Cake_BootstrapMisc.hs ../Dialog/Cake_Dialog.hs ../JQuery/Cake_JQ.hs ../Persona/Cake_Persona.hs ../Uru/Cake_URU.hs ./Cake_JQ.hs
 	cake3 -C ..
 ./Makefile.dev: ./Cakegen
 	./Cakegen
 ./autogen/jquery_1_9_1_js.ur: ./.fix-multy1
+./autogen/jquery_1_9_1_js.urp.in: ./.fix-multy1
 ./autogen/jquery_1_9_1_js_c.c: ./.fix-multy1
 ./autogen/jquery_1_9_1_js_c.h: ./.fix-multy1
-./autogen/jquery_1_9_1_js_c.o: ./.cake3/tmp___jquery_1_9_1_js_patch ./Makefile.dev ./autogen/jquery_1_9_1_js.ur ./autogen/jquery_1_9_1_js_c.c ./autogen/jquery_1_9_1_js_c.h ./autogen/jquery_1_9_1_js_c.urs $(call GUARD,UR_CC) $(call GUARD,UR_INCL)
+./autogen/jquery_1_9_1_js_c.o: ./Makefile.dev ./autogen/jquery_1_9_1_js.ur ./autogen/jquery_1_9_1_js.urp.in ./autogen/jquery_1_9_1_js_c.c ./autogen/jquery_1_9_1_js_c.h ./autogen/jquery_1_9_1_js_c.urs $(call GUARD,UR_CC) $(call GUARD,UR_INCL)
 	$(UR_CC) -c $(UR_INCL) -o ./autogen/jquery_1_9_1_js_c.o ./autogen/jquery_1_9_1_js_c.c
 ./autogen/jquery_1_9_1_js_c.urs: ./.fix-multy1
-./lib.urp: ./.cake3/tmp___jquery_1_9_1_js_patch ./.cake3/tmp___lib_in_1 ./.cake3/tmp___lib_in_2 ./Makefile.dev ./autogen/jquery_1_9_1_js.ur ./autogen/jquery_1_9_1_js_c.c ./autogen/jquery_1_9_1_js_c.h ./autogen/jquery_1_9_1_js_c.urs
+./lib.urp: ./.cake3/tmp___lib_in_1 ./.cake3/tmp___lib_in_2 ./Makefile.dev ./autogen/jquery_1_9_1_js.ur ./autogen/jquery_1_9_1_js.urp.in ./autogen/jquery_1_9_1_js_c.c ./autogen/jquery_1_9_1_js_c.h ./autogen/jquery_1_9_1_js_c.urs
 	cat ./.cake3/tmp___lib_in_1 > ./lib.urp
-	cat ./.cake3/tmp___jquery_1_9_1_js_patch >> ./lib.urp
+	cat ./autogen/jquery_1_9_1_js.urp.in >> ./lib.urp
 	cat ./.cake3/tmp___lib_in_2 >> ./lib.urp
 ../Uru/Script.o: ./Makefile.dev ../Uru/Script.c $(call GUARD,UR_CC) $(call GUARD,UR_CFLAGS) $(call GUARD,UR_INCL)
 	$(UR_CC) -c $(UR_INCL) $(UR_CFLAGS)  -o ../Uru/Script.o ../Uru/Script.c
@@ -87,8 +87,6 @@ ifneq ($(MAKECMDGOALS),clean)
 ./.cake3/tmp____Uru_lib_in_2: ./.fix-multy1
 .PHONY: ./.cake3/tmp____Uru_lib_in_1
 ./.cake3/tmp____Uru_lib_in_1: ./.fix-multy1
-.PHONY: ./.cake3/tmp___jquery_1_9_1_js_patch
-./.cake3/tmp___jquery_1_9_1_js_patch: ./.fix-multy1
 .INTERMEDIATE: ./.fix-multy1
 ./.fix-multy1:
 	-mkdir .cake3
@@ -99,6 +97,8 @@ ifneq ($(MAKECMDGOALS),clean)
 ./Makefile.dev: ./.fix-multy1
 .PHONY: ./autogen/jquery_1_9_1_js.ur
 ./autogen/jquery_1_9_1_js.ur: ./.fix-multy1
+.PHONY: ./autogen/jquery_1_9_1_js.urp.in
+./autogen/jquery_1_9_1_js.urp.in: ./.fix-multy1
 .PHONY: ./autogen/jquery_1_9_1_js_c.c
 ./autogen/jquery_1_9_1_js_c.c: ./.fix-multy1
 .PHONY: ./autogen/jquery_1_9_1_js_c.h
@@ -117,7 +117,7 @@ ifneq ($(MAKECMDGOALS),clean)
 endif
 .PHONY: ./clean
 ./clean:
-	-rm ./.cake3/tmp____Uru_lib_in_1 ./.cake3/tmp____Uru_lib_in_2 ./.cake3/tmp___jquery_1_9_1_js_patch ./.cake3/tmp___lib_in_1 ./.cake3/tmp___lib_in_2 ./Cakegen ./autogen/jquery_1_9_1_js.ur ./autogen/jquery_1_9_1_js_c.c ./autogen/jquery_1_9_1_js_c.h ./autogen/jquery_1_9_1_js_c.o ./autogen/jquery_1_9_1_js_c.urs ./lib.urp ../Uru/Script.o ../Uru/lib.urp
+	-rm ./.cake3/tmp____Uru_lib_in_1 ./.cake3/tmp____Uru_lib_in_2 ./.cake3/tmp___lib_in_1 ./.cake3/tmp___lib_in_2 ./Cakegen ./autogen/jquery_1_9_1_js.ur ./autogen/jquery_1_9_1_js.urp.in ./autogen/jquery_1_9_1_js_c.c ./autogen/jquery_1_9_1_js_c.h ./autogen/jquery_1_9_1_js_c.o ./autogen/jquery_1_9_1_js_c.urs ./lib.urp ../Uru/Script.o ../Uru/lib.urp
 	-rm -rf .cake3
 
 endif

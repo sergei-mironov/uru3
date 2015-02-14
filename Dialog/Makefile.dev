@@ -23,7 +23,7 @@ UR_INCL = -I$(shell urweb -print-cinclude)
 	( \
 	echo library\ \.\.\/  ;\
 	) > ./.cake3/tmp___demo_Polyfill1_in_1
-./.cake3/tmp___lib_in_2: ./.cake3/tmp___DialogPolyfill_js_patch ./.cake3/tmp___Dialog_js_patch ./.cake3/tmp___dialog_polyfill_dialog_polyfill_css_patch ./.cake3/tmp___dialog_polyfill_dialog_polyfill_js_patch ./Dialog.ur ./Makefile.dev ./autogen/DialogPolyfill_js.ur ./autogen/DialogPolyfill_js_c.c ./autogen/DialogPolyfill_js_c.h ./autogen/DialogPolyfill_js_c.o ./autogen/DialogPolyfill_js_c.urs ./autogen/Dialog_js.ur ./autogen/Dialog_js_c.c ./autogen/Dialog_js_c.h ./autogen/Dialog_js_c.o ./autogen/Dialog_js_c.urs ./autogen/Dialog_js_js.urs ./autogen/dialog_polyfill_css.ur ./autogen/dialog_polyfill_css_c.c ./autogen/dialog_polyfill_css_c.h ./autogen/dialog_polyfill_css_c.o ./autogen/dialog_polyfill_css_c.urs ./autogen/dialog_polyfill_js.ur ./autogen/dialog_polyfill_js_c.c ./autogen/dialog_polyfill_js_c.h ./autogen/dialog_polyfill_js_c.o ./autogen/dialog_polyfill_js_c.urs ../JQuery/lib.urp ../Uru/lib.urp
+./.cake3/tmp___lib_in_2: ./Dialog.ur ./Makefile.dev ./autogen/DialogPolyfill_js.ur ./autogen/DialogPolyfill_js.urp.in ./autogen/DialogPolyfill_js_c.c ./autogen/DialogPolyfill_js_c.h ./autogen/DialogPolyfill_js_c.o ./autogen/DialogPolyfill_js_c.urs ./autogen/Dialog_js.ur ./autogen/Dialog_js.urp.in ./autogen/Dialog_js_c.c ./autogen/Dialog_js_c.h ./autogen/Dialog_js_c.o ./autogen/Dialog_js_c.urs ./autogen/Dialog_js_js.urs ./autogen/dialog_polyfill_css.ur ./autogen/dialog_polyfill_css.urp.in ./autogen/dialog_polyfill_css_c.c ./autogen/dialog_polyfill_css_c.h ./autogen/dialog_polyfill_css_c.o ./autogen/dialog_polyfill_css_c.urs ./autogen/dialog_polyfill_js.ur ./autogen/dialog_polyfill_js.urp.in ./autogen/dialog_polyfill_js_c.c ./autogen/dialog_polyfill_js_c.h ./autogen/dialog_polyfill_js_c.o ./autogen/dialog_polyfill_js_c.urs ../JQuery/lib.urp ../Uru/lib.urp
 	( \
 	echo   ;\
 	echo \.\/autogen\/dialog\_polyfill\_js  ;\
@@ -32,7 +32,7 @@ UR_INCL = -I$(shell urweb -print-cinclude)
 	echo \.\/autogen\/Dialog\_js  ;\
 	echo \.\/Dialog  ;\
 	) > ./.cake3/tmp___lib_in_2
-./.cake3/tmp___lib_in_1: ./.cake3/tmp___DialogPolyfill_js_patch ./.cake3/tmp___Dialog_js_patch ./.cake3/tmp___dialog_polyfill_dialog_polyfill_css_patch ./.cake3/tmp___dialog_polyfill_dialog_polyfill_js_patch ./Dialog.ur ./Makefile.dev ./autogen/DialogPolyfill_js.ur ./autogen/DialogPolyfill_js_c.c ./autogen/DialogPolyfill_js_c.h ./autogen/DialogPolyfill_js_c.o ./autogen/DialogPolyfill_js_c.urs ./autogen/Dialog_js.ur ./autogen/Dialog_js_c.c ./autogen/Dialog_js_c.h ./autogen/Dialog_js_c.o ./autogen/Dialog_js_c.urs ./autogen/Dialog_js_js.urs ./autogen/dialog_polyfill_css.ur ./autogen/dialog_polyfill_css_c.c ./autogen/dialog_polyfill_css_c.h ./autogen/dialog_polyfill_css_c.o ./autogen/dialog_polyfill_css_c.urs ./autogen/dialog_polyfill_js.ur ./autogen/dialog_polyfill_js_c.c ./autogen/dialog_polyfill_js_c.h ./autogen/dialog_polyfill_js_c.o ./autogen/dialog_polyfill_js_c.urs ../JQuery/lib.urp ../Uru/lib.urp
+./.cake3/tmp___lib_in_1: ./Dialog.ur ./Makefile.dev ./autogen/DialogPolyfill_js.ur ./autogen/DialogPolyfill_js.urp.in ./autogen/DialogPolyfill_js_c.c ./autogen/DialogPolyfill_js_c.h ./autogen/DialogPolyfill_js_c.o ./autogen/DialogPolyfill_js_c.urs ./autogen/Dialog_js.ur ./autogen/Dialog_js.urp.in ./autogen/Dialog_js_c.c ./autogen/Dialog_js_c.h ./autogen/Dialog_js_c.o ./autogen/Dialog_js_c.urs ./autogen/Dialog_js_js.urs ./autogen/dialog_polyfill_css.ur ./autogen/dialog_polyfill_css.urp.in ./autogen/dialog_polyfill_css_c.c ./autogen/dialog_polyfill_css_c.h ./autogen/dialog_polyfill_css_c.o ./autogen/dialog_polyfill_css_c.urs ./autogen/dialog_polyfill_js.ur ./autogen/dialog_polyfill_js.urp.in ./autogen/dialog_polyfill_js_c.c ./autogen/dialog_polyfill_js_c.h ./autogen/dialog_polyfill_js_c.o ./autogen/dialog_polyfill_js_c.urs ../JQuery/lib.urp ../Uru/lib.urp
 	( \
 	echo ffi\ \.\/DialogTag  ;\
 	echo library\ \.\.\/Uru\/  ;\
@@ -51,13 +51,13 @@ UR_INCL = -I$(shell urweb -print-cinclude)
 	echo include\ \.\/autogen\/Dialog\_js\_c\.h  ;\
 	echo link\ \.\/autogen\/Dialog\_js\_c\.o  ;\
 	) > ./.cake3/tmp___lib_in_1
-./.cake3/tmp____JQuery_lib_in_2: ./.cake3/tmp____JQuery_jquery_1_9_1_js_patch ./Makefile.dev ../JQuery/JQuery.ur ../JQuery/JQuery.urs ../JQuery/autogen/jquery_1_9_1_js.ur ../JQuery/autogen/jquery_1_9_1_js_c.c ../JQuery/autogen/jquery_1_9_1_js_c.h ../JQuery/autogen/jquery_1_9_1_js_c.o ../JQuery/autogen/jquery_1_9_1_js_c.urs ../Uru/lib.urp
+./.cake3/tmp____JQuery_lib_in_2: ./Makefile.dev ../JQuery/JQuery.ur ../JQuery/JQuery.urs ../JQuery/autogen/jquery_1_9_1_js.ur ../JQuery/autogen/jquery_1_9_1_js.urp.in ../JQuery/autogen/jquery_1_9_1_js_c.c ../JQuery/autogen/jquery_1_9_1_js_c.h ../JQuery/autogen/jquery_1_9_1_js_c.o ../JQuery/autogen/jquery_1_9_1_js_c.urs ../Uru/lib.urp
 	( \
 	echo   ;\
 	echo \.\/autogen\/jquery\_1\_9\_1\_js  ;\
 	echo \.\/JQuery  ;\
 	) > ./.cake3/tmp____JQuery_lib_in_2
-./.cake3/tmp____JQuery_lib_in_1: ./.cake3/tmp____JQuery_jquery_1_9_1_js_patch ./Makefile.dev ../JQuery/JQuery.ur ../JQuery/JQuery.urs ../JQuery/autogen/jquery_1_9_1_js.ur ../JQuery/autogen/jquery_1_9_1_js_c.c ../JQuery/autogen/jquery_1_9_1_js_c.h ../JQuery/autogen/jquery_1_9_1_js_c.o ../JQuery/autogen/jquery_1_9_1_js_c.urs ../Uru/lib.urp
+./.cake3/tmp____JQuery_lib_in_1: ./Makefile.dev ../JQuery/JQuery.ur ../JQuery/JQuery.urs ../JQuery/autogen/jquery_1_9_1_js.ur ../JQuery/autogen/jquery_1_9_1_js.urp.in ../JQuery/autogen/jquery_1_9_1_js_c.c ../JQuery/autogen/jquery_1_9_1_js_c.h ../JQuery/autogen/jquery_1_9_1_js_c.o ../JQuery/autogen/jquery_1_9_1_js_c.urs ../Uru/lib.urp
 	( \
 	echo library\ \.\.\/Dialog\/\.\.\/Uru\/  ;\
 	echo ffi\ \.\/autogen\/jquery\_1\_9\_1\_js\_c  ;\
@@ -79,73 +79,73 @@ UR_INCL = -I$(shell urweb -print-cinclude)
 	) > ./.cake3/tmp____Uru_lib_in_1
 .PHONY: ./lib
 ./lib: ./Makefile.dev ./lib.urp
-./.cake3/tmp___DialogPolyfill_js_patch: ./.fix-multy1
-./.cake3/tmp___Dialog_js_patch: ./.fix-multy2
-./.cake3/tmp____JQuery_jquery_1_9_1_js_patch: ./.fix-multy3
-./.cake3/tmp___dialog_polyfill_dialog_polyfill_css_patch: ./.fix-multy4
-./.cake3/tmp___dialog_polyfill_dialog_polyfill_js_patch: ./.fix-multy5
 .INTERMEDIATE: ./.fix-multy1
 ./.fix-multy1: ./DialogPolyfill.js ./Makefile.dev
-	urembed  -c ./autogen/DialogPolyfill_js_c.c -H ./autogen/DialogPolyfill_js_c.h -s ./autogen/DialogPolyfill_js_c.urs -w ./autogen/DialogPolyfill_js.ur  ./DialogPolyfill.js > ./.cake3/tmp___DialogPolyfill_js_patch
+	urembed  -c ./autogen/DialogPolyfill_js_c.c -H ./autogen/DialogPolyfill_js_c.h -s ./autogen/DialogPolyfill_js_c.urs -w ./autogen/DialogPolyfill_js.ur  ./DialogPolyfill.js > ./autogen/DialogPolyfill_js.urp.in
 .INTERMEDIATE: ./.fix-multy2
 ./.fix-multy2: ./Dialog.js ./Makefile.dev
-	urembed  -c ./autogen/Dialog_js_c.c -H ./autogen/Dialog_js_c.h -s ./autogen/Dialog_js_c.urs -w ./autogen/Dialog_js.ur -j ./autogen/Dialog_js_js.urs ./Dialog.js > ./.cake3/tmp___Dialog_js_patch
+	urembed  -c ./autogen/Dialog_js_c.c -H ./autogen/Dialog_js_c.h -s ./autogen/Dialog_js_c.urs -w ./autogen/Dialog_js.ur -j ./autogen/Dialog_js_js.urs ./Dialog.js > ./autogen/Dialog_js.urp.in
 .INTERMEDIATE: ./.fix-multy3
-./.fix-multy3: ./Makefile.dev ../JQuery/jquery-1.9.1.js
-	urembed  -c ../JQuery/autogen/jquery_1_9_1_js_c.c -H ../JQuery/autogen/jquery_1_9_1_js_c.h -s ../JQuery/autogen/jquery_1_9_1_js_c.urs -w ../JQuery/autogen/jquery_1_9_1_js.ur  ../JQuery/jquery-1.9.1.js > ./.cake3/tmp____JQuery_jquery_1_9_1_js_patch
+./.fix-multy3: ./Makefile.dev ./dialog-polyfill/dialog-polyfill.css
+	urembed  -c ./autogen/dialog_polyfill_css_c.c -H ./autogen/dialog_polyfill_css_c.h -s ./autogen/dialog_polyfill_css_c.urs -w ./autogen/dialog_polyfill_css.ur  ./dialog-polyfill/dialog-polyfill.css > ./autogen/dialog_polyfill_css.urp.in
 .INTERMEDIATE: ./.fix-multy4
-./.fix-multy4: ./Makefile.dev ./dialog-polyfill/dialog-polyfill.css
-	urembed  -c ./autogen/dialog_polyfill_css_c.c -H ./autogen/dialog_polyfill_css_c.h -s ./autogen/dialog_polyfill_css_c.urs -w ./autogen/dialog_polyfill_css.ur  ./dialog-polyfill/dialog-polyfill.css > ./.cake3/tmp___dialog_polyfill_dialog_polyfill_css_patch
+./.fix-multy4: ./Makefile.dev ./dialog-polyfill/dialog-polyfill.js
+	urembed  -c ./autogen/dialog_polyfill_js_c.c -H ./autogen/dialog_polyfill_js_c.h -s ./autogen/dialog_polyfill_js_c.urs -w ./autogen/dialog_polyfill_js.ur  ./dialog-polyfill/dialog-polyfill.js > ./autogen/dialog_polyfill_js.urp.in
 .INTERMEDIATE: ./.fix-multy5
-./.fix-multy5: ./Makefile.dev ./dialog-polyfill/dialog-polyfill.js
-	urembed  -c ./autogen/dialog_polyfill_js_c.c -H ./autogen/dialog_polyfill_js_c.h -s ./autogen/dialog_polyfill_js_c.urs -w ./autogen/dialog_polyfill_js.ur  ./dialog-polyfill/dialog-polyfill.js > ./.cake3/tmp___dialog_polyfill_dialog_polyfill_js_patch
+./.fix-multy5: ./Makefile.dev ../JQuery/jquery-1.9.1.js
+	urembed  -c ../JQuery/autogen/jquery_1_9_1_js_c.c -H ../JQuery/autogen/jquery_1_9_1_js_c.h -s ../JQuery/autogen/jquery_1_9_1_js_c.urs -w ../JQuery/autogen/jquery_1_9_1_js.ur  ../JQuery/jquery-1.9.1.js > ../JQuery/autogen/jquery_1_9_1_js.urp.in
 ./Cakegen: ../Bootstrap/Cake_Bootstrap.hs ../BootstrapMisc/Cake_BootstrapMisc.hs ../Dialog/Cake_Dialog.hs ../JQuery/Cake_JQ.hs ../Persona/Cake_Persona.hs ../Uru/Cake_URU.hs ./Cake_Dialog.hs
 	cake3 -C ..
 ./Makefile.dev: ./Cakegen
 	./Cakegen
 ./autogen/DialogPolyfill_js.ur: ./.fix-multy1
+./autogen/DialogPolyfill_js.urp.in: ./.fix-multy1
 ./autogen/DialogPolyfill_js_c.c: ./.fix-multy1
 ./autogen/DialogPolyfill_js_c.h: ./.fix-multy1
-./autogen/DialogPolyfill_js_c.o: ./.cake3/tmp___DialogPolyfill_js_patch ./Makefile.dev ./autogen/DialogPolyfill_js.ur ./autogen/DialogPolyfill_js_c.c ./autogen/DialogPolyfill_js_c.h ./autogen/DialogPolyfill_js_c.urs $(call GUARD,UR_CC) $(call GUARD,UR_INCL)
+./autogen/DialogPolyfill_js_c.o: ./Makefile.dev ./autogen/DialogPolyfill_js.ur ./autogen/DialogPolyfill_js.urp.in ./autogen/DialogPolyfill_js_c.c ./autogen/DialogPolyfill_js_c.h ./autogen/DialogPolyfill_js_c.urs $(call GUARD,UR_CC) $(call GUARD,UR_INCL)
 	$(UR_CC) -c $(UR_INCL) -o ./autogen/DialogPolyfill_js_c.o ./autogen/DialogPolyfill_js_c.c
 ./autogen/DialogPolyfill_js_c.urs: ./.fix-multy1
 ./autogen/Dialog_js.ur: ./.fix-multy2
+./autogen/Dialog_js.urp.in: ./.fix-multy2
 ./autogen/Dialog_js_c.c: ./.fix-multy2
 ./autogen/Dialog_js_c.h: ./.fix-multy2
-./autogen/Dialog_js_c.o: ./.cake3/tmp___Dialog_js_patch ./Makefile.dev ./autogen/Dialog_js.ur ./autogen/Dialog_js_c.c ./autogen/Dialog_js_c.h ./autogen/Dialog_js_c.urs ./autogen/Dialog_js_js.urs $(call GUARD,UR_CC) $(call GUARD,UR_INCL)
+./autogen/Dialog_js_c.o: ./Makefile.dev ./autogen/Dialog_js.ur ./autogen/Dialog_js.urp.in ./autogen/Dialog_js_c.c ./autogen/Dialog_js_c.h ./autogen/Dialog_js_c.urs ./autogen/Dialog_js_js.urs $(call GUARD,UR_CC) $(call GUARD,UR_INCL)
 	$(UR_CC) -c $(UR_INCL) -o ./autogen/Dialog_js_c.o ./autogen/Dialog_js_c.c
 ./autogen/Dialog_js_c.urs: ./.fix-multy2
 ./autogen/Dialog_js_js.urs: ./.fix-multy2
-./autogen/dialog_polyfill_css.ur: ./.fix-multy4
-./autogen/dialog_polyfill_css_c.c: ./.fix-multy4
-./autogen/dialog_polyfill_css_c.h: ./.fix-multy4
-./autogen/dialog_polyfill_css_c.o: ./.cake3/tmp___dialog_polyfill_dialog_polyfill_css_patch ./Makefile.dev ./autogen/dialog_polyfill_css.ur ./autogen/dialog_polyfill_css_c.c ./autogen/dialog_polyfill_css_c.h ./autogen/dialog_polyfill_css_c.urs $(call GUARD,UR_CC) $(call GUARD,UR_INCL)
+./autogen/dialog_polyfill_css.ur: ./.fix-multy3
+./autogen/dialog_polyfill_css.urp.in: ./.fix-multy3
+./autogen/dialog_polyfill_css_c.c: ./.fix-multy3
+./autogen/dialog_polyfill_css_c.h: ./.fix-multy3
+./autogen/dialog_polyfill_css_c.o: ./Makefile.dev ./autogen/dialog_polyfill_css.ur ./autogen/dialog_polyfill_css.urp.in ./autogen/dialog_polyfill_css_c.c ./autogen/dialog_polyfill_css_c.h ./autogen/dialog_polyfill_css_c.urs $(call GUARD,UR_CC) $(call GUARD,UR_INCL)
 	$(UR_CC) -c $(UR_INCL) -o ./autogen/dialog_polyfill_css_c.o ./autogen/dialog_polyfill_css_c.c
-./autogen/dialog_polyfill_css_c.urs: ./.fix-multy4
-./autogen/dialog_polyfill_js.ur: ./.fix-multy5
-./autogen/dialog_polyfill_js_c.c: ./.fix-multy5
-./autogen/dialog_polyfill_js_c.h: ./.fix-multy5
-./autogen/dialog_polyfill_js_c.o: ./.cake3/tmp___dialog_polyfill_dialog_polyfill_js_patch ./Makefile.dev ./autogen/dialog_polyfill_js.ur ./autogen/dialog_polyfill_js_c.c ./autogen/dialog_polyfill_js_c.h ./autogen/dialog_polyfill_js_c.urs $(call GUARD,UR_CC) $(call GUARD,UR_INCL)
+./autogen/dialog_polyfill_css_c.urs: ./.fix-multy3
+./autogen/dialog_polyfill_js.ur: ./.fix-multy4
+./autogen/dialog_polyfill_js.urp.in: ./.fix-multy4
+./autogen/dialog_polyfill_js_c.c: ./.fix-multy4
+./autogen/dialog_polyfill_js_c.h: ./.fix-multy4
+./autogen/dialog_polyfill_js_c.o: ./Makefile.dev ./autogen/dialog_polyfill_js.ur ./autogen/dialog_polyfill_js.urp.in ./autogen/dialog_polyfill_js_c.c ./autogen/dialog_polyfill_js_c.h ./autogen/dialog_polyfill_js_c.urs $(call GUARD,UR_CC) $(call GUARD,UR_INCL)
 	$(UR_CC) -c $(UR_INCL) -o ./autogen/dialog_polyfill_js_c.o ./autogen/dialog_polyfill_js_c.c
-./autogen/dialog_polyfill_js_c.urs: ./.fix-multy5
+./autogen/dialog_polyfill_js_c.urs: ./.fix-multy4
 ./demo/Polyfill1.exe: ./Makefile.dev ./demo/Polyfill1.urp $(call GUARD,URVERSION)
 	urweb -dbms sqlite ./demo/Polyfill1
 ./demo/Polyfill1.urp: ./.cake3/tmp___demo_Polyfill1_in_1 ./.cake3/tmp___demo_Polyfill1_in_2 ./Makefile.dev
 	cat ./.cake3/tmp___demo_Polyfill1_in_1 > ./demo/Polyfill1.urp
 	cat ./.cake3/tmp___demo_Polyfill1_in_2 >> ./demo/Polyfill1.urp
-./lib.urp: ./.cake3/tmp___DialogPolyfill_js_patch ./.cake3/tmp___Dialog_js_patch ./.cake3/tmp___dialog_polyfill_dialog_polyfill_css_patch ./.cake3/tmp___dialog_polyfill_dialog_polyfill_js_patch ./.cake3/tmp___lib_in_1 ./.cake3/tmp___lib_in_2 ./Makefile.dev ./autogen/DialogPolyfill_js.ur ./autogen/DialogPolyfill_js_c.c ./autogen/DialogPolyfill_js_c.h ./autogen/DialogPolyfill_js_c.urs ./autogen/Dialog_js.ur ./autogen/Dialog_js_c.c ./autogen/Dialog_js_c.h ./autogen/Dialog_js_c.urs ./autogen/Dialog_js_js.urs ./autogen/dialog_polyfill_css.ur ./autogen/dialog_polyfill_css_c.c ./autogen/dialog_polyfill_css_c.h ./autogen/dialog_polyfill_css_c.urs ./autogen/dialog_polyfill_js.ur ./autogen/dialog_polyfill_js_c.c ./autogen/dialog_polyfill_js_c.h ./autogen/dialog_polyfill_js_c.urs
+./lib.urp: ./.cake3/tmp___lib_in_1 ./.cake3/tmp___lib_in_2 ./Makefile.dev ./autogen/DialogPolyfill_js.ur ./autogen/DialogPolyfill_js.urp.in ./autogen/DialogPolyfill_js_c.c ./autogen/DialogPolyfill_js_c.h ./autogen/DialogPolyfill_js_c.urs ./autogen/Dialog_js.ur ./autogen/Dialog_js.urp.in ./autogen/Dialog_js_c.c ./autogen/Dialog_js_c.h ./autogen/Dialog_js_c.urs ./autogen/Dialog_js_js.urs ./autogen/dialog_polyfill_css.ur ./autogen/dialog_polyfill_css.urp.in ./autogen/dialog_polyfill_css_c.c ./autogen/dialog_polyfill_css_c.h ./autogen/dialog_polyfill_css_c.urs ./autogen/dialog_polyfill_js.ur ./autogen/dialog_polyfill_js.urp.in ./autogen/dialog_polyfill_js_c.c ./autogen/dialog_polyfill_js_c.h ./autogen/dialog_polyfill_js_c.urs
 	cat ./.cake3/tmp___lib_in_1 > ./lib.urp
-	cat ./.cake3/tmp___Dialog_js_patch ./.cake3/tmp___DialogPolyfill_js_patch ./.cake3/tmp___dialog_polyfill_dialog_polyfill_css_patch ./.cake3/tmp___dialog_polyfill_dialog_polyfill_js_patch >> ./lib.urp
+	cat ./autogen/Dialog_js.urp.in ./autogen/DialogPolyfill_js.urp.in ./autogen/dialog_polyfill_css.urp.in ./autogen/dialog_polyfill_js.urp.in >> ./lib.urp
 	cat ./.cake3/tmp___lib_in_2 >> ./lib.urp
-../JQuery/autogen/jquery_1_9_1_js.ur: ./.fix-multy3
-../JQuery/autogen/jquery_1_9_1_js_c.c: ./.fix-multy3
-../JQuery/autogen/jquery_1_9_1_js_c.h: ./.fix-multy3
-../JQuery/autogen/jquery_1_9_1_js_c.o: ./.cake3/tmp____JQuery_jquery_1_9_1_js_patch ./Makefile.dev ../JQuery/autogen/jquery_1_9_1_js.ur ../JQuery/autogen/jquery_1_9_1_js_c.c ../JQuery/autogen/jquery_1_9_1_js_c.h ../JQuery/autogen/jquery_1_9_1_js_c.urs $(call GUARD,UR_CC) $(call GUARD,UR_INCL)
+../JQuery/autogen/jquery_1_9_1_js.ur: ./.fix-multy5
+../JQuery/autogen/jquery_1_9_1_js.urp.in: ./.fix-multy5
+../JQuery/autogen/jquery_1_9_1_js_c.c: ./.fix-multy5
+../JQuery/autogen/jquery_1_9_1_js_c.h: ./.fix-multy5
+../JQuery/autogen/jquery_1_9_1_js_c.o: ./Makefile.dev ../JQuery/autogen/jquery_1_9_1_js.ur ../JQuery/autogen/jquery_1_9_1_js.urp.in ../JQuery/autogen/jquery_1_9_1_js_c.c ../JQuery/autogen/jquery_1_9_1_js_c.h ../JQuery/autogen/jquery_1_9_1_js_c.urs $(call GUARD,UR_CC) $(call GUARD,UR_INCL)
 	$(UR_CC) -c $(UR_INCL) -o ../JQuery/autogen/jquery_1_9_1_js_c.o ../JQuery/autogen/jquery_1_9_1_js_c.c
-../JQuery/autogen/jquery_1_9_1_js_c.urs: ./.fix-multy3
-../JQuery/lib.urp: ./.cake3/tmp____JQuery_jquery_1_9_1_js_patch ./.cake3/tmp____JQuery_lib_in_1 ./.cake3/tmp____JQuery_lib_in_2 ./Makefile.dev ../JQuery/autogen/jquery_1_9_1_js.ur ../JQuery/autogen/jquery_1_9_1_js_c.c ../JQuery/autogen/jquery_1_9_1_js_c.h ../JQuery/autogen/jquery_1_9_1_js_c.urs
+../JQuery/autogen/jquery_1_9_1_js_c.urs: ./.fix-multy5
+../JQuery/lib.urp: ./.cake3/tmp____JQuery_lib_in_1 ./.cake3/tmp____JQuery_lib_in_2 ./Makefile.dev ../JQuery/autogen/jquery_1_9_1_js.ur ../JQuery/autogen/jquery_1_9_1_js.urp.in ../JQuery/autogen/jquery_1_9_1_js_c.c ../JQuery/autogen/jquery_1_9_1_js_c.h ../JQuery/autogen/jquery_1_9_1_js_c.urs
 	cat ./.cake3/tmp____JQuery_lib_in_1 > ../JQuery/lib.urp
-	cat ./.cake3/tmp____JQuery_jquery_1_9_1_js_patch >> ../JQuery/lib.urp
+	cat ../JQuery/autogen/jquery_1_9_1_js.urp.in >> ../JQuery/lib.urp
 	cat ./.cake3/tmp____JQuery_lib_in_2 >> ../JQuery/lib.urp
 ../Uru/Script.o: ./Makefile.dev ../Uru/Script.c $(call GUARD,UR_CC) $(call GUARD,UR_CFLAGS) $(call GUARD,UR_INCL)
 	$(UR_CC) -c $(UR_INCL) $(UR_CFLAGS)  -o ../Uru/Script.o ../Uru/Script.c
@@ -191,16 +191,6 @@ ifneq ($(MAKECMDGOALS),clean)
 ./.cake3/tmp____Uru_lib_in_1: ./.fix-multy1
 .PHONY: ./lib
 ./lib: ./.fix-multy1
-.PHONY: ./.cake3/tmp___DialogPolyfill_js_patch
-./.cake3/tmp___DialogPolyfill_js_patch: ./.fix-multy1
-.PHONY: ./.cake3/tmp___Dialog_js_patch
-./.cake3/tmp___Dialog_js_patch: ./.fix-multy1
-.PHONY: ./.cake3/tmp____JQuery_jquery_1_9_1_js_patch
-./.cake3/tmp____JQuery_jquery_1_9_1_js_patch: ./.fix-multy1
-.PHONY: ./.cake3/tmp___dialog_polyfill_dialog_polyfill_css_patch
-./.cake3/tmp___dialog_polyfill_dialog_polyfill_css_patch: ./.fix-multy1
-.PHONY: ./.cake3/tmp___dialog_polyfill_dialog_polyfill_js_patch
-./.cake3/tmp___dialog_polyfill_dialog_polyfill_js_patch: ./.fix-multy1
 .INTERMEDIATE: ./.fix-multy1
 ./.fix-multy1:
 	-mkdir .cake3
@@ -211,6 +201,8 @@ ifneq ($(MAKECMDGOALS),clean)
 ./Makefile.dev: ./.fix-multy1
 .PHONY: ./autogen/DialogPolyfill_js.ur
 ./autogen/DialogPolyfill_js.ur: ./.fix-multy1
+.PHONY: ./autogen/DialogPolyfill_js.urp.in
+./autogen/DialogPolyfill_js.urp.in: ./.fix-multy1
 .PHONY: ./autogen/DialogPolyfill_js_c.c
 ./autogen/DialogPolyfill_js_c.c: ./.fix-multy1
 .PHONY: ./autogen/DialogPolyfill_js_c.h
@@ -221,6 +213,8 @@ ifneq ($(MAKECMDGOALS),clean)
 ./autogen/DialogPolyfill_js_c.urs: ./.fix-multy1
 .PHONY: ./autogen/Dialog_js.ur
 ./autogen/Dialog_js.ur: ./.fix-multy1
+.PHONY: ./autogen/Dialog_js.urp.in
+./autogen/Dialog_js.urp.in: ./.fix-multy1
 .PHONY: ./autogen/Dialog_js_c.c
 ./autogen/Dialog_js_c.c: ./.fix-multy1
 .PHONY: ./autogen/Dialog_js_c.h
@@ -233,6 +227,8 @@ ifneq ($(MAKECMDGOALS),clean)
 ./autogen/Dialog_js_js.urs: ./.fix-multy1
 .PHONY: ./autogen/dialog_polyfill_css.ur
 ./autogen/dialog_polyfill_css.ur: ./.fix-multy1
+.PHONY: ./autogen/dialog_polyfill_css.urp.in
+./autogen/dialog_polyfill_css.urp.in: ./.fix-multy1
 .PHONY: ./autogen/dialog_polyfill_css_c.c
 ./autogen/dialog_polyfill_css_c.c: ./.fix-multy1
 .PHONY: ./autogen/dialog_polyfill_css_c.h
@@ -243,6 +239,8 @@ ifneq ($(MAKECMDGOALS),clean)
 ./autogen/dialog_polyfill_css_c.urs: ./.fix-multy1
 .PHONY: ./autogen/dialog_polyfill_js.ur
 ./autogen/dialog_polyfill_js.ur: ./.fix-multy1
+.PHONY: ./autogen/dialog_polyfill_js.urp.in
+./autogen/dialog_polyfill_js.urp.in: ./.fix-multy1
 .PHONY: ./autogen/dialog_polyfill_js_c.c
 ./autogen/dialog_polyfill_js_c.c: ./.fix-multy1
 .PHONY: ./autogen/dialog_polyfill_js_c.h
@@ -259,6 +257,8 @@ ifneq ($(MAKECMDGOALS),clean)
 ./lib.urp: ./.fix-multy1
 .PHONY: ../JQuery/autogen/jquery_1_9_1_js.ur
 ../JQuery/autogen/jquery_1_9_1_js.ur: ./.fix-multy1
+.PHONY: ../JQuery/autogen/jquery_1_9_1_js.urp.in
+../JQuery/autogen/jquery_1_9_1_js.urp.in: ./.fix-multy1
 .PHONY: ../JQuery/autogen/jquery_1_9_1_js_c.c
 ../JQuery/autogen/jquery_1_9_1_js_c.c: ./.fix-multy1
 .PHONY: ../JQuery/autogen/jquery_1_9_1_js_c.h
@@ -277,7 +277,7 @@ ifneq ($(MAKECMDGOALS),clean)
 endif
 .PHONY: ./clean
 ./clean:
-	-rm ./.cake3/tmp___DialogPolyfill_js_patch ./.cake3/tmp___Dialog_js_patch ./.cake3/tmp____JQuery_jquery_1_9_1_js_patch ./.cake3/tmp____JQuery_lib_in_1 ./.cake3/tmp____JQuery_lib_in_2 ./.cake3/tmp____Uru_lib_in_1 ./.cake3/tmp____Uru_lib_in_2 ./.cake3/tmp___demo_Polyfill1_in_1 ./.cake3/tmp___demo_Polyfill1_in_2 ./.cake3/tmp___dialog_polyfill_dialog_polyfill_css_patch ./.cake3/tmp___dialog_polyfill_dialog_polyfill_js_patch ./.cake3/tmp___lib_in_1 ./.cake3/tmp___lib_in_2 ./Cakegen ./autogen/DialogPolyfill_js.ur ./autogen/DialogPolyfill_js_c.c ./autogen/DialogPolyfill_js_c.h ./autogen/DialogPolyfill_js_c.o ./autogen/DialogPolyfill_js_c.urs ./autogen/Dialog_js.ur ./autogen/Dialog_js_c.c ./autogen/Dialog_js_c.h ./autogen/Dialog_js_c.o ./autogen/Dialog_js_c.urs ./autogen/Dialog_js_js.urs ./autogen/dialog_polyfill_css.ur ./autogen/dialog_polyfill_css_c.c ./autogen/dialog_polyfill_css_c.h ./autogen/dialog_polyfill_css_c.o ./autogen/dialog_polyfill_css_c.urs ./autogen/dialog_polyfill_js.ur ./autogen/dialog_polyfill_js_c.c ./autogen/dialog_polyfill_js_c.h ./autogen/dialog_polyfill_js_c.o ./autogen/dialog_polyfill_js_c.urs ./demo/Polyfill1.exe ./demo/Polyfill1.urp ./lib.urp ../JQuery/autogen/jquery_1_9_1_js.ur ../JQuery/autogen/jquery_1_9_1_js_c.c ../JQuery/autogen/jquery_1_9_1_js_c.h ../JQuery/autogen/jquery_1_9_1_js_c.o ../JQuery/autogen/jquery_1_9_1_js_c.urs ../JQuery/lib.urp ../Uru/Script.o ../Uru/lib.urp
+	-rm ./.cake3/tmp____JQuery_lib_in_1 ./.cake3/tmp____JQuery_lib_in_2 ./.cake3/tmp____Uru_lib_in_1 ./.cake3/tmp____Uru_lib_in_2 ./.cake3/tmp___demo_Polyfill1_in_1 ./.cake3/tmp___demo_Polyfill1_in_2 ./.cake3/tmp___lib_in_1 ./.cake3/tmp___lib_in_2 ./Cakegen ./autogen/DialogPolyfill_js.ur ./autogen/DialogPolyfill_js.urp.in ./autogen/DialogPolyfill_js_c.c ./autogen/DialogPolyfill_js_c.h ./autogen/DialogPolyfill_js_c.o ./autogen/DialogPolyfill_js_c.urs ./autogen/Dialog_js.ur ./autogen/Dialog_js.urp.in ./autogen/Dialog_js_c.c ./autogen/Dialog_js_c.h ./autogen/Dialog_js_c.o ./autogen/Dialog_js_c.urs ./autogen/Dialog_js_js.urs ./autogen/dialog_polyfill_css.ur ./autogen/dialog_polyfill_css.urp.in ./autogen/dialog_polyfill_css_c.c ./autogen/dialog_polyfill_css_c.h ./autogen/dialog_polyfill_css_c.o ./autogen/dialog_polyfill_css_c.urs ./autogen/dialog_polyfill_js.ur ./autogen/dialog_polyfill_js.urp.in ./autogen/dialog_polyfill_js_c.c ./autogen/dialog_polyfill_js_c.h ./autogen/dialog_polyfill_js_c.o ./autogen/dialog_polyfill_js_c.urs ./demo/Polyfill1.exe ./demo/Polyfill1.urp ./lib.urp ../JQuery/autogen/jquery_1_9_1_js.ur ../JQuery/autogen/jquery_1_9_1_js.urp.in ../JQuery/autogen/jquery_1_9_1_js_c.c ../JQuery/autogen/jquery_1_9_1_js_c.h ../JQuery/autogen/jquery_1_9_1_js_c.o ../JQuery/autogen/jquery_1_9_1_js_c.urs ../JQuery/lib.urp ../Uru/Script.o ../Uru/lib.urp
 	-rm -rf .cake3
 
 endif

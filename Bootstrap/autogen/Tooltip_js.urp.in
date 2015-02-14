@@ -1,0 +1,8 @@
+jsFunc Tooltip_js_js.enable_tooltips = enable_tooltips__unit
+clientOnly Tooltip_js_js.enable_tooltips
+jsFunc Tooltip_js_js.popover = popover__unit
+clientOnly Tooltip_js_js.popover
+jsFunc Tooltip_js_js.tooltip = tooltip__unit
+clientOnly Tooltip_js_js.tooltip
+safeGet Tooltip_js/content
+allow mime text/javascript

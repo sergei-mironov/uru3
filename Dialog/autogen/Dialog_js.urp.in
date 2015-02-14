@@ -1,0 +1,8 @@
+jsFunc Dialog_js_js.dialog_show = dialog_show__unit
+clientOnly Dialog_js_js.dialog_show
+jsFunc Dialog_js_js.dialog_showModal = dialog_showModal__unit
+clientOnly Dialog_js_js.dialog_showModal
+jsFunc Dialog_js_js.dialog_close = dialog_close__unit
+clientOnly Dialog_js_js.dialog_close
+safeGet Dialog_js/content
+allow mime text/javascript

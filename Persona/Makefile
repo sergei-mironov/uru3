@@ -80,9 +80,9 @@ UR_INCL = -I$(shell urweb -print-cinclude)
 	$(UR_CC) -c $(UR_INCL) -o ./autogen/urweb_persona_js_c.o ./autogen/urweb_persona_js_c.c
 ./ffi.o: ./Makefile ./ffi.c $(call GUARD,UR_CC) $(call GUARD,UR_CFLAGS) $(call GUARD,UR_INCL)
 	$(UR_CC) -c $(UR_INCL) $(UR_CFLAGS) $(shell pkg-config --cflags libcurl) $(shell pkg-config --cflags jansson)  -o ./ffi.o ./ffi.c
-./lib.urp: ./.cake3/tmp___lib_in_1 ./.cake3/tmp___lib_in_2 ./.cake3/tmp___urweb_persona_js_patch ./Makefile $(call GUARD,LIBJANSSON) $(call GUARD,LIBLIBCURL)
+./lib.urp: ./.cake3/tmp___lib_in_1 ./.cake3/tmp___lib_in_2 ./Makefile ./autogen/urweb_persona_js.urp.in $(call GUARD,LIBJANSSON) $(call GUARD,LIBLIBCURL)
 	cat ./.cake3/tmp___lib_in_1 | sed 's@%LIBCURL%@$(LIBLIBCURL)@' | sed 's@%JANSSON%@$(LIBJANSSON)@' > ./lib.urp
-	cat ./.cake3/tmp___urweb_persona_js_patch >> ./lib.urp
+	cat ./autogen/urweb_persona_js.urp.in >> ./lib.urp
 	cat ./.cake3/tmp___lib_in_2 >> ./lib.urp
 ./test/P1.exe: ./Makefile ./test/P1.urp $(call GUARD,URVERSION)
 	urweb -dbms sqlite ./test/P1

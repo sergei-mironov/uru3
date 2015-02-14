@@ -140,15 +140,15 @@ UR_INCL = -I$(shell urweb -print-cinclude)
 	$(UR_CC) -c $(UR_INCL) -o ./autogen/bootstrap_slider_css_c.o ./autogen/bootstrap_slider_css_c.c
 ./autogen/bootstrap_slider_min_js_c.o: ./Makefile ./autogen/bootstrap_slider_min_js_c.c $(call GUARD,UR_CC) $(call GUARD,UR_INCL)
 	$(UR_CC) -c $(UR_INCL) -o ./autogen/bootstrap_slider_min_js_c.o ./autogen/bootstrap_slider_min_js_c.c
-./lib.urp: ./.cake3/tmp___BootstrapSlider_js_patch ./.cake3/tmp___bootstrap_slider_dist_bootstrap_slider_min_js_patch ./.cake3/tmp___bootstrap_slider_dist_css_bootstrap_slider_css_patch ./.cake3/tmp___lib_in_1 ./.cake3/tmp___lib_in_2 ./Makefile
+./lib.urp: ./.cake3/tmp___lib_in_1 ./.cake3/tmp___lib_in_2 ./Makefile ./autogen/BootstrapSlider_js.urp.in ./autogen/bootstrap_slider_css.urp.in ./autogen/bootstrap_slider_min_js.urp.in
 	cat ./.cake3/tmp___lib_in_1 > ./lib.urp
-	cat ./.cake3/tmp___BootstrapSlider_js_patch ./.cake3/tmp___bootstrap_slider_dist_css_bootstrap_slider_css_patch ./.cake3/tmp___bootstrap_slider_dist_bootstrap_slider_min_js_patch >> ./lib.urp
+	cat ./autogen/BootstrapSlider_js.urp.in ./autogen/bootstrap_slider_css.urp.in ./autogen/bootstrap_slider_min_js.urp.in >> ./lib.urp
 	cat ./.cake3/tmp___lib_in_2 >> ./lib.urp
 ./test/BSM1.exe: ./Makefile ./test/BSM1.urp $(call GUARD,URVERSION)
 	urweb -dbms sqlite ./test/BSM1
-./test/BSM1.urp: ./.cake3/tmp___test_BSM1_css_patch ./.cake3/tmp___test_BSM1_in_1 ./.cake3/tmp___test_BSM1_in_2 ./Makefile
+./test/BSM1.urp: ./.cake3/tmp___test_BSM1_in_1 ./.cake3/tmp___test_BSM1_in_2 ./Makefile ./autogen/BSM1_css.urp.in
 	cat ./.cake3/tmp___test_BSM1_in_1 > ./test/BSM1.urp
-	cat ./.cake3/tmp___test_BSM1_css_patch >> ./test/BSM1.urp
+	cat ./autogen/BSM1_css.urp.in >> ./test/BSM1.urp
 	cat ./.cake3/tmp___test_BSM1_in_2 >> ./test/BSM1.urp
 ../Bootstrap/autogen/FormSignin_css_c.o: ./Makefile ../Bootstrap/autogen/FormSignin_css_c.c $(call GUARD,UR_CC) $(call GUARD,UR_INCL)
 	$(UR_CC) -c $(UR_INCL) -o ../Bootstrap/autogen/FormSignin_css_c.o ../Bootstrap/autogen/FormSignin_css_c.c
@@ -168,15 +168,15 @@ UR_INCL = -I$(shell urweb -print-cinclude)
 	$(UR_CC) -c $(UR_INCL) -o ../Bootstrap/autogen/glyphicons_halflings_regular_ttf_c.o ../Bootstrap/autogen/glyphicons_halflings_regular_ttf_c.c
 ../Bootstrap/autogen/glyphicons_halflings_regular_woff_c.o: ./Makefile ../Bootstrap/autogen/glyphicons_halflings_regular_woff_c.c $(call GUARD,UR_CC) $(call GUARD,UR_INCL)
 	$(UR_CC) -c $(UR_INCL) -o ../Bootstrap/autogen/glyphicons_halflings_regular_woff_c.o ../Bootstrap/autogen/glyphicons_halflings_regular_woff_c.c
-../Bootstrap/lib.urp: ./.cake3/tmp____Bootstrap_FormSignin_css_patch ./.cake3/tmp____Bootstrap_Tooltip_js_patch ./.cake3/tmp____Bootstrap_dist_css_bootstrap_css_patch ./.cake3/tmp____Bootstrap_dist_css_bootstrap_theme_css_patch ./.cake3/tmp____Bootstrap_dist_fonts_glyphicons_halflings_regular_eot_patch ./.cake3/tmp____Bootstrap_dist_fonts_glyphicons_halflings_regular_svg_patch ./.cake3/tmp____Bootstrap_dist_fonts_glyphicons_halflings_regular_ttf_patch ./.cake3/tmp____Bootstrap_dist_fonts_glyphicons_halflings_regular_woff_patch ./.cake3/tmp____Bootstrap_dist_js_bootstrap_min_js_patch ./.cake3/tmp____Bootstrap_lib_in_1 ./.cake3/tmp____Bootstrap_lib_in_2 ./Makefile
+../Bootstrap/lib.urp: ./.cake3/tmp____Bootstrap_lib_in_1 ./.cake3/tmp____Bootstrap_lib_in_2 ./Makefile ../Bootstrap/autogen/FormSignin_css.urp.in ../Bootstrap/autogen/Tooltip_js.urp.in ../Bootstrap/autogen/bootstrap_css.urp.in ../Bootstrap/autogen/bootstrap_min_js.urp.in ../Bootstrap/autogen/bootstrap_theme_css.urp.in ../Bootstrap/autogen/glyphicons_halflings_regular_eot.urp.in ../Bootstrap/autogen/glyphicons_halflings_regular_svg.urp.in ../Bootstrap/autogen/glyphicons_halflings_regular_ttf.urp.in ../Bootstrap/autogen/glyphicons_halflings_regular_woff.urp.in
 	cat ./.cake3/tmp____Bootstrap_lib_in_1 > ../Bootstrap/lib.urp
-	cat ./.cake3/tmp____Bootstrap_FormSignin_css_patch ./.cake3/tmp____Bootstrap_Tooltip_js_patch ./.cake3/tmp____Bootstrap_dist_js_bootstrap_min_js_patch ./.cake3/tmp____Bootstrap_dist_css_bootstrap_theme_css_patch ./.cake3/tmp____Bootstrap_dist_css_bootstrap_css_patch ./.cake3/tmp____Bootstrap_dist_fonts_glyphicons_halflings_regular_woff_patch ./.cake3/tmp____Bootstrap_dist_fonts_glyphicons_halflings_regular_ttf_patch ./.cake3/tmp____Bootstrap_dist_fonts_glyphicons_halflings_regular_svg_patch ./.cake3/tmp____Bootstrap_dist_fonts_glyphicons_halflings_regular_eot_patch >> ../Bootstrap/lib.urp
+	cat ../Bootstrap/autogen/FormSignin_css.urp.in ../Bootstrap/autogen/Tooltip_js.urp.in ../Bootstrap/autogen/bootstrap_min_js.urp.in ../Bootstrap/autogen/bootstrap_theme_css.urp.in ../Bootstrap/autogen/bootstrap_css.urp.in ../Bootstrap/autogen/glyphicons_halflings_regular_woff.urp.in ../Bootstrap/autogen/glyphicons_halflings_regular_ttf.urp.in ../Bootstrap/autogen/glyphicons_halflings_regular_svg.urp.in ../Bootstrap/autogen/glyphicons_halflings_regular_eot.urp.in >> ../Bootstrap/lib.urp
 	cat ./.cake3/tmp____Bootstrap_lib_in_2 >> ../Bootstrap/lib.urp
 ../JQuery/autogen/jquery_1_9_1_js_c.o: ./Makefile ../JQuery/autogen/jquery_1_9_1_js_c.c $(call GUARD,UR_CC) $(call GUARD,UR_INCL)
 	$(UR_CC) -c $(UR_INCL) -o ../JQuery/autogen/jquery_1_9_1_js_c.o ../JQuery/autogen/jquery_1_9_1_js_c.c
-../JQuery/lib.urp: ./.cake3/tmp____JQuery_jquery_1_9_1_js_patch ./.cake3/tmp____JQuery_lib_in_1 ./.cake3/tmp____JQuery_lib_in_2 ./Makefile
+../JQuery/lib.urp: ./.cake3/tmp____JQuery_lib_in_1 ./.cake3/tmp____JQuery_lib_in_2 ./Makefile ../JQuery/autogen/jquery_1_9_1_js.urp.in
 	cat ./.cake3/tmp____JQuery_lib_in_1 > ../JQuery/lib.urp
-	cat ./.cake3/tmp____JQuery_jquery_1_9_1_js_patch >> ../JQuery/lib.urp
+	cat ../JQuery/autogen/jquery_1_9_1_js.urp.in >> ../JQuery/lib.urp
 	cat ./.cake3/tmp____JQuery_lib_in_2 >> ../JQuery/lib.urp
 ../Uru/Script.o: ./Makefile ../Uru/Script.c $(call GUARD,UR_CC) $(call GUARD,UR_CFLAGS) $(call GUARD,UR_INCL)
 	$(UR_CC) -c $(UR_INCL) $(UR_CFLAGS)  -o ../Uru/Script.o ../Uru/Script.c
