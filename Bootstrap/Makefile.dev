@@ -30,6 +30,7 @@ UR_INCL = -I$(shell urweb -print-cinclude)
 ./.cake3/tmp___lib_in_2: ./Bootstrap.ur ./Bootstrap.urs ./FormSignin.ur ./Makefile.dev ./autogen/FormSignin_css.ur ./autogen/FormSignin_css.urp.in ./autogen/FormSignin_css_c.c ./autogen/FormSignin_css_c.h ./autogen/FormSignin_css_c.o ./autogen/FormSignin_css_c.urs ./autogen/Tooltip_js.ur ./autogen/Tooltip_js.urp.in ./autogen/Tooltip_js_c.c ./autogen/Tooltip_js_c.h ./autogen/Tooltip_js_c.o ./autogen/Tooltip_js_c.urs ./autogen/Tooltip_js_js.urs ./autogen/bootstrap_css.ur ./autogen/bootstrap_css.urp.in ./autogen/bootstrap_css_c.c ./autogen/bootstrap_css_c.h ./autogen/bootstrap_css_c.o ./autogen/bootstrap_css_c.urs ./autogen/bootstrap_min_js.ur ./autogen/bootstrap_min_js.urp.in ./autogen/bootstrap_min_js_c.c ./autogen/bootstrap_min_js_c.h ./autogen/bootstrap_min_js_c.o ./autogen/bootstrap_min_js_c.urs ./autogen/bootstrap_theme_css.ur ./autogen/bootstrap_theme_css.urp.in ./autogen/bootstrap_theme_css_c.c ./autogen/bootstrap_theme_css_c.h ./autogen/bootstrap_theme_css_c.o ./autogen/bootstrap_theme_css_c.urs ./autogen/glyphicons_halflings_regular_eot.ur ./autogen/glyphicons_halflings_regular_eot.urp.in ./autogen/glyphicons_halflings_regular_eot_c.c ./autogen/glyphicons_halflings_regular_eot_c.h ./autogen/glyphicons_halflings_regular_eot_c.o ./autogen/glyphicons_halflings_regular_eot_c.urs ./autogen/glyphicons_halflings_regular_svg.ur ./autogen/glyphicons_halflings_regular_svg.urp.in ./autogen/glyphicons_halflings_regular_svg_c.c ./autogen/glyphicons_halflings_regular_svg_c.h ./autogen/glyphicons_halflings_regular_svg_c.o ./autogen/glyphicons_halflings_regular_svg_c.urs ./autogen/glyphicons_halflings_regular_ttf.ur ./autogen/glyphicons_halflings_regular_ttf.urp.in ./autogen/glyphicons_halflings_regular_ttf_c.c ./autogen/glyphicons_halflings_regular_ttf_c.h ./autogen/glyphicons_halflings_regular_ttf_c.o ./autogen/glyphicons_halflings_regular_ttf_c.urs ./autogen/glyphicons_halflings_regular_woff.ur ./autogen/glyphicons_halflings_regular_woff.urp.in ./autogen/glyphicons_halflings_regular_woff_c.c ./autogen/glyphicons_halflings_regular_woff_c.h ./autogen/glyphicons_halflings_regular_woff_c.o ./autogen/glyphicons_halflings_regular_woff_c.urs ../JQuery/lib.urp ../Uru/lib.urp
 	( \
 	echo   ;\
+	echo \.\/autogen\/Tooltip\_js  ;\
 	echo \.\/autogen\/glyphicons\_halflings\_regular\_eot  ;\
 	echo \.\/autogen\/glyphicons\_halflings\_regular\_svg  ;\
 	echo \.\/autogen\/glyphicons\_halflings\_regular\_ttf  ;\
@@ -37,7 +38,6 @@ UR_INCL = -I$(shell urweb -print-cinclude)
 	echo \.\/autogen\/bootstrap\_css  ;\
 	echo \.\/autogen\/bootstrap\_theme\_css  ;\
 	echo \.\/autogen\/bootstrap\_min\_js  ;\
-	echo \.\/autogen\/Tooltip\_js  ;\
 	echo \.\/autogen\/FormSignin\_css  ;\
 	echo \.\/Bootstrap  ;\
 	echo \.\/FormSignin  ;\
@@ -47,6 +47,10 @@ UR_INCL = -I$(shell urweb -print-cinclude)
 	echo rewrite\ style\ Bootstrap\/bs3\_table\ table  ;\
 	echo rewrite\ style\ Bootstrap\/\*\ \[\-\]  ;\
 	echo ffi\ \.\/NavTag  ;\
+	echo ffi\ \.\/autogen\/Tooltip\_js\_js  ;\
+	echo ffi\ \.\/autogen\/Tooltip\_js\_c  ;\
+	echo include\ \.\/autogen\/Tooltip\_js\_c\.h  ;\
+	echo link\ \.\/autogen\/Tooltip\_js\_c\.o  ;\
 	echo library\ \.\.\/JQuery\/  ;\
 	echo library\ \.\.\/Uru\/  ;\
 	echo ffi\ \.\/autogen\/glyphicons\_halflings\_regular\_eot\_c  ;\
@@ -70,10 +74,6 @@ UR_INCL = -I$(shell urweb -print-cinclude)
 	echo ffi\ \.\/autogen\/bootstrap\_min\_js\_c  ;\
 	echo include\ \.\/autogen\/bootstrap\_min\_js\_c\.h  ;\
 	echo link\ \.\/autogen\/bootstrap\_min\_js\_c\.o  ;\
-	echo ffi\ \.\/autogen\/Tooltip\_js\_js  ;\
-	echo ffi\ \.\/autogen\/Tooltip\_js\_c  ;\
-	echo include\ \.\/autogen\/Tooltip\_js\_c\.h  ;\
-	echo link\ \.\/autogen\/Tooltip\_js\_c\.o  ;\
 	echo ffi\ \.\/autogen\/FormSignin\_css\_c  ;\
 	echo include\ \.\/autogen\/FormSignin\_css\_c\.h  ;\
 	echo link\ \.\/autogen\/FormSignin\_css\_c\.o  ;\
@@ -176,51 +176,67 @@ UR_INCL = -I$(shell urweb -print-cinclude)
 ./lib: ./Makefile.dev ./lib.urp
 .INTERMEDIATE: ./.fix-multy1
 ./.fix-multy1: ./Makefile.dev ./test/B1.css
+	mkdir -p ./autogen 2>/dev/null
 	urembed  -c ./autogen/B1_css_c.c -H ./autogen/B1_css_c.h -s ./autogen/B1_css_c.urs -w ./autogen/B1_css.ur  ./test/B1.css > ./autogen/B1_css.urp.in
 .INTERMEDIATE: ./.fix-multy10
 ./.fix-multy10: ./Makefile.dev ./dist/css/bootstrap-theme.css
+	mkdir -p ./autogen 2>/dev/null
 	urembed  -c ./autogen/bootstrap_theme_css_c.c -H ./autogen/bootstrap_theme_css_c.h -s ./autogen/bootstrap_theme_css_c.urs -w ./autogen/bootstrap_theme_css.ur  ./dist/css/bootstrap-theme.css > ./autogen/bootstrap_theme_css.urp.in
 .INTERMEDIATE: ./.fix-multy11
 ./.fix-multy11: ./Makefile.dev ./dist/fonts/glyphicons-halflings-regular.eot
+	mkdir -p ./autogen 2>/dev/null
 	urembed  -c ./autogen/glyphicons_halflings_regular_eot_c.c -H ./autogen/glyphicons_halflings_regular_eot_c.h -s ./autogen/glyphicons_halflings_regular_eot_c.urs -w ./autogen/glyphicons_halflings_regular_eot.ur  ./dist/fonts/glyphicons-halflings-regular.eot > ./autogen/glyphicons_halflings_regular_eot.urp.in
 .INTERMEDIATE: ./.fix-multy12
 ./.fix-multy12: ./Makefile.dev ./dist/fonts/glyphicons-halflings-regular.svg
+	mkdir -p ./autogen 2>/dev/null
 	urembed  -c ./autogen/glyphicons_halflings_regular_svg_c.c -H ./autogen/glyphicons_halflings_regular_svg_c.h -s ./autogen/glyphicons_halflings_regular_svg_c.urs -w ./autogen/glyphicons_halflings_regular_svg.ur  ./dist/fonts/glyphicons-halflings-regular.svg > ./autogen/glyphicons_halflings_regular_svg.urp.in
 .INTERMEDIATE: ./.fix-multy13
 ./.fix-multy13: ./Makefile.dev ./dist/fonts/glyphicons-halflings-regular.ttf
+	mkdir -p ./autogen 2>/dev/null
 	urembed  -c ./autogen/glyphicons_halflings_regular_ttf_c.c -H ./autogen/glyphicons_halflings_regular_ttf_c.h -s ./autogen/glyphicons_halflings_regular_ttf_c.urs -w ./autogen/glyphicons_halflings_regular_ttf.ur  ./dist/fonts/glyphicons-halflings-regular.ttf > ./autogen/glyphicons_halflings_regular_ttf.urp.in
 .INTERMEDIATE: ./.fix-multy14
 ./.fix-multy14: ./Makefile.dev ./dist/fonts/glyphicons-halflings-regular.woff
+	mkdir -p ./autogen 2>/dev/null
 	urembed  -c ./autogen/glyphicons_halflings_regular_woff_c.c -H ./autogen/glyphicons_halflings_regular_woff_c.h -s ./autogen/glyphicons_halflings_regular_woff_c.urs -w ./autogen/glyphicons_halflings_regular_woff.ur  ./dist/fonts/glyphicons-halflings-regular.woff > ./autogen/glyphicons_halflings_regular_woff.urp.in
 .INTERMEDIATE: ./.fix-multy15
 ./.fix-multy15: ./Makefile.dev ./test/holder.js
+	mkdir -p ./autogen 2>/dev/null
 	urembed  -c ./autogen/holder_js_c.c -H ./autogen/holder_js_c.h -s ./autogen/holder_js_c.urs -w ./autogen/holder_js.ur  ./test/holder.js > ./autogen/holder_js.urp.in
 .INTERMEDIATE: ./.fix-multy16
 ./.fix-multy16: ./Makefile.dev ../JQuery/jquery-1.9.1.js
+	mkdir -p ../JQuery/autogen 2>/dev/null
 	urembed  -c ../JQuery/autogen/jquery_1_9_1_js_c.c -H ../JQuery/autogen/jquery_1_9_1_js_c.h -s ../JQuery/autogen/jquery_1_9_1_js_c.urs -w ../JQuery/autogen/jquery_1_9_1_js.ur  ../JQuery/jquery-1.9.1.js > ../JQuery/autogen/jquery_1_9_1_js.urp.in
 .INTERMEDIATE: ./.fix-multy2
 ./.fix-multy2: ./Makefile.dev ./test/B2.css
+	mkdir -p ./autogen 2>/dev/null
 	urembed  -c ./autogen/B2_css_c.c -H ./autogen/B2_css_c.h -s ./autogen/B2_css_c.urs -w ./autogen/B2_css.ur  ./test/B2.css > ./autogen/B2_css.urp.in
 .INTERMEDIATE: ./.fix-multy3
 ./.fix-multy3: ./Makefile.dev ./test/B3_Login.css
+	mkdir -p ./autogen 2>/dev/null
 	urembed  -c ./autogen/B3_Login_css_c.c -H ./autogen/B3_Login_css_c.h -s ./autogen/B3_Login_css_c.urs -w ./autogen/B3_Login_css.ur  ./test/B3_Login.css > ./autogen/B3_Login_css.urp.in
 .INTERMEDIATE: ./.fix-multy4
 ./.fix-multy4: ./FormSignin.css ./Makefile.dev
+	mkdir -p ./autogen 2>/dev/null
 	urembed  -c ./autogen/FormSignin_css_c.c -H ./autogen/FormSignin_css_c.h -s ./autogen/FormSignin_css_c.urs -w ./autogen/FormSignin_css.ur  ./FormSignin.css > ./autogen/FormSignin_css.urp.in
 .INTERMEDIATE: ./.fix-multy5
 ./.fix-multy5: ./Makefile.dev ./test/Modal.css
+	mkdir -p ./autogen 2>/dev/null
 	urembed  -c ./autogen/Modal_css_c.c -H ./autogen/Modal_css_c.h -s ./autogen/Modal_css_c.urs -w ./autogen/Modal_css.ur  ./test/Modal.css > ./autogen/Modal_css.urp.in
 .INTERMEDIATE: ./.fix-multy6
 ./.fix-multy6: ./Makefile.dev ./test/Narrow.css
+	mkdir -p ./autogen 2>/dev/null
 	urembed  -c ./autogen/Narrow_css_c.c -H ./autogen/Narrow_css_c.h -s ./autogen/Narrow_css_c.urs -w ./autogen/Narrow_css.ur  ./test/Narrow.css > ./autogen/Narrow_css.urp.in
 .INTERMEDIATE: ./.fix-multy7
 ./.fix-multy7: ./Makefile.dev ./Tooltip.js
+	mkdir -p ./autogen 2>/dev/null
 	urembed  -c ./autogen/Tooltip_js_c.c -H ./autogen/Tooltip_js_c.h -s ./autogen/Tooltip_js_c.urs -w ./autogen/Tooltip_js.ur -j ./autogen/Tooltip_js_js.urs ./Tooltip.js > ./autogen/Tooltip_js.urp.in
 .INTERMEDIATE: ./.fix-multy8
 ./.fix-multy8: ./Makefile.dev ./dist/css/bootstrap.css
+	mkdir -p ./autogen 2>/dev/null
 	urembed --css-mangle-urls -c ./autogen/bootstrap_css_c.c -H ./autogen/bootstrap_css_c.h -s ./autogen/bootstrap_css_c.urs -w ./autogen/bootstrap_css.ur  ./dist/css/bootstrap.css > ./autogen/bootstrap_css.urp.in
 .INTERMEDIATE: ./.fix-multy9
 ./.fix-multy9: ./Makefile.dev ./dist/js/bootstrap.min.js
+	mkdir -p ./autogen 2>/dev/null
 	urembed  -c ./autogen/bootstrap_min_js_c.c -H ./autogen/bootstrap_min_js_c.h -s ./autogen/bootstrap_min_js_c.urs -w ./autogen/bootstrap_min_js.ur  ./dist/js/bootstrap.min.js > ./autogen/bootstrap_min_js.urp.in
 ./Cakegen: ../Bootstrap/Cake_Bootstrap.hs ../BootstrapMisc/Cake_BootstrapMisc.hs ../Dialog/Cake_Dialog.hs ../JQuery/Cake_JQ.hs ../Persona/Cake_Persona.hs ../Uru/Cake_URU.hs ./Cake_Bootstrap.hs
 	cake3 -C ..
@@ -334,7 +350,7 @@ UR_INCL = -I$(shell urweb -print-cinclude)
 ./autogen/holder_js_c.urs: ./.fix-multy15
 ./lib.urp: ./.cake3/tmp___lib_in_1 ./.cake3/tmp___lib_in_2 ./Makefile.dev ./autogen/FormSignin_css.ur ./autogen/FormSignin_css.urp.in ./autogen/FormSignin_css_c.c ./autogen/FormSignin_css_c.h ./autogen/FormSignin_css_c.urs ./autogen/Tooltip_js.ur ./autogen/Tooltip_js.urp.in ./autogen/Tooltip_js_c.c ./autogen/Tooltip_js_c.h ./autogen/Tooltip_js_c.urs ./autogen/Tooltip_js_js.urs ./autogen/bootstrap_css.ur ./autogen/bootstrap_css.urp.in ./autogen/bootstrap_css_c.c ./autogen/bootstrap_css_c.h ./autogen/bootstrap_css_c.urs ./autogen/bootstrap_min_js.ur ./autogen/bootstrap_min_js.urp.in ./autogen/bootstrap_min_js_c.c ./autogen/bootstrap_min_js_c.h ./autogen/bootstrap_min_js_c.urs ./autogen/bootstrap_theme_css.ur ./autogen/bootstrap_theme_css.urp.in ./autogen/bootstrap_theme_css_c.c ./autogen/bootstrap_theme_css_c.h ./autogen/bootstrap_theme_css_c.urs ./autogen/glyphicons_halflings_regular_eot.ur ./autogen/glyphicons_halflings_regular_eot.urp.in ./autogen/glyphicons_halflings_regular_eot_c.c ./autogen/glyphicons_halflings_regular_eot_c.h ./autogen/glyphicons_halflings_regular_eot_c.urs ./autogen/glyphicons_halflings_regular_svg.ur ./autogen/glyphicons_halflings_regular_svg.urp.in ./autogen/glyphicons_halflings_regular_svg_c.c ./autogen/glyphicons_halflings_regular_svg_c.h ./autogen/glyphicons_halflings_regular_svg_c.urs ./autogen/glyphicons_halflings_regular_ttf.ur ./autogen/glyphicons_halflings_regular_ttf.urp.in ./autogen/glyphicons_halflings_regular_ttf_c.c ./autogen/glyphicons_halflings_regular_ttf_c.h ./autogen/glyphicons_halflings_regular_ttf_c.urs ./autogen/glyphicons_halflings_regular_woff.ur ./autogen/glyphicons_halflings_regular_woff.urp.in ./autogen/glyphicons_halflings_regular_woff_c.c ./autogen/glyphicons_halflings_regular_woff_c.h ./autogen/glyphicons_halflings_regular_woff_c.urs
 	cat ./.cake3/tmp___lib_in_1 > ./lib.urp
-	cat ./autogen/FormSignin_css.urp.in ./autogen/Tooltip_js.urp.in ./autogen/bootstrap_min_js.urp.in ./autogen/bootstrap_theme_css.urp.in ./autogen/bootstrap_css.urp.in ./autogen/glyphicons_halflings_regular_woff.urp.in ./autogen/glyphicons_halflings_regular_ttf.urp.in ./autogen/glyphicons_halflings_regular_svg.urp.in ./autogen/glyphicons_halflings_regular_eot.urp.in >> ./lib.urp
+	cat ./autogen/FormSignin_css.urp.in ./autogen/bootstrap_min_js.urp.in ./autogen/bootstrap_theme_css.urp.in ./autogen/bootstrap_css.urp.in ./autogen/glyphicons_halflings_regular_woff.urp.in ./autogen/glyphicons_halflings_regular_ttf.urp.in ./autogen/glyphicons_halflings_regular_svg.urp.in ./autogen/glyphicons_halflings_regular_eot.urp.in ./autogen/Tooltip_js.urp.in >> ./lib.urp
 	cat ./.cake3/tmp___lib_in_2 >> ./lib.urp
 ./test/B1.exe: ./Makefile.dev ./test/B1.urp $(call GUARD,URVERSION)
 	urweb -dbms sqlite ./test/B1

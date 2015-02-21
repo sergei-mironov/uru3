@@ -13,16 +13,16 @@ lib = do
     rewrite style "Bootstrap/bs3_table table"
     rewrite style "Bootstrap/* [-]"
     ffi (file "NavTag.urs")
+    ffi (file "Tooltip.js")
     library JQ.lib
     library URU.lib
     embed (file "dist/fonts/glyphicons-halflings-regular.eot")
     embed (file "dist/fonts/glyphicons-halflings-regular.svg")
     embed (file "dist/fonts/glyphicons-halflings-regular.ttf")
     embed (file "dist/fonts/glyphicons-halflings-regular.woff")
-    embed (mangled (file "dist/css/bootstrap.css"))
+    css (file "dist/css/bootstrap.css")
     embed (file "dist/css/bootstrap-theme.css")
     embed (file "dist/js/bootstrap.min.js")
-    embed (mangled (file "Tooltip.js"))
     embed (file "FormSignin.css")
 
     safeGet "Tooltip_js/enable_tooltips"
@@ -30,10 +30,9 @@ lib = do
     ur (file "FormSignin.ur")
 
 demo1 = do
-  u <- lib
   uwapp "-dbms sqlite" (file "test/B1.urp") $ do
     rewrite style "B1/* [-]"
-    library u
+    library lib
     ur (sys "list")
     embed (file "test/B1.css")
     ur (pair (file "test/B1.ur"))
