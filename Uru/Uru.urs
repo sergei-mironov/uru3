@@ -31,6 +31,10 @@ val addHeader : t1 ::: {Type}
   -> xhead
   -> record (dpage t1) -> (record (dpage t1))
 
+val addStylesheet : t1 ::: {Type}
+  -> url
+  -> record (dpage t1) -> (record (dpage t1))
+
 val addTag : t1 ::: {Type} -> tm ::: Type -> n :: Name -> [t1 ~ [n=tm]]
   => tm -> record (dpage t1) -> (record (dpage (t1 ++ [n=tm])))
 

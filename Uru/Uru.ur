@@ -14,6 +14,9 @@ fun addEmptyTag [t1] [n :: Name] [t1 ~ [n={}]] r =
 val addBodyTail [t1] b r =
   (r -- #BodyTail ++ {BodyTail = <xml>{r.BodyTail}{b}</xml>})
 
+fun addStylesheet [t] u r =
+  (r -- #Hdr ++ {Hdr = <xml>{r.Hdr}<link rel="stylesheet" href={u}/></xml>})
+
 fun withBody [t] f r =
   b <- f r;
   return
