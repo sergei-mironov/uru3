@@ -10,8 +10,8 @@ import Cake_Bootstrap_P
 
 lib = do
   uwlib (file "lib.urp") $ do
-    rewrite style "Bootstrap/bs3_table table"
-    rewrite style "Bootstrap/* [-]"
+    rewrite style "BootstrapStyles/bs3_table table"
+    rewrite style "BootstrapStyles/* [-]"
     ffi (file "NavTag.urs")
     ffi (file "Tooltip.js")
     library JQ.lib
@@ -26,7 +26,8 @@ lib = do
     embed (file "FormSignin.css")
 
     safeGet "Tooltip_js/enable_tooltips"
-    ur (pair (file "Bootstrap.ur"))
+    ur (file "BootstrapStyles.ur")
+    ur (file "Bootstrap.ur")
     ur (file "FormSignin.ur")
 
 demo1 = do

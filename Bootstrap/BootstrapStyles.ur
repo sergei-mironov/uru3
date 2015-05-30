@@ -1,16 +1,3 @@
-
-con dpage = Uru.dpage
-
-con need = [JQ=unit]
-con out = need ++ [BOOTSTRAP=unit]
-
-val add : t ::: {Type} -> [t ~ out]
-  => (record (dpage (t ++ out)) -> transaction page)
-  -> record (dpage (t ++ need)) -> transaction page
-
-val tooltip_show : id -> string -> transaction unit
-val popover_show : id -> string -> transaction unit
-
 style active
 style divider
 style item
@@ -20,6 +7,10 @@ style slide
 style bg_success
 style footer
 style alert
+
+(* Styles from http://hg.impredicative.com/bootstrap/raw-file/e2ddf4cb96cc/bootstrap.ur
+ * Thanks, folks!
+ *)
 
 style bs3_active
 style affix

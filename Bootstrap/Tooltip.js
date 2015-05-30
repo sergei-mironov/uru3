@@ -9,7 +9,7 @@ function popover__unit(id__string, text__string) {
   $(id__string).popover('show');
 }
 
-function tooltip__unit(id__string, text__string) {
-  $(id__string).tooltip({'show':true, 'title' : text__string});
+function tooltip__unit(id__string, text__xbody) {
+  $(id__string).tooltip({'show':true, 'title' : text__xbody});
   $(id__string).tooltip('show');
 }
