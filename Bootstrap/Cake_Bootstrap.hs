@@ -20,6 +20,7 @@ lib = do
     embed (file "dist/fonts/glyphicons-halflings-regular.svg")
     embed (file "dist/fonts/glyphicons-halflings-regular.ttf")
     embed (file "dist/fonts/glyphicons-halflings-regular.woff")
+    embed (file "dist/fonts/glyphicons-halflings-regular.woff2")
     css (file "dist/css/bootstrap.css")
     embed (file "dist/css/bootstrap-theme.css")
     embed (file "dist/js/bootstrap.min.js")

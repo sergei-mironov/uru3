@@ -305,6 +305,8 @@ style glyphicon_gbp
 style glyphicon_gift
 style glyphicon_glass
 style glyphicon_globe
+style glyphicon_ice_lolly
+style glyphicon_ice_lolly_tasted
 style glyphicon_hand_down
 style glyphicon_hand_left
 style glyphicon_hand_right
@@ -340,6 +342,8 @@ style glyphicon_off
 style glyphicon_ok
 style glyphicon_ok_circle
 style glyphicon_ok_sign
+style glyphicon_option_horizontal
+style glyphicon_option_vertical
 style glyphicon_open
 style glyphicon_paperclip
 style glyphicon_pause
