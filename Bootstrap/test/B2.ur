@@ -1,4 +1,5 @@
 structure B = Bootstrap
+open Bootstrap
 
 style starter_template
 style theme_showcase
@@ -118,28 +119,28 @@ fun main {} : transaction page =
             <h1>Carousel</h1>
           </div>
 
-          <div id={x} class={cls (B.carousel :: B.slide :: [])} data={data "ride" "carousel"}>
-            <ol class={B.carousel_indicators}>
-              <li data={data_attrs (data "target" ("#" ^ (show x))) (data "slide-to" "0")} class={B.active}></li>
-              <li data={data_attrs (data "target" ("#" ^ (show x))) (data "slide-to" "1")}></li>
-              <li data={data_attrs (data "target" ("#" ^ (show x))) (data "slide-to" "2")}></li>
+          <div id={x} class="carousel slide" data-ride="carousel">
+            <ol class="carousel_indicators">
+              <li data-target={"#" ^ (show x)} data-slide-to="0" class="active"></li>
+              <li data-target={"#" ^ (show x)} data-slide-to="1" class=""></li>
+              <li data-target={"#" ^ (show x)} data-slide-to="2" class=""></li>
             </ol>
-            <div class={B.carousel_inner}>
-              <div class={cls (B.item :: B.active :: [])}>
-                <img data={data "src" "holder.js/1140x500/auto/#777:#555/text:First slide"} alt="First slide"/>
+            <div class="carousel_inner">
+              <div class="item active">
+                <img data-src="holder.js/1140x500/auto/#777:#555/text:First slide" alt="First slide"/>
               </div>
-              <div class={B.item}>
-                <img data={data "src" "holder.js/1140x500/auto/#666:#444/text:Second slide"} alt="Second slide"/>
+              <div class="item">
+                <img data-src="holder.js/1140x500/auto/#666:#444/text:Second slide" alt="Second slide"/>
               </div>
-              <div class={B.item}>
-                <img data={data "src" "holder.js/1140x500/auto/#555:#333/text:Third slide"} alt="Third slide"/>
+              <div class="item">
+                <img data-src="holder.js/1140x500/auto/#555:#333/text:Third slide" alt="Third slide"/>
               </div>
             </div>
-            <a style={CSS.css (("cursor",CSS.Str "pointer") :: [])} class={cls (B.left :: B.carousel_control :: [])} role="button" data={data_attrs (data "target" ("#" ^ (show x))) (data "slide" "prev")}>
-              <span class={cls (B.glyphicon :: B.glyphicon_chevron_left ::[])}></span>
+            <a style="cursor:pointer" class="left carousel_control" role="button" data-target={"#" ^ (show x)} data-slide="prev">
+              <span class="glyphicon glyphicon_chevron_left"></span>
             </a>
-            <a style={CSS.css (("cursor",CSS.Str "pointer") :: [])} class={cls (B.right :: B.carousel_control :: [])} role="button" data={data_attrs (data "target" ("#" ^ (show x))) (data "slide" "next")}>
-              <span class={cls (B.glyphicon :: B.glyphicon_chevron_right ::[])}></span>
+            <a style="cursor:pointer" class="right carousel_control" role="button" data-target={"#" ^ (show x)} data-slide="next">
+              <span class="glyphicon glyphicon_chevron_right"></span>
             </a>
           </div>
 
