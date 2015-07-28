@@ -1,0 +1,4 @@
+jsFunc RespTabs_js_js.rt_init = rt_init__unit
+clientOnly RespTabs_js_js.rt_init
+safeGet RespTabs_js/content
+allow mime text/javascript
