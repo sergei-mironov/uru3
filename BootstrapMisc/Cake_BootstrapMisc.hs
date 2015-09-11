@@ -10,6 +10,8 @@ import qualified Cake_URU as Uru
 import Cake_BootstrapMisc_P
 
 lib = do
+  prebuild [cmd| git -C $(cwd) submodule update --init bootstrap-slider |]
+  prebuild [cmd| git -C $(cwd)/bootstrap-slider checkout -f |]
   uwlib (file "lib.urp") $ do
     library Bootstrap.lib
     library Uru.lib
@@ -31,7 +33,6 @@ mkDemo src bdy = do
     bdy
 
 main = writeDefaultMakefiles $ do
-
   rule $ do
     phony "lib"
     depend lib
