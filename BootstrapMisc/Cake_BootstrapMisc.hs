@@ -9,14 +9,14 @@ import qualified Cake_Bootstrap as Bootstrap
 import qualified Cake_URU as Uru
 import Cake_BootstrapMisc_P
 
+file_bsl = file' (subproject "bootstrap-slider")
+
 lib = do
-  prebuild [cmd| git -C $(cwd) submodule update --init bootstrap-slider |]
-  prebuild [cmd| git -C $(cwd)/bootstrap-slider checkout -f |]
   uwlib (file "lib.urp") $ do
     library Bootstrap.lib
     library Uru.lib
-    embed (file "bootstrap-slider/dist/bootstrap-slider.min.js")
-    embed (file "bootstrap-slider/dist/css/bootstrap-slider.css")
+    embed (gitSubmoduleFile $ file_bsl "dist/bootstrap-slider.min.js")
+    embed (gitSubmoduleFile $ file_bsl "dist/css/bootstrap-slider.css")
     embed (mangled (file "BootstrapSlider.js"))
     ur (file "BootstrapMisc.ur")
 
