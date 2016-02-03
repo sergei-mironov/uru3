@@ -3,7 +3,9 @@ let
 uwb = import <urweb-build>;
 
 in with uwb;
-  mkUrpLib {
+
+rec {
+  lib = mkUrpLib {
     name = "Bootstrap";
 
     header = [
@@ -30,6 +32,17 @@ in with uwb;
       (mkSrc1 ./Bootstrap.ur)
       (mkSrc1 ./FormSignin.ur)
     ];
+  };
 
-  }
-
+  b1 = mkUrpExe {
+    name = "Narrow";
+    header = [
+      (mkLib2 lib)
+    ];
+    body = [
+      (mkSys "list")
+      (mkEmbed ./test/Narrow.css)
+      (mkSrc1 ./test/Narrow.ur)
+    ];
+  };
+}
