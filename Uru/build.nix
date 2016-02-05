@@ -3,20 +3,18 @@ let
 uwb = import <urweb-build>;
 
 in with uwb;
-  mkUrpLib {
+
+  mkLib {
 
     name = "Uru";
 
-    header = [
-      (mkFFI ./Script.urs)
-      (mkInclude ./Script.h)
-      (mkObj ./Script.c)
-    ];
-
-    body = [
-      (mkSys "list")
-      (mkSrc ./CSS.ur ./CSS.urs)
-      (mkSrc ./Uru.ur ./Uru.urs)
+    statements = [
+      (ffi ./Script.urs)
+      (include ./Script.h)
+      (obj ./Script.c)
+      (sys "list")
+      (src ./CSS.ur ./CSS.urs)
+      (src ./Uru.ur ./Uru.urs)
     ];
 
   }

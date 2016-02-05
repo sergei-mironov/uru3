@@ -3,16 +3,14 @@ let
 uwb = import <urweb-build>;
 
 in with uwb;
-  mkUrpLib {
+
+  mkLib {
     name = "JQuery";
 
-    header = [
-      (mkLib ../Uru)
-      (mkEmbed ./jquery-1.9.1.js)
-    ];
-
-    body = [
-      (mkSrc ./JQuery.ur ./JQuery.urs)
+    statements = [
+      (lib-extern ../Uru)
+      (embed ./jquery-1.9.1.js)
+      (src ./JQuery.ur ./JQuery.urs)
     ];
 
   }
