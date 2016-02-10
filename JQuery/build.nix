@@ -1,16 +1,23 @@
+{ libraries ? {} } :
+
 let
 
-uwb = import <urweb-build>;
+  uwb = import <urweb-build> { inherit libraries; };
 
 in with uwb;
+{
+  jquery = mkLib {
 
-  mkLib {
     name = "JQuery";
 
+    libraries = {
+      uru = external ../Uru;
+    };
+
     statements = [
-      (lib-extern ../Uru)
       (embed ./jquery-1.9.1.js)
       (src ./JQuery.ur ./JQuery.urs)
     ];
 
-  }
+  };
+}

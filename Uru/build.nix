@@ -1,20 +1,26 @@
+{ libraries ? {} } :
+
 let
 
-uwb = import <urweb-build>;
+  uwb = import <urweb-build> { inherit libraries; };
 
 in with uwb;
 
-  mkLib {
+{
+
+  uru = mkLib {
 
     name = "Uru";
 
     statements = [
       (ffi ./Script.urs)
       (include ./Script.h)
-      (obj ./Script.c)
+      (obj-c ./Script.c)
       (sys "list")
       (src ./CSS.ur ./CSS.urs)
       (src ./Uru.ur ./Uru.urs)
     ];
 
-  }
+  };
+
+}

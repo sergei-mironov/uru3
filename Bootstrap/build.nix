@@ -1,20 +1,27 @@
+{ libraries ? {} } :
+
 let
 
-uwb = import <urweb-build>;
+  uwb = import <urweb-build> libraries;
 
 in with uwb;
 
 rec {
-  lib = mkLib {
+
+  bootstrap = mkLib {
+
     name = "Bootstrap";
+
+    libraries = {
+      jquery = external ../JQuery;
+      uru = external ../Uru;
+    };
 
     statements = [
       (rule "rewrite style 'BootstrapStyles/bs3_table table'")
       (rule "rewrite style 'BootstrapStyles/\* [-]'")
       (ffi ./NavTag.urs)
       (embed-js ./Tooltip.js)
-      (lib-extern ../JQuery)
-      (lib-extern ../Uru)
       (embed ./dist/fonts/glyphicons-halflings-regular.eot)
       (embed ./dist/fonts/glyphicons-halflings-regular.svg)
       (embed ./dist/fonts/glyphicons-halflings-regular.ttf)
@@ -36,8 +43,11 @@ rec {
 
     dbms = "sqlite";
 
+    libraries = {
+      inherit bootstrap;
+    };
+
     statements = [
-      (lib-local lib)
       (sys "list")
       (embed ./test/Narrow.css)
       (src1 ./test/Narrow.ur)
