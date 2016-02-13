@@ -18,8 +18,9 @@ rec {
     };
 
     statements = [
-      (rule "rewrite style 'BootstrapStyles/bs3_table table'")
-      (rule "rewrite style 'BootstrapStyles/\* [-]'")
+      (rule "rewrite style BootstrapStyles/bs3_table table")
+      (rule "rewrite style BootstrapStyles/\* [-]")
+      (rule "safeGet Tooltip_js/enable_tooltips")
       (ffi ./NavTag.urs)
       (embed-js ./Tooltip.js)
       (embed ./dist/fonts/glyphicons-halflings-regular.eot)
@@ -31,7 +32,6 @@ rec {
       (embed ./dist/css/bootstrap-theme.css)
       (embed ./dist/js/bootstrap.min.js)
       (embed-css ./FormSignin.css)
-      (rule "safeGet 'Tooltip_js/enable_tooltips'")
       (src1 ./BootstrapStyles.ur)
       (src1 ./Bootstrap.ur)
       (src1 ./FormSignin.ur)
