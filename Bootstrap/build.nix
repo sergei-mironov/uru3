@@ -38,9 +38,8 @@ rec {
     ];
   };
 
-  b1 = mkExe {
-    name = "Narrow";
-
+  bootstrap-demo = mkExe {
+    name = "Demo";
     dbms = "sqlite";
 
     libraries = {
@@ -49,8 +48,20 @@ rec {
 
     statements = [
       (sys "list")
+      (rule "allow url https://github.com/grwlf/uru3")
+      (rule "allow url  https://camo.githubusercontent.com/365986a132c*")
       (embed ./test/Narrow.css)
       (src1 ./test/Narrow.ur)
+      (embed ./test/B1.css)
+      (src1 ./test/B1.ur)
+      (embed ./test/holder.js)
+      (embed ./test/B2.css)
+      (src1 ./test/B2.ur)
+      (embed ./test/B3_Login.css)
+      (src1 ./test/B3_Login.ur)
+      (embed ./test/Modal.css)
+      (src1 ./test/Modal.ur)
     ];
   };
+
 }
