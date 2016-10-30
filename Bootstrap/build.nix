@@ -39,7 +39,7 @@ rec {
   };
 
   bootstrap-demo = mkExe {
-    name = "Demo";
+    name = "BootstrapDemo";
     dbms = "sqlite";
 
     libraries = {
