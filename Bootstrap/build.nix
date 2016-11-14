@@ -19,6 +19,7 @@ rec {
 
     statements = [
       (rule "rewrite style BootstrapStyles/bs3_table table")
+      (rule "rewrite style BootstrapStyles/bs3_active active")
       (rule "rewrite style BootstrapStyles/\* [-]")
       (rule "safeGet Tooltip_js/enable_tooltips")
       (ffi ./NavTag.urs)

@@ -4,7 +4,7 @@ con out = need ++ [BOOTSTRAP=unit]
 
 fun add [t] [t~out]
         (f:record (dpage (t ++ out)) -> transaction page)
-        (r:record (dpage (t ++ need))) : transaction page = 
+        (r:record (dpage (t ++ need))) : transaction page =
   let
     val css_urls = List.foldr (fn l x =>
       <xml>
@@ -18,8 +18,8 @@ fun add [t] [t~out]
               <link rel="stylesheet" href={Bootstrap_theme_css.url}/>
               {Script.insert Uru.javascript Bootstrap_min_js.url}
               {Script.insert Uru.javascript Tooltip_js.url}
-            </xml> 
-    
+            </xml>
+
     (* val l = return {} *)
     val l = Tooltip_js.enable_tooltips {}
   in

@@ -1,4 +1,4 @@
-style active
+(* style active *)
 style divider
 style item
 style left
