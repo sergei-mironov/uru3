@@ -17,7 +17,7 @@ fun main {} : transaction page =
       <p>
         <button value="Play" onclick={fn _ => audio_play x } />
         <button value="Pause" onclick={fn _ => audio_pause x } />
-        <button value="Rewind" onclick={fn _ => audio_position x 0 } />
+        <button value="Rewind" onclick={fn _ => audio_setPosition x 0 } />
       </p>
 
     </xml>

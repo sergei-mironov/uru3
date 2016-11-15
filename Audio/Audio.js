@@ -7,6 +7,10 @@ function audio_pause__unit(elem__id) {
   document.getElementById(elem__id).pause();
 }
 
-function audio_position__unit(elem__id, time__int) {
+function audio_setPosition__unit(elem__id, time__int) {
   document.getElementById(elem__id).currentTime = time__int;
+}
+
+function audio_getPosition__int(elem__id) {
+  return document.getElementById(elem__id).currentTime;
 }
