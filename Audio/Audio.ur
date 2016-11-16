@@ -9,6 +9,7 @@ val audio_pause = @@Audio_js.audio_pause
 val audio_getPosition = @@Audio_js.audio_getPosition
 val audio_setPosition = @@Audio_js.audio_setPosition
 val audio_playInterval = @@Audio_js.audio_playInterval
+val audio_isPlaying = @@Audio_js.audio_isPlaying
 
 fun add [t:::{Type}] [t~out]
   (f:record (dpage (t ++ out)) -> transaction page)
