@@ -25,6 +25,7 @@ function audio_getPosition__float(elem__id) {
 
 function audio_playInterval__unit(elem__id, tstart__float, tstop__float) {
   var a = document.getElementById(elem__id);
+  if(a.clearEvents) a.clearEvents();
 
   var handler = function(event) {
     if (a.currentTime >= tstop__float) {
