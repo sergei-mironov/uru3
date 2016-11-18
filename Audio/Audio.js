@@ -6,7 +6,9 @@ function audio_play__unit(elem__id) {
 }
 
 function audio_pause__unit(elem__id) {
-  document.getElementById(elem__id).pause();
+  var a = document.getElementById(elem__id);
+  if(a.clearEvents) a.clearEvents();
+  a.pause();
 }
 
 function audio_isPlaying__bool(elem__id) {
@@ -29,6 +31,7 @@ function audio_playInterval__unit(elem__id, tstart__float, tstop__float) {
 
   var handler = function(event) {
     if (a.currentTime >= tstop__float) {
+      a.removeEventListener('timeupdate', handler);
       a.pause();
     }
   }
