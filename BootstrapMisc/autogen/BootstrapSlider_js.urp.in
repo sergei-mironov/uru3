@@ -1,4 +1,0 @@
-jsFunc BootstrapSlider_js_js.bootstrap_slider_add = bootstrap_slider_add__unit
-clientOnly BootstrapSlider_js_js.bootstrap_slider_add
-safeGet BootstrapSlider_js/content
-allow mime text/javascript
