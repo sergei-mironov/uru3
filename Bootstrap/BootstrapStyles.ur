@@ -47,7 +47,7 @@ style carousel_caption
 style carousel_control
 style carousel_indicators
 style carousel_inner
-style checkbox
+style bs3_checkbox
 style checkbox_inline
 style clearfix
 style close
