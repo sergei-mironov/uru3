@@ -27,6 +27,8 @@ rec {
     name = "AudioDemo";
     dbms = "sqlite";
 
+    buildInputs = with uwb; with uwb.pkgs; [gdb];
+
     libraries = {
       inherit audio;
     };
