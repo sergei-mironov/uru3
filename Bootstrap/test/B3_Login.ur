@@ -21,7 +21,7 @@ fun main {} : transaction page =
             <h2 class={F.form_signin_heading}>Ur/Web sign in demo</h2>
             <email{#Email} class={B.form_control} placeholder="Email address" required={True} autofocus={True}/>
             <password{#Password} class={B.form_control} placeholder="Password" required={True}/>
-            <label class={B.checkbox}>
+            <label class={B.bs3_checkbox}>
               <checkbox{#Remember} checked={False}/>Remember me
             </label>
             <submit value="Sign in" class={CSS.list (B.btn :: B.btn_lg :: B.btn_primary :: B.btn_block :: [])} action={handler}/>

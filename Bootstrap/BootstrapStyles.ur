@@ -490,7 +490,7 @@ style modal_footer
 style modal_header
 style modal_open
 style modal_title
-style nav
+style bs3_nav
 style nav_justified
 style nav_pills
 style nav_stacked

@@ -21,8 +21,8 @@ fun main {} : transaction page =
               <a class={B.navbar_brand} link={main {}}>Project name</a>
             </div>
             <div class={cls (B.collapse :: B.navbar_collapse :: [])}>
-              <ul class={cls (B.nav :: B.navbar_nav :: [])}>
-                <li class={B.active}><a link={main {}}>Home</a></li>
+              <ul class={cls (B.bs3_nav :: B.navbar_nav :: [])}>
+                <li class={B.bs3_active}><a link={main {}}>Home</a></li>
                 <li><a link={main {}}>About</a></li>
                 <li><a link={main {}}>Contact</a></li>
               </ul>

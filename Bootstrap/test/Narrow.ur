@@ -26,8 +26,8 @@ fun main {} : transaction page =
 
           <div style="border-bottom:1px solid #e5e5e5; margin-bottom:30px; padding-bottom:19px">
             <nav>
-              <ul class={cl (B.nav :: B.nav_pills :: B.pull_right :: [])}>
-                <li role="presentation" class={B.active}><a href={url (main {})}>Home</a></li>
+              <ul class={cl (B.bs3_nav :: B.nav_pills :: B.pull_right :: [])}>
+                <li role="presentation" class={B.bs3_active}><a href={url (main {})}>Home</a></li>
                 <li role="presentation"><a href={url (main {})}>About</a></li>
                 <li role="presentation"><a href={url (main {})}>Contact</a></li>
               </ul>

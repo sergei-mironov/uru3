@@ -24,8 +24,8 @@ fun main {} : transaction page =
               <a class={B.navbar_brand} link={main {}}>Bootstrap theme</a>
             </div>
             <div class={cls (B.collapse :: B.navbar_collapse :: [])}>
-              <ul class={cls (B.nav :: B.navbar_nav :: [])}>
-                <li class={B.active}><a link={main {}}>Home</a></li>
+              <ul class={cls (B.bs3_nav :: B.navbar_nav :: [])}>
+                <li class={B.bs3_active}><a link={main {}}>Home</a></li>
                 <li><a link={main {}}>About</a></li>
                 <li><a link={main {}}>Contact</a></li>
                 <li class={B.dropdown}>
@@ -121,12 +121,12 @@ fun main {} : transaction page =
 
           <div id={x} class="carousel slide" data-ride="carousel">
             <ol class="carousel_indicators">
-              <li data-target={"#" ^ (show x)} data-slide-to="0" class="active"></li>
+              <li data-target={"#" ^ (show x)} data-slide-to="0" class="bs3_active"></li>
               <li data-target={"#" ^ (show x)} data-slide-to="1" class=""></li>
               <li data-target={"#" ^ (show x)} data-slide-to="2" class=""></li>
             </ol>
             <div class="carousel_inner">
-              <div class="item active">
+              <div class="item bs3_active">
                 <img data-src="holder.js/1140x500/auto/#777:#555/text:First slide" alt="First slide"/>
               </div>
               <div class="item">

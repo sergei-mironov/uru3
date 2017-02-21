@@ -22,6 +22,7 @@ rec {
       (rule "rewrite style BootstrapStyles/bs3_active active")
       (rule "rewrite style BootstrapStyles/bs3_alert alert")
       (rule "rewrite style BootstrapStyles/bs3_checkbox checkbox")
+      (rule "rewrite style BootstrapStyles/bs3_nav nav")
       (rule "rewrite style BootstrapStyles/\* [-]")
       (rule "safeGet Tooltip_js/enable_tooltips")
       (ffi ./NavTag.urs)
